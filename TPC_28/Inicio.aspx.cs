@@ -13,20 +13,33 @@ namespace TPC_28
         protected void Page_Load(object sender, EventArgs e)
         {
             DatosDeArticulos art = new DatosDeArticulos();
-            // dgvArticulos.DataSource = art.Listar();
-            // dgvArticulos.DataBind();
             repRepetidor.DataSource = art.Listar();
-            repRepetidor.DataBind();
+
+
+            if (!IsPostBack)
+            {
+                repRepetidor.DataSource = art.Listar();
+
+                repRepetidor.DataBind();
+
+
+            }
         }
 
         protected void irCarrito_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Carrito.aspx");
+            Button irCarrito = (Button)sender;
+            string id = irCarrito.CommandArgument;
+
+            Response.Redirect("carrito.aspx?id=" + id);
         }
 
         protected void verMas_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ArtDetalles.aspx");
+            Button verMas = (Button)sender;
+            string id = verMas.CommandArgument;
+
+            Response.Redirect("artDetalles.aspx?id=" + id);
         }
     }
 }

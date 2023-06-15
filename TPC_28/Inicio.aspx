@@ -17,9 +17,13 @@
                         <img src="<%#Eval("Imagenes")%>" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"><%#Eval("Nombre") %></h5>
-                             <p class="card-text"><%#Eval("Marca") %></p>
-                             <p class="card-text"><%#Eval("Categoria") %></p>
+                            <p class="card-text"><%#Eval("ArtId")%></p>
+                            <p class="card-text"><%#Eval("Marca") %></p>
+                            <p class="card-text"><%#Eval("Categoria") %></p>
                             <p class="card-text"><%#Eval("Descripcion") %></p>
+                            <asp:Button Text="Ver mas" ID="verMas" class="btn btn-danger" runat="server" OnClick="verMas_Click" CommandArgument='<%#Eval("ArtId")%>' NavigateUrl='<%#"ArtDetalles.aspx?id=" + Eval("ArtId")%>' />
+                            <asp:Button Text=" Ir al Carrito" ID="irCarrito" runat="server" class="btn btn-primary" OnClick="irCarrito_Click" CommandArgument='<%#Eval("ArtId")%> ' NavigateUrl='<%#"Carrito.aspx?id=" + Eval("ArtId")%>' />
+
                         </div>
                     </div>
                 </div>
@@ -27,7 +31,4 @@
         </asp:Repeater>
     </div>
 
-    <asp:Button Text="Ver mas" ID="verMas" class="btn btn-danger" runat="server" OnClick="verMas_Click" />
-
-    <asp:Button Text=" Ir al Carrito" ID="irCarrito" runat="server" class="btn btn-primary" OnClick="irCarrito_Click" />
 </asp:Content>
