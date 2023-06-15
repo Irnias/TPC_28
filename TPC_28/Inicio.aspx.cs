@@ -13,8 +13,10 @@ namespace TPC_28
         protected void Page_Load(object sender, EventArgs e)
         {
             DatosDeArticulos art = new DatosDeArticulos();
-            dgvArticulos.DataSource = art.Listar();
-            dgvArticulos.DataBind();
+            // dgvArticulos.DataSource = art.Listar();
+            // dgvArticulos.DataBind();
+            repRepetidor.DataSource = art.Listar();
+            repRepetidor.DataBind();
         }
 
         protected void irCarrito_Click(object sender, EventArgs e)

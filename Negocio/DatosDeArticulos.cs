@@ -15,7 +15,7 @@ namespace Negocio
 
             try
             {
-                data.setQuery("SELECT A.IdArticulo as artId, A.Nombre as nombre, A.Descripcion as descrip, A.DescripcionLarga as DescripLarga, M.IdMarca as idMarca , M.Descripcion as descripMarca, C.IdCategoria as idCat ,C.Descripcion as descripCat, A.Precio as precio, I.ImagenUrl as imgUrl " +
+                data.setQuery("SELECT A.IdArticulo as artId, A.Nombre as Nombre, A.Descripcion as Descrip, A.DescripcionLarga as DescripLarga, M.IdMarca as idMarca , M.Descripcion as descripMarca, C.IdCategoria as idCat ,C.Descripcion as descripCat, A.Precio as precio,I.IdImagenes as idImagen,  I.ImagenUrl as imgUrl " +
                     "FROM Articulos A, Marcas M, Categorias C, Imagenes I WHERE A.IdMarca = M.IdMarca and A.IdCategoria = C.IdCategoria and A.IdImagen = I.IdArt");
                 data.ejecutar();
 
@@ -36,6 +36,7 @@ namespace Negocio
                         (!(data.sqlLector["descripMarca"] is DBNull)) ? (string)data.sqlLector["descripMarca"] : ""
                         );
                     aux.Imagenes = new Imagen(
+                        (!(data.sqlLector["idImagen"] is DBNull)) ? (int)data.sqlLector["idImagen"] : 0,
                         (!(data.sqlLector["imgUrl"] is DBNull)) ? (string)data.sqlLector["imgUrl"] : ""
                         );
 

@@ -6,10 +6,16 @@
         public int ArtId { get; set; }
         public string ImageUrl { get; set; }
 
-        public Imagen(string description)
+        public Imagen(int id, string description)
         {
-           
+            Id = id;
            ImageUrl = description;
         }
+
+        public override string ToString()
+        {
+            return ImageUrl;
+        }
+
     }
 }

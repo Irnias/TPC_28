@@ -11,7 +11,10 @@
             Descripcion = description;
         }
 
+        public override string ToString()
+        {
+            return Descripcion;
+        }
+
     }
-
-
 }

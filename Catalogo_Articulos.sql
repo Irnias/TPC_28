@@ -1,5 +1,6 @@
 CREATE DATABASE Catalogo_Articulos
 GO
+USE Catalogo_Articulos
 Create Table Marcas(
 IdMarca int not null primary key identity (1,1),
 Descripcion varchar (50)
@@ -34,3 +35,6 @@ IdImagen int not null foreign key references Imagenes(idImagenes),
 Precio money not null,
 IdCalificacion int not null foreign key references Calificaciones(IdCalificacion)
 )
+
+SELECT * FROM Marcas
+SELECT* from Articulos
