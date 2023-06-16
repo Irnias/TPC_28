@@ -12,6 +12,11 @@
            ImageUrl = description;
         }
 
+        public Imagen()
+        {
+
+        }
+
         public override string ToString()
         {
             return ImageUrl;

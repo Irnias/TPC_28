@@ -33,6 +33,11 @@ namespace Negocio
         //    comando.CommandText = Sp;
         //}
 
+        public void agregar(Articulo articulo)
+        {
+           
+        }
+
         public void setearParametro(string nombre, object valor)
         {
             comando.Parameters.AddWithValue(nombre, valor);

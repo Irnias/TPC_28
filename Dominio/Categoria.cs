@@ -10,6 +10,10 @@
             Id = id;
             Descripcion = description;
         }
+        public Categoria()
+        {
+
+        }
 
         public override string ToString()
         {

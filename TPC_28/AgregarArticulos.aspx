@@ -28,7 +28,7 @@
                 <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="form-select"></asp:DropDownList>
             </div>
             <div class="mb-3">
-                <asp:Button Text="Agregar" runat="server" ID="btnAgregar" CssClass="btn btn-outline-warning" />
+                <asp:Button Text="Agregar" runat="server" ID="btnAgregar" Onclick="btnAgregar_Click" CssClass="btn btn-outline-warning" />
             </div>
         </div>
 

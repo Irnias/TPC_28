@@ -7,28 +7,28 @@ using Dominio;
 
 namespace Negocio
 {
-    public class DatosMarca
+    public class DatosCategoria
     {
-        public List<Marca> Listar()
+        public List<Categoria> Listar()
         {
-            List<Marca> listaMarca = new List<Marca>();
+            List<Categoria> listaCategoria = new List<Categoria>();
             AccesoDatos accesoNuevo = new AccesoDatos();
 
             try
             {
-                accesoNuevo.setQuery("select IdMarca as Id, Descripcion as Descripcion from Marcas");
+                accesoNuevo.setQuery("Select IdCategoria AS Id, Descripcion as Descripcion FROM Categorias");
                 accesoNuevo.ejecutar();
 
                 while (accesoNuevo.sqlLector.Read())
                 {
-                    Marca marca = new Marca();
-                    marca.Id = (int)accesoNuevo.sqlLector["Id"];
-                    marca.Descripcion = (string)accesoNuevo.sqlLector["Descripcion"];
+                    Categoria cat = new Categoria();
+                    cat.Id = (int)accesoNuevo.sqlLector["Id"];
+                    cat.Descripcion = (string)accesoNuevo.sqlLector["Descripcion"];
 
-                    listaMarca.Add(marca);
+                    listaCategoria.Add(cat);
                 }
 
-                return listaMarca;
+                return listaCategoria;
             }
             catch (Exception ex)
             {
@@ -42,3 +42,4 @@ namespace Negocio
         }
     }
 }
+
