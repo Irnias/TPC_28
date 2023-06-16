@@ -13,6 +13,6 @@ namespace Dominio
         public Imagen Imagenes { get; set; }
        // public int Precio { get; set; }
         public decimal Precio { get; set; }
-        public Calificacion calificacion { get; set; }
+        public Calificacion Calificacion { get; set; }
     }
 }
