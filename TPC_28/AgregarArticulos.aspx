@@ -28,7 +28,7 @@
                 <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="form-select"></asp:DropDownList>
             </div>
             <div class="mb-3">
-                <asp:Button Text="Agregar" runat="server" ID="btnAgregar" Onclick="btnAgregar_Click" CssClass="btn btn-outline-warning" />
+                <asp:Button Text="Agregar" runat="server" ID="btnAgregar" OnClick="btnAgregar_Click" CssClass="btn btn-outline-warning" />
             </div>
         </div>
 
@@ -39,12 +39,15 @@
             </div>
 
             <div class="mb-3">
-                <label for="txtImagen" class="form-label">Imagen</label>
-                <asp:TextBox runat="server" ID="txtImagen" CssClass="form-control"
-                    AutoPostBack="true" OnTextChanged="txtImagen_TextChanged" />
+               <%-- <label for="txtImagen" class="form-label">Id Imagen</label>
+                   <asp:TextBox runat="server" ID="txtImagen" CssClass="form-control"
+                   AutoPostBack="true" OnTextChanged="txtImagen_TextChanged" />--%>
+                <label for="txtImagen" class="form-label">Url Imagen</label>
+                <asp:TextBox runat="server" ID="txtImagen" CssClass="form-control" 
+                AutoPostBack="true" OnTextChanged="txtImagen_TextChanged" />
             </div>
             <asp:Image ImageUrl="https://cdn-icons-png.flaticon.com/512/5798/5798294.png"
-                runat="server" ID="imgArticulo" width="50%" />
+                runat="server" ID="imgArticulo" Width="50%" />
 
 
         </div>

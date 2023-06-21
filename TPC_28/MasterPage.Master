@@ -31,6 +31,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="Carrito.aspx">Carrito</a>
                             </li>
+                             <li class="nav-item">
+                                <a class="nav-link" href="ListadoDeArticulos.aspx">Listado De Articulos</a>
+                            </li>
 
                         </ul>
                     </div>
