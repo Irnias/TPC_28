@@ -32,10 +32,14 @@ Descripcion varchar(150),
 DescripcionLarga varchar(300),
 IdMarca int not null foreign key references Marcas(IdMarca),
 IdCategoria int not null foreign key references Categorias(IdCategoria),
-IdImagen int not null foreign key references Imagenes(idImagenes),
+IdImagen int null foreign key references Imagenes(idImagenes),
 Precio money not null,
-IdCalificacion int not null foreign key references Calificaciones(IdCalificacion)
+IdCalificacion int  null foreign key references Calificaciones(IdCalificacion)
 )
+GO
+ALTER TABLE ARTICULOS
+DROP COLUMN  IdImagen
+GO
 
 SELECT * FROM Marcas
 SELECT* from Articulos
@@ -48,4 +52,45 @@ WHERE A.IdMarca = M.IdMarca and A.IdCategoria = C.IdCategoria and A.IdImagen = I
 
 Select * from Imagenes
 Select * from Categorias
+Select * from Marcas
 Select * from Calificaciones
+SELECT * FROM Articulos
+GO
+ALTER PROCEDURE SP_AltaArticulos
+@Nombre varchar(50),
+@Descripcion varchar (150),
+@DescripcionLarga varchar (300),
+@IdMarca int,
+@IdCategoria int,
+@IdImagen int,
+@Precio money
+as
+INSERT INTO Articulos (Nombre,Descripcion, DescripcionLarga, IdMarca, IdCategoria, IdImagen, Precio)
+VALUES (@Nombre,@Descripcion,@DescripcionLarga, @IdMarca,@IdCategoria,@IdImagen,@Precio)
+
+EXEC SP_AltaArticulos '', '', '', 1,1,null,1, null,''
+
+go
+
+CREATE PROCEDURE SP_ModificarArticulos
+@Nombre varchar(50),
+@Descripcion varchar (150),
+@DescripcionLarga varchar (300),
+@IdMarca int,
+@IdCategoria int,
+@IdImagen int,
+@Precio money,
+@id int
+as
+UPDATE Articulos set Nombre = @Nombre, Descripcion = @Descripcion, DescripcionLarga = @DescripcionLarga, 
+IdMarca = @IdMarca, IdCategoria= @IdCategoria, IdImagen= @IdImagen, Precio = @Precio
+WHERE IdArticulo = @id 
+
+GO
+CREATE PROCEDURE SP_EliminarArticulos
+@id int
+as
+DELETE FROM Articulos WHERE IdArticulo = @id 
+
+GO
+exec SP_EliminarArticulos 9

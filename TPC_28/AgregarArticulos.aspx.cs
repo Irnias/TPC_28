@@ -55,6 +55,7 @@ namespace TPC_28
                         txtDescripcion.Text = articulo.Descripcion;
                         txtDescripcionLarga.Text = articulo.DescripcionLarga;
                         txtPrecio.Text = articulo.Precio.ToString();
+                        txtImagen.Text = articulo.Imagenes.Id.ToString();
 
                         ddlMarca.SelectedValue = articulo.Marca.Id.ToString();
                         ddlCategoria.SelectedValue = articulo.Categoria.Id.ToString();
@@ -83,12 +84,13 @@ namespace TPC_28
                 Articulo articulo = new Articulo();
                 DatosDeArticulos articuloNuevo = new DatosDeArticulos();
 
-                articulo.ArtId = int.Parse(txtId.Text);
+                //articulo.ArtId = int.Parse(txtId.Text);
+
 
                 articulo.Nombre = txtNombre.Text;
                 articulo.Descripcion = txtDescripcion.Text;
                 articulo.DescripcionLarga = txtDescripcionLarga.Text;
-                articulo.Precio = int.Parse(txtPrecio.Text);
+                articulo.Precio = decimal.Parse(txtPrecio.Text);
 
 
                 articulo.Imagenes = new Imagen();
