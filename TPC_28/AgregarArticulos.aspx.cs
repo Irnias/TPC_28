@@ -35,7 +35,7 @@ namespace TPC_28
                     ddlCategoria.DataTextField = "Descripcion";
                     ddlCategoria.DataBind();
 
-                    chkEliminacion.Checked = true;
+                    chkEliminacion.Checked =false;
 
                 }
 
