@@ -13,7 +13,7 @@
                <asp:BoundField HeaderText="Marca" DataField="Nombre" />
                <asp:BoundField HeaderText="Categoria" DataField="Categoria" />
                <asp:BoundField HeaderText="Precio" DataField="Precio" />
-               <asp:CommandField ShowSelectButton="true" SelectText="Modificar Articulo" HeaderText="Accion" />
+               <asp:CommandField ShowSelectButton="true" SelectText="Modificar Articulo" HeaderText="Modificar" />
             </Columns>
             </asp:GridView>
         </div>

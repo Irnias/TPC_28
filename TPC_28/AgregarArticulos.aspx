@@ -4,6 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <hr />
 
     <div class="row">
         <div class="col-6">
@@ -28,29 +29,33 @@
                 <asp:DropDownList ID="ddlMarca" runat="server" CssClass="form-select"></asp:DropDownList>
             </div>
             <div class="mb-3">
-                <label for="ddlCategoria" class="form-label">Categoria</label>
-                <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="form-select"></asp:DropDownList>
+                <asp:Button Text="Agregar" runat="server" ID="btnAgregar" OnClick="btnAgregar_Click" CssClass="btn btn-outline-warning" />
             </div>
             <div class="mb-3">
-                <asp:Button Text="Agregar" runat="server" ID="btnAgregar" OnClick="btnAgregar_Click" CssClass="btn btn-outline-warning" />
+            <asp:CheckBox Text="  ¿ Eliminar ?" runat="server" ID="chkEliminacion" />
+            <asp:Button Text="Eliminar" ID="btnEliminar" OnClick="btnEliminar_Click" runat="server" CssClass="btn btn-outline-danger" />
             </div>
         </div>
 
         <div class="col-6">
+            <div class="mb-3">
+                <label for="ddlCategoria" class="form-label">Categoria</label>
+                <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="form-select"></asp:DropDownList>
+            </div>
             <div class="mb-3">
                 <label for="txtPrecio" class="form-label">Precio</label>
                 <asp:TextBox runat="server" ID="txtPrecio" CssClass="form-control" />
             </div>
 
             <div class="mb-3">
-               <%-- <label for="txtImagen" class="form-label">Id Imagen</label>
+                <%-- <label for="txtImagen" class="form-label">Id Imagen</label>
                    <asp:TextBox runat="server" ID="txtImagen" CssClass="form-control"
                    AutoPostBack="true" OnTextChanged="txtImagen_TextChanged" />--%>
                 <label for="txtImagen" class="form-label">Url Imagen</label>
                 <asp:TextBox runat="server" ID="txtImagen" CssClass="form-control" />
             </div>
             <asp:Image ImageUrl="https://cdn-icons-png.flaticon.com/512/5798/5798294.png"
-                runat="server" ID="imgArticulo" Width="50%" />
+                runat="server" ID="imgArticulo" Width="40%" />
 
 
         </div>

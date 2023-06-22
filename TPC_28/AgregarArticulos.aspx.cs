@@ -19,6 +19,7 @@ namespace TPC_28
 
                 if (!IsPostBack)
                 {
+
                     DatosMarca marca = new DatosMarca();
                     List<Marca> lista = marca.Listar();
 
@@ -33,10 +34,13 @@ namespace TPC_28
                     ddlCategoria.DataValueField = "Id";
                     ddlCategoria.DataTextField = "Descripcion";
                     ddlCategoria.DataBind();
+
+                    chkEliminacion.Checked = true;
+
                 }
 
                 string ArtId = Request.QueryString["ArtId"] != null ? Request.QueryString["ArtId"].ToString() : "";
-           
+
 
                 if (ArtId != "" && !IsPostBack)
                 {
@@ -84,6 +88,8 @@ namespace TPC_28
                 articulo.Nombre = txtNombre.Text;
                 articulo.Descripcion = txtDescripcion.Text;
                 articulo.DescripcionLarga = txtDescripcionLarga.Text;
+                articulo.Precio = int.Parse(txtPrecio.Text);
+
 
                 articulo.Imagenes = new Imagen();
                 articulo.Imagenes.Id = int.Parse(txtImagen.Text);
@@ -93,6 +99,7 @@ namespace TPC_28
 
                 articulo.Categoria = new Categoria();
                 articulo.Categoria.Id = int.Parse(ddlCategoria.SelectedValue);
+
 
                 if (Request.QueryString["ArtId"] != null)
                 {
@@ -105,6 +112,38 @@ namespace TPC_28
                 }
 
                 Response.Redirect("AgregarArticulos.aspx", false);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                string artId = Request.QueryString["ArtId"];
+                int idArticulo;
+
+                if (artId != null && chkEliminacion.Checked)
+                {
+                    if (int.TryParse(artId, out idArticulo)) 
+                    {
+                        DatosDeArticulos articulo = new DatosDeArticulos();
+
+                        Articulo articuloEliminar = new Articulo();
+                        articuloEliminar.ArtId = idArticulo;
+
+                        articulo.eliminarConSp(articuloEliminar);
+
+                    }
+                }
+                Response.Redirect("ListadoDeArticulos.aspx", false);
+
+
             }
             catch (Exception)
             {

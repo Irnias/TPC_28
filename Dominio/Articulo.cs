@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 
 namespace Dominio
 {
@@ -13,5 +14,7 @@ namespace Dominio
         public Imagen Imagenes { get; set; }
        // public int Precio { get; set; }
         public decimal Precio { get; set; }
+
+    
     }
 }

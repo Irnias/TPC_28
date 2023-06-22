@@ -100,6 +100,23 @@ namespace Negocio
             }
         }
 
+        public void eliminarConSp(Articulo idArticulo)
+        {
+            AccesoDatos data = new AccesoDatos();
+
+            try
+            {
+                data.setearSp("SP_EliminarArticulos");
+                data.setearParametro("@id", idArticulo.ArtId);
+
+                data.ejecutar();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public void modificarConSp(Articulo articulo)
         {
             AccesoDatos data = new AccesoDatos();
