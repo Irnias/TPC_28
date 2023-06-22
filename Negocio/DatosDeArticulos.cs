@@ -100,6 +100,34 @@ namespace Negocio
             }
         }
 
+        public void modificarConSp(Articulo articulo)
+        {
+            AccesoDatos data = new AccesoDatos();
+
+            try
+            {
+                data.setearSp("SP_AltaArticulos");
+                data.setearParametro("@Nombre", articulo.Nombre);
+                data.setearParametro("@Descripcion", articulo.Descripcion);
+                data.setearParametro("@DescripcionLarga", articulo.DescripcionLarga);
+                data.setearParametro("@IdMarca", articulo.Marca.Id);
+                data.setearParametro("@IdCategoria", articulo.Categoria.Id);
+                data.setearParametro("@IdImagen", articulo.Imagenes.Id);
+                data.setearParametro("@Precio", articulo.Precio);
+                // data.setearParametro("@Calificacion", articulo.Calificacion);
+                // data.setearParametro("@UrlImagen", articulo.Imagenes.ImageUrl);
+
+                data.ejecutar();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+        }
 
         public void agregarConSp(Articulo articulo)
         {

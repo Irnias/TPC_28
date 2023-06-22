@@ -27,16 +27,7 @@ namespace Negocio
             comando.CommandText = query;
         }
 
-        //public void setSp(string Sp)
-        //{
-        //    comando.CommandType = System.Data.CommandType.StoredProcedure;
-        //    comando.CommandText = Sp;
-        //}
-
-        public void agregar(Articulo articulo)
-        {
-           
-        }
+ 
 
         public void setearSp(string Sp)
         {

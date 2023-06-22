@@ -8,6 +8,10 @@
     <div class="row">
         <div class="col-6">
             <div class="mb-3">
+                <label for="txtId" class="form-label">ID del Articulo</label>
+                <asp:TextBox runat="server" ID="txtId" CssClass="form-control" />
+            </div>
+            <div class="mb-3">
                 <label for="txtNombre" class="form-label">Nombre</label>
                 <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control" />
             </div>
@@ -43,8 +47,7 @@
                    <asp:TextBox runat="server" ID="txtImagen" CssClass="form-control"
                    AutoPostBack="true" OnTextChanged="txtImagen_TextChanged" />--%>
                 <label for="txtImagen" class="form-label">Url Imagen</label>
-                <asp:TextBox runat="server" ID="txtImagen" CssClass="form-control" 
-                AutoPostBack="true" OnTextChanged="txtImagen_TextChanged" />
+                <asp:TextBox runat="server" ID="txtImagen" CssClass="form-control" />
             </div>
             <asp:Image ImageUrl="https://cdn-icons-png.flaticon.com/512/5798/5798294.png"
                 runat="server" ID="imgArticulo" Width="50%" />

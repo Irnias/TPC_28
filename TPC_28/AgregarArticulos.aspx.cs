@@ -36,20 +36,24 @@ namespace TPC_28
                 string ArtId = Request.QueryString["ArtId"] != null ? Request.QueryString["ArtId"].ToString() : "";
                 int idArt;
 
-                if (int.TryParse(ArtId, out idArt))
+
+                if (ArtId != "" && !IsPostBack)
                 {
-                    DatosDeArticulos datos = new DatosDeArticulos();
-                    Articulo articulo = datos.ListarConId(idArt);
+                    if (int.TryParse(ArtId, out idArt))
+                    {
+                        DatosDeArticulos datos = new DatosDeArticulos();
+                        Articulo articulo = datos.ListarConId(idArt);
 
-                    txtNombre.Text = articulo.Nombre;
-                    txtDescripcion.Text = articulo.Descripcion;
-                    txtDescripcionLarga.Text = articulo.DescripcionLarga;
-                    txtPrecio.Text = articulo.Precio.ToString();
+                        txtNombre.Text = articulo.Nombre;
+                        txtDescripcion.Text = articulo.Descripcion;
+                        txtDescripcionLarga.Text = articulo.DescripcionLarga;
+                        txtPrecio.Text = articulo.Precio.ToString();
 
-                    ddlMarca.SelectedValue = articulo.Marca.Id.ToString(); 
-                    ddlCategoria.SelectedValue = articulo.Categoria.Id.ToString(); 
+                        ddlMarca.SelectedValue = articulo.Marca.Id.ToString();
+                        ddlCategoria.SelectedValue = articulo.Categoria.Id.ToString();
 
 
+                    }
                 }
 
             }
@@ -74,6 +78,8 @@ namespace TPC_28
                 Articulo articulo = new Articulo();
                 DatosDeArticulos articuloNuevo = new DatosDeArticulos();
 
+                articulo.ArtId = int.Parse(txtId.Text);
+
                 articulo.Nombre = txtNombre.Text;
                 articulo.Descripcion = txtDescripcion.Text;
                 articulo.DescripcionLarga = txtDescripcionLarga.Text;
@@ -87,7 +93,16 @@ namespace TPC_28
                 articulo.Categoria = new Categoria();
                 articulo.Categoria.Id = int.Parse(ddlCategoria.SelectedValue);
 
-                articuloNuevo.agregarConSp(articulo);
+                if (Request.QueryString["ArtId"] != null)
+                {
+                    articulo.ArtId = int.Parse(txtId.Text);
+                    articuloNuevo.modificarConSp(articulo);
+                }
+                else
+                {
+                    articuloNuevo.agregarConSp(articulo);
+                }
+
                 Response.Redirect("AgregarArticulos.aspx", false);
             }
             catch (Exception)
