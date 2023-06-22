@@ -106,7 +106,8 @@ namespace Negocio
 
             try
             {
-                data.setearSp("SP_AltaArticulos");
+                data.setearSp("SP_ModificarArticulos");
+                data.setearParametro("@id", articulo.ArtId);
                 data.setearParametro("@Nombre", articulo.Nombre);
                 data.setearParametro("@Descripcion", articulo.Descripcion);
                 data.setearParametro("@DescripcionLarga", articulo.DescripcionLarga);

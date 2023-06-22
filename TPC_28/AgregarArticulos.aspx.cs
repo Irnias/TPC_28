@@ -15,6 +15,8 @@ namespace TPC_28
         {
             try
             {
+                txtId.Enabled = false;
+
                 if (!IsPostBack)
                 {
                     DatosMarca marca = new DatosMarca();
@@ -34,16 +36,17 @@ namespace TPC_28
                 }
 
                 string ArtId = Request.QueryString["ArtId"] != null ? Request.QueryString["ArtId"].ToString() : "";
-                int idArt;
-
+           
 
                 if (ArtId != "" && !IsPostBack)
                 {
+                    int idArt;
                     if (int.TryParse(ArtId, out idArt))
                     {
                         DatosDeArticulos datos = new DatosDeArticulos();
                         Articulo articulo = datos.ListarConId(idArt);
 
+                        txtId.Text = articulo.ArtId.ToString();
                         txtNombre.Text = articulo.Nombre;
                         txtDescripcion.Text = articulo.Descripcion;
                         txtDescripcionLarga.Text = articulo.DescripcionLarga;
@@ -51,8 +54,6 @@ namespace TPC_28
 
                         ddlMarca.SelectedValue = articulo.Marca.Id.ToString();
                         ddlCategoria.SelectedValue = articulo.Categoria.Id.ToString();
-
-
                     }
                 }
 
