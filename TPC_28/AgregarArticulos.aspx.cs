@@ -197,9 +197,11 @@ namespace TPC_28
         protected void txtImagen_TextChanged(object sender, EventArgs e)
         {
            imagenUrl = txtImagen.Text;
+           imgArticulo.ImageUrl = imagenUrl;
 
-            
-          
+
+
+
         }
     }
 }
