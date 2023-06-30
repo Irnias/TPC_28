@@ -15,8 +15,11 @@ namespace Negocio
 
             try
             {
-                data.setQuery("SELECT A.IdArticulo as artId, A.Nombre as Nombre, A.Descripcion as Descrip, A.DescripcionLarga as DescripLarga, M.IdMarca as idMarca , M.Descripcion as descripMarca, C.IdCategoria as idCat ,C.Descripcion as descripCat, A.Precio as precio,I.IdImagenes as idImagen,  I.ImagenUrl as imgUrl " +
-                    "FROM Articulos A, Marcas M, Categorias C, Imagenes I WHERE A.IdMarca = M.IdMarca and A.IdCategoria = C.IdCategoria and A.IdImagen = I.IdArt");
+                string Query = "SELECT A.IdArticulo as artId, A.Nombre as nombre, A.Descripcion as descrip, A.DescripcionLarga as DescripLarga,M.IdMarca as idMarca, M.Descripcion as descripMarca, " +
+                    "C.IdCategoria as idCat,C.Descripcion as descripCat, A.Precio as precio, I.IdImagenes as idImagen, I.ImagenUrl as imgUrl FROM Articulos A " +
+                    "inner join Marcas M on A.IdMarca = M.IdMarca left join Imagenes I on A.IdArticulo = I.IdArt inner join Categorias C on A.IdCategoria = C.IdCategoria";
+
+                data.setQuery(Query);
                 data.ejecutar();
 
                 while (data.sqlLector.Read())
@@ -60,8 +63,9 @@ namespace Negocio
             AccesoDatos data = new AccesoDatos();
             try
             {
-                data.setQuery("SELECT A.IdArticulo as artId, A.Nombre as Nombre, A.Descripcion as Descrip, A.DescripcionLarga as DescripLarga, M.IdMarca as idMarca , M.Descripcion as descripMarca, C.IdCategoria as idCat ,C.Descripcion as descripCat, A.Precio as precio,I.IdImagenes as idImagen,  I.ImagenUrl as imgUrl " +
-                "FROM Articulos A, Marcas M, Categorias C, Imagenes I WHERE A.IdMarca = M.IdMarca and A.IdCategoria = C.IdCategoria and A.IdImagen = I.IdArt And A.IdArticulo=@id");
+                data.setQuery("SELECT A.IdArticulo AS artId, A.Nombre AS nombre, A.Descripcion AS descrip, A.DescripcionLarga AS DescripLarga, M.IdMarca AS idMarca, " +
+                    "M.Descripcion AS descripMarca, C.IdCategoria AS idCat, C.Descripcion AS descripCat, A.Precio AS precio, I.IdImagenes as idImagen, I.ImagenUrl as imgUrl FROM Articulos A INNER JOIN " +
+                    "Marcas M ON A.IdMarca = M.IdMarca INNER JOIN Categorias C ON A.IdCategoria = C.IdCategoria INNER JOIN Imagenes I ON A.IdArticulo = I.IdArt WHERE A.IdArticulo = @id;");
                 
                 data.setearParametro("@id", id);
 
