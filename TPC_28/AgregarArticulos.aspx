@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <hr />
-
+    
     <div class="row">
         <div class="col-6">
             <div class="mb-3">
@@ -24,9 +24,23 @@
                 <label for="txtDescripcionLarga" class="form-label">Descripcion Larga</label>
                 <asp:TextBox runat="server" ID="txtDescripcionLarga" CssClass="form-control" TextMode="MultiLine" />
             </div>
-            <div class="mb-3">
+            <div class="row mb-3">    
                 <label for="ddlMarca" class="form-label">Marca</label>
-                <asp:DropDownList ID="ddlMarca" runat="server" CssClass="form-select"></asp:DropDownList>
+                 <div class="col-md-10">
+                    <asp:DropDownList ID="ddlMarca" runat="server" CssClass="form-select"></asp:DropDownList>
+                </div>
+                <div class="col-md-2">
+                    <asp:Button Text="+" ID="ButtonAddMarca" OnClick="btnNuevaMarca" runat="server" CssClass="btn btn-outline-primary" />
+                </div>
+                <asp:Panel ID="marcaPopup" runat="server" CssClass="popup">
+                    <h2>Nueva Marca</h2>
+                    <div class="form-group">
+                        <label for="txtNombreMarca" class="form-label">Nombre:</label>
+                        <asp:TextBox runat="server" id="txtNombreMarca" class="form-control" />
+                    </div>
+                    <asp:Button Text="Guardar" ID="BtnGuardar" OnClick="BtnGuardar_Click" runat="server" CssClass="btn btn-outline-primary" />
+                    <asp:Button Text="Cancelar" ID="BtnCancelar" OnClick="BtnCancelar_Click" runat="server" CssClass="btn btn-outline-secondary" />
+                </asp:Panel>
             </div>
             <div class="mb-3">
                 <asp:Button Text="Agregar" runat="server" ID="btnAgregar" OnClick="btnAgregar_Click" CssClass="btn btn-outline-warning" />
@@ -38,9 +52,25 @@
         </div>
 
         <div class="col-6">
-            <div class="mb-3">
+            <div class="row mb-3">
                 <label for="ddlCategoria" class="form-label">Categoria</label>
+                 <div class="col-md-10">
                 <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="form-select"></asp:DropDownList>
+                </div>
+                <div class="col-md-2">
+                    <asp:Button Text="+" ID="btnNuevaCategoria" OnClick="Agregar_Categoria" runat="server" CssClass="btn btn-outline-primary" />
+                </div>
+                <asp:Panel ID="categoriaPopup" runat="server" CssClass="popup">
+                    <h2>Nueva Categoria</h2>
+                    <div class="form-group">
+                        <label for="txtNombreCategoria" class="form-label">Nombre:</label>
+                        <asp:TextBox runat="server" id="txtNombreCategoria" class="form-control" />
+                    </div>
+                    <asp:Button Text="Guardar" ID="Button2" OnClick="BtnCategoriaGuardar_Click" runat="server" CssClass="btn btn-outline-primary" />
+                    <asp:Button Text="Cancelar" ID="Button3" OnClick="BtnCategoriaCancelar_Click" runat="server" CssClass="btn btn-outline-secondary" />
+                </asp:Panel>
+
+
             </div>
             <div class="mb-3">
                 <label for="txtPrecio" class="form-label">Precio</label>

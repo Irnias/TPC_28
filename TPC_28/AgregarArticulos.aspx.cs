@@ -16,24 +16,12 @@ namespace TPC_28
             try
             {
                 txtId.Enabled = false;
-
+                marcaPopup.Visible = false;
+                categoriaPopup.Visible = false;
                 if (!IsPostBack)
                 {
-
-                    DatosMarca marca = new DatosMarca();
-                    List<Marca> lista = marca.Listar();
-
-                    ddlMarca.DataSource = lista;
-                    ddlMarca.DataValueField = "Id";
-                    ddlMarca.DataTextField = "Descripcion";
-                    ddlMarca.DataBind();
-
-                    DatosCategoria categoria = new DatosCategoria();
-                    List<Categoria> listaC = categoria.Listar();
-                    ddlCategoria.DataSource = listaC;
-                    ddlCategoria.DataValueField = "Id";
-                    ddlCategoria.DataTextField = "Descripcion";
-                    ddlCategoria.DataBind();
+                    Recargar_Marca();
+                    Recargar_Categoria();
 
                     chkEliminacion.Checked =false;
 
@@ -55,7 +43,7 @@ namespace TPC_28
                         txtDescripcion.Text = articulo.Descripcion;
                         txtDescripcionLarga.Text = articulo.DescripcionLarga;
                         txtPrecio.Text = articulo.Precio.ToString();
-                        txtImagen.Text = articulo.Imagenes.Id.ToString();
+                        txtImagen.Text = articulo.Imagenes.ImageUrl;
 
                         ddlMarca.SelectedValue = articulo.Marca.Id.ToString();
                         ddlCategoria.SelectedValue = articulo.Categoria.Id.ToString();
@@ -70,6 +58,27 @@ namespace TPC_28
             }
 
 
+        }
+
+        protected void Recargar_Marca()
+        {
+            DatosMarca marca = new DatosMarca();
+            List<Marca> lista = marca.Listar();
+
+            ddlMarca.DataSource = lista;
+            ddlMarca.DataValueField = "Id";
+            ddlMarca.DataTextField = "Descripcion";
+            ddlMarca.DataBind();
+        }
+
+        protected void Recargar_Categoria()
+        {
+            DatosCategoria categoria = new DatosCategoria();
+            List<Categoria> listaC = categoria.Listar();
+            ddlCategoria.DataSource = listaC;
+            ddlCategoria.DataValueField = "Id";
+            ddlCategoria.DataTextField = "Descripcion";
+            ddlCategoria.DataBind();
         }
 
         protected void txtImagen_TextChanged(object sender, EventArgs e)
@@ -122,11 +131,48 @@ namespace TPC_28
             }
         }
 
+        protected void btnNuevaMarca(object sender, EventArgs e)
+        {
+            marcaPopup.Visible = true;
+        }
+
+        protected void BtnGuardar_Click(object sender, EventArgs e)
+        {
+            DatosMarca marca = new DatosMarca();
+            marca.NuevaMarca(txtNombreMarca.Text);
+            txtNombreMarca.Text = "";
+            Recargar_Marca();
+            marcaPopup.Visible = false;
+        }
+
+        protected void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            marcaPopup.Visible = false;
+        }
+
+        protected void Agregar_Categoria(object sender, EventArgs e)
+        {
+            categoriaPopup.Visible = true;
+        }
+
+        protected void BtnCategoriaGuardar_Click(object sender, EventArgs e)
+        {
+            DatosCategoria categoria = new DatosCategoria();
+            categoria.NuevaCategoria(txtNombreCategoria.Text);
+            txtNombreCategoria.Text = "";
+            Recargar_Categoria();
+            categoriaPopup.Visible = false;
+        }
+
+        protected void BtnCategoriaCancelar_Click(object sender, EventArgs e)
+        {
+            categoriaPopup.Visible = false;
+        }
+
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
             try
             {
-
                 string artId = Request.QueryString["ArtId"];
                 int idArticulo;
 
