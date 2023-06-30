@@ -81,11 +81,6 @@ namespace TPC_28
             ddlCategoria.DataBind();
         }
 
-        protected void txtImagen_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
             try
@@ -93,17 +88,13 @@ namespace TPC_28
                 Articulo articulo = new Articulo();
                 DatosDeArticulos articuloNuevo = new DatosDeArticulos();
 
-                //articulo.ArtId = int.Parse(txtId.Text);
-
-
                 articulo.Nombre = txtNombre.Text;
                 articulo.Descripcion = txtDescripcion.Text;
                 articulo.DescripcionLarga = txtDescripcionLarga.Text;
                 articulo.Precio = decimal.Parse(txtPrecio.Text);
 
-
                 articulo.Imagenes = new Imagen();
-                articulo.Imagenes.Id = int.Parse(txtImagen.Text);
+                articulo.Imagenes.ImageUrl = txtImagen.Text;
 
                 articulo.Marca = new Marca();
                 articulo.Marca.Id = int.Parse(ddlMarca.SelectedValue);
