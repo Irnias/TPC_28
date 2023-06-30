@@ -8,7 +8,7 @@
 
         public Imagen(int id, string description)
         {
-            Id = id;
+           Id = id;
            ImageUrl = description;
         }
 
@@ -16,6 +16,13 @@
         {
 
         }
+        public Imagen(int Id, int idArticulo, string ImageUrl)
+        {
+            this.Id = Id;
+            this.ArtId = idArticulo;
+            this.ImageUrl = ImageUrl;
+        }
+
 
         public override string ToString()
         {

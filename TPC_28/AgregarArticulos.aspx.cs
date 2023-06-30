@@ -7,11 +7,11 @@ using System.Web.UI.WebControls;
 using Negocio;
 using Dominio;
 
+
 namespace TPC_28
 {
     public partial class AgregarArticulos : System.Web.UI.Page
     {
-
         protected void Page_Load(object sender, EventArgs e)
 
         {
@@ -195,7 +195,7 @@ namespace TPC_28
 
         protected void txtImagen_TextChanged(object sender, EventArgs e)
         {
-         //  urlImagen = txtImagen.Text;
+           // imagenUrl = txtImagen.Text;
             
            
 
