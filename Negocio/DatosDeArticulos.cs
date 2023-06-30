@@ -134,10 +134,11 @@ namespace Negocio
                 data.setearParametro("@DescripcionLarga", articulo.DescripcionLarga);
                 data.setearParametro("@IdMarca", articulo.Marca.Id);
                 data.setearParametro("@IdCategoria", articulo.Categoria.Id);
-                data.setearParametro("@IdImagen", articulo.Imagenes.Id);
+              //  data.setearParametro("@IdImagen", articulo.Imagenes.Id);
                 data.setearParametro("@Precio", articulo.Precio);
                 // data.setearParametro("@Calificacion", articulo.Calificacion);
-                // data.setearParametro("@UrlImagen", articulo.Imagenes.ImageUrl);
+                data.setearParametro("@ImagenUrl", articulo.Imagenes.ImageUrl);
+
 
                 data.ejecutar();
 

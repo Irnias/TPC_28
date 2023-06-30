@@ -82,7 +82,8 @@
                    <asp:TextBox runat="server" ID="txtImagen" CssClass="form-control"
                    AutoPostBack="true" OnTextChanged="txtImagen_TextChanged" />--%>
                 <label for="txtImagen" class="form-label">Url Imagen</label>
-                <asp:TextBox runat="server" ID="txtImagen" CssClass="form-control" />
+                <asp:TextBox runat="server" ID="txtImagen" CssClass="form-control" 
+                     AutoPostBack="true" OnTextChanged="txtImagen_TextChanged" />
             </div>
             <asp:Image ImageUrl="https://cdn-icons-png.flaticon.com/512/5798/5798294.png"
                 runat="server" ID="imgArticulo" Width="40%" />
