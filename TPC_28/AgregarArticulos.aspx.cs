@@ -12,6 +12,7 @@ namespace TPC_28
 {
     public partial class AgregarArticulos : System.Web.UI.Page
     {
+        public string imagenUrl { get; set; }
         protected void Page_Load(object sender, EventArgs e)
 
         {
@@ -195,10 +196,10 @@ namespace TPC_28
 
         protected void txtImagen_TextChanged(object sender, EventArgs e)
         {
-           // imagenUrl = txtImagen.Text;
-            
-           
+           imagenUrl = txtImagen.Text;
 
+            
+          
         }
     }
 }
