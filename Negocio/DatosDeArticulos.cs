@@ -66,7 +66,7 @@ namespace Negocio
                 data.setQuery("SELECT A.IdArticulo AS artId, A.Nombre AS nombre, A.Descripcion AS descrip, A.DescripcionLarga AS DescripLarga, M.IdMarca AS idMarca, " +
                     "M.Descripcion AS descripMarca, C.IdCategoria AS idCat, C.Descripcion AS descripCat, A.Precio AS precio, I.IdImagenes as idImagen, I.ImagenUrl as imgUrl FROM Articulos A INNER JOIN " +
                     "Marcas M ON A.IdMarca = M.IdMarca INNER JOIN Categorias C ON A.IdCategoria = C.IdCategoria INNER JOIN Imagenes I ON A.IdArticulo = I.IdArt WHERE A.IdArticulo = @id;");
-                
+
                 data.setearParametro("@id", id);
 
                 data.ejecutar();
@@ -134,7 +134,7 @@ namespace Negocio
                 data.setearParametro("@DescripcionLarga", articulo.DescripcionLarga);
                 data.setearParametro("@IdMarca", articulo.Marca.Id);
                 data.setearParametro("@IdCategoria", articulo.Categoria.Id);
-              //  data.setearParametro("@IdImagen", articulo.Imagenes.Id);
+                //  data.setearParametro("@IdImagen", articulo.Imagenes.Id);
                 data.setearParametro("@Precio", articulo.Precio);
                 // data.setearParametro("@Calificacion", articulo.Calificacion);
                 data.setearParametro("@ImagenUrl", articulo.Imagenes.ImageUrl);

@@ -31,10 +31,19 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="Carrito.aspx">Carrito</a>
                             </li>
-                             <li class="nav-item">
-                                <a class="nav-link" href="ListadoDeArticulos.aspx">Listado De Articulos</a>
-                            </li>
 
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Configuraciones
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="ListadoDeArticulos.aspx">Listado De Articulos</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Marcas</a></li>
+                                    <li><a class="dropdown-item" href="#">Categorias</a></li>
+                                    <li><a class="dropdown-item" href="#">Usuarios</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -45,7 +54,7 @@
             </div>
             <footer>
                 <hr />
-                Fin :p
+                Footer a desarrollar
             </footer>
         </div>
     </form>

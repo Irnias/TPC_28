@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Dominio;
 
 namespace Negocio
@@ -46,7 +43,8 @@ namespace Negocio
             AccesoDatos accesoNuevo = new AccesoDatos();
             try
             {
-                if(Nombre.Length > 0) {
+                if (Nombre.Length > 0)
+                {
                     accesoNuevo.setQuery("INSERT INTO Marcas (Descripcion) values (@nombre)");
                     accesoNuevo.setearParametro("@nombre", Nombre);
                     accesoNuevo.ejecutar();

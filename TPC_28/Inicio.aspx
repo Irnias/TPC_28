@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h2>Holis Inicio
+    <h2>Tienda De mascotas!
     </h2>
 
     <asp:GridView ID="dgvArticulos" runat="server" CssClass="table"></asp:GridView>
@@ -14,7 +14,7 @@
             <ItemTemplate>
                 <div class="col">
                     <div class="card">
-                        <img src="<%#Eval("Imagenes")%>" class="card-img-top" alt="<%#Eval("Nombre")%>-foto" onerror="this.src='https://static.wikia.nocookie.net/videojuego/images/9/9c/Imagen_no_disponible-0.png/revision/latest/thumbnail/width/360/height/360?cb=20170910134200'">
+                        <center><img src="<%#Eval("Imagenes")%>" style="height: 400px; width: 350px" class="card-img-top" alt="<%#Eval("Nombre")%>-foto" onerror="this.src='https://static.wikia.nocookie.net/videojuego/images/9/9c/Imagen_no_disponible-0.png/revision/latest/thumbnail/width/360/height/360?cb=20170910134200'"></center>
                         <div class="card-body">
                             <h5 class="card-title"><%#Eval("Nombre") %></h5>
                             <p class="card-text"><%#Eval("ArtId")%></p>

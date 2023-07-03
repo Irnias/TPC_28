@@ -8,8 +8,8 @@
 
         public Imagen(int id, string description)
         {
-           Id = id;
-           ImageUrl = description;
+            Id = id;
+            ImageUrl = description;
         }
 
         public Imagen()

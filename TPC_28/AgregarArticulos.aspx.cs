@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using Negocio;
 using Dominio;
 
@@ -26,7 +22,7 @@ namespace TPC_28
                     Recargar_Marca();
                     Recargar_Categoria();
 
-                    chkEliminacion.Checked =false;
+                    chkEliminacion.Checked = false;
 
                 }
 
@@ -172,7 +168,7 @@ namespace TPC_28
 
                 if (artId != null && chkEliminacion.Checked)
                 {
-                    if (int.TryParse(artId, out idArticulo)) 
+                    if (int.TryParse(artId, out idArticulo))
                     {
                         DatosDeArticulos articulo = new DatosDeArticulos();
 
@@ -196,8 +192,8 @@ namespace TPC_28
 
         protected void txtImagen_TextChanged(object sender, EventArgs e)
         {
-           imagenUrl = txtImagen.Text;
-           imgArticulo.ImageUrl = imagenUrl;
+            imagenUrl = txtImagen.Text;
+            imgArticulo.ImageUrl = imagenUrl;
 
 
 

@@ -1,7 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-
-namespace Dominio
+﻿namespace Dominio
 {
     public class Articulo
     {
@@ -12,9 +9,9 @@ namespace Dominio
         public Marca Marca { get; set; }
         public Categoria Categoria { get; set; }
         public Imagen Imagenes { get; set; }
-       // public int Precio { get; set; }
+        // public int Precio { get; set; }
         public decimal Precio { get; set; }
 
-    
+
     }
 }
