@@ -175,5 +175,34 @@ namespace Negocio
                 throw;
             }
         }
+
+
+        public List<ArticulosConDetalles> obtenerArticulosConDetalles()
+        {
+            List<ArticulosConDetalles> arList = new List<ArticulosConDetalles>();
+            List<Articulo> articles = Listar();
+
+            foreach (Articulo articulo in articles)
+            {
+                ArticulosConDetalles articuloConDetalle = new ArticulosConDetalles
+                {
+                    ArtId = articulo.ArtId,
+                    Nombre = articulo.Nombre,
+                    Descripcion = articulo.Descripcion,
+                    DescripcionLarga = articulo.DescripcionLarga,
+                    Marca = articulo.Marca,
+                    Categoria = articulo.Categoria,
+                    Imagenes = articulo.Imagenes,
+                    Precio = Math.Round(articulo.Precio, 2),
+                    PrecioViejo = Math.Round(articulo.Precio + (articulo.Precio * 15 / 100), 2),
+                    Cantidad = 0
+                };
+
+                arList.Add(articuloConDetalle);
+            }
+
+            return arList;
+
+        }
     }
 }

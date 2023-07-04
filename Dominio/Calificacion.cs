@@ -1,4 +1,7 @@
-﻿namespace Dominio
+﻿using System;
+using System.ComponentModel;
+
+namespace Dominio
 {
     public class Calificacion
     {

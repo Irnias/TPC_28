@@ -1,6 +1,9 @@
-﻿namespace Dominio
+﻿using System;
+using System.ComponentModel;
+
+namespace Dominio
 {
-    internal class Usuario
+    public class Usuario
     {
         public string UserId { get; set; }
         public string Nombre { get; set; }

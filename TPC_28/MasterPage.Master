@@ -29,7 +29,8 @@
                                 <a class="nav-link" href="ArtDetalles.aspx">Detalles</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="Carrito.aspx">Carrito</a>
+                                <a class="nav-link" href="/Carrito.aspx">Cart <span class="badge text-bg-success" runat="server" id="lblItemCountSpan" style="display: none;"><asp:Label runat="server" ID="lblItemCountNav"></asp:Label></span></a>
+
                             </li>
                              <li class="nav-item">
                                 <a class="nav-link" href="ListadoDeArticulos.aspx">Listado De Articulos</a>
@@ -44,8 +45,13 @@
                 </asp:ContentPlaceHolder>
             </div>
             <footer>
-                <hr />
-                Fin :p
+                <nav class="navbar fixed-bottom bg-body-tertiary">
+                  <div class="container-fluid">
+                      <span class="navbar-text">
+                         <p>Total de artículos en el carrito: <asp:Label runat="server" ID="lblItemCount">0</asp:Label></p>
+                      </span>
+                  </div>
+                </nav>
             </footer>
         </div>
     </form>
