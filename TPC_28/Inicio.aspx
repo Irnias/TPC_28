@@ -14,7 +14,8 @@
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
 
-        <asp:Repeater runat="server" ID="repRepetidor">
+            <asp:Repeater runat="server" ID="repRepetidor" OnItemDataBound="repRepetidor_ItemDataBound">
+
             <ItemTemplate>
                 <div class="col">
                     <div class="card">
@@ -28,19 +29,55 @@
 
                             <asp:Label Visible="false" ID="lblArtId" Text='<%#Eval("ArtId")%>' runat="server" />
 
+                            <asp:Button
+                                Text="Ver mas"
+                                ID="verMas"
+                                class="btn btn-outline-secondary"
+                                runat="server"
+                                OnClick="verMas_Click"
+                                CommandArgument='<%#Eval("ArtId")%>'
+                                NavigateUrl='<%#"ArtDetalles.aspx?id=" + Eval("ArtId")%>' />
+
+                            <asp:Button
+                                Text="Agregado!!"
+                                CssClass="btn btn-info"
+                                runat="server" ID="btnAgregado"
+                                OnClick="btnAgregado_Click"
+                                Visible="false" />
+
+                            <asp:Button
+                                Text="Agregar al Carrito"
+                                ID="btnAgregar"
+                                runat="server"
+                                class="btn btn-outline-primary"
+                                OnClick="btnAgregar_Click"
+                                CommandArgument='<%#Eval("ArtId")%> '
+                                NavigateUrl='<%#"Carrito.aspx?id=" + Eval("ArtId")%>'
+                                UseSubmitBehavior="false"
+                                Visible="false" />
+
+                            <asp:Button Text="Eliminar"
+                                ID="btnEliminar"
+                                runat="server"
+                                class="btn btn-danger"
+                                OnClick="btnEliminar_Click"
+                                CommandArgument='<%#Eval("ArtId")%> '
+                                NavigateUrl='<%#"Carrito.aspx?id=" + Eval("ArtId")%>'
+                                UseSubmitBehavior="false"
+                                Visible="false" />
+
                             <div>
-                                <asp:Button Text=" Agregar" ID="irCarrito" runat="server"
-                                    class="btn btn-primary" OnClick="irCarrito_Click" CommandArgument='<%#Eval("ArtId")%> '
-                                    NavigateUrl='<%#"Carrito.aspx?id=" + Eval("ArtId")%>' />
-                                <asp:Button Text="Ver mas" ID="verMas" class="btn btn-warning"
-                                    runat="server" OnClick="verMas_Click" CommandArgument='<%#Eval("ArtId")%>'
-                                    NavigateUrl='<%#"ArtDetalles.aspx?id=" + Eval("ArtId")%>' />
+                                <asp:Button Text="-" ID="btnRestar"
+                                    class="btn btn-outline-warning" runat="server"
+                                    OnClick="btnRestar_Click"
+                                    CommandArgument='<%# Eval("ArtId") %>' />
+                                <asp:Button Text="+" ID="btnSumar"
+                                    class="btn btn-outline-warning" runat="server"
+                                    OnClick="btnSumar_Click"
+                                    CommandArgument='<%# Eval("ArtId") %>' />
                             </div>
-                            <div>
-                            <asp:Button Text="Eliminar" ID="eliminarArticulo" runat="server"
-                                class="btn btn-danger" OnClick="eliminarArticulo_Click"
-                                CommandArgument='<%#Eval("ArtId")%> ' NavigateUrl='<%#"Carrito.aspx?id=" + Eval("ArtId")%>' />
-                            </div>
+
+
                         </div>
                     </div>
                 </div>

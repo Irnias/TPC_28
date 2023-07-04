@@ -43,11 +43,10 @@ namespace TPC_28
         }
 
 
-
-        protected void irCarrito_Click(object sender, EventArgs e)
+        protected void btnAgregar_Click(object sender, EventArgs e)
         {
-            Button irCarrito = (Button)sender;
-            string id = irCarrito.CommandArgument;
+            Button btnAgregar_Click = (Button)sender;
+            string id = btnAgregar_Click.CommandArgument;
 
             CarroConArticulos carroArt = Session["Cart"] as CarroConArticulos;
             if (carroArt == null)
@@ -67,14 +66,15 @@ namespace TPC_28
                 repRepetidor.DataSource = ListadoDeArticulos;
                 repRepetidor.DataBind();
             }
+
         }
 
 
-        protected void eliminarArticulo_Click(object sender, EventArgs e)
+        protected void btnEliminar_Click(object sender, EventArgs e)
         {
 
-            Button eliminarArticulo = (Button)sender;
-            string id = eliminarArticulo.CommandArgument;
+            Button btnEliminar_Click = (Button)sender;
+            string id = btnEliminar_Click.CommandArgument;
 
             CarroConArticulos currentCart = Session["Cart"] as CarroConArticulos;
             if (currentCart != null)
@@ -92,6 +92,81 @@ namespace TPC_28
             }
 
         }
+
+        protected void btnRestar_Click(object sender, EventArgs e)
+        {
+            Button btnRestar_Click = (Button)sender;
+            int artId = int.Parse(btnRestar_Click.CommandArgument);
+
+            CarroConArticulos carro = Session["Cart"] as CarroConArticulos;
+            if (carro == null)
+            {
+                carro = new CarroConArticulos();
+                Session["Cart"] = carro;
+            }
+            Carro current = new Carro(artId);
+
+            carro.eliminarArticulo(current);
+            Response.Redirect("Inicio.aspx");
+        }
+
+        protected void btnSumar_Click(object sender, EventArgs e)
+        {
+            Button btnSumar_Click = (Button)sender;
+            int artId = int.Parse(btnSumar_Click.CommandArgument);
+
+            CarroConArticulos cart = Session["Cart"] as CarroConArticulos;
+            if (cart == null)
+            {
+                cart = new CarroConArticulos();
+                Session["Cart"] = cart;
+            }
+            Carro current = new Carro(artId);
+
+            cart.agregarArticulo(current);
+            Response.Redirect("Inicio.aspx");
+        }
+
+
+
+        protected void repRepetidor_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                ArticulosConDetalles articulo = e.Item.DataItem as ArticulosConDetalles;
+
+                Button btnAgregado = e.Item.FindControl("btnAgregado") as Button;
+                Button btnAgregar = e.Item.FindControl("btnAgregar") as Button;
+                Button btnEliminar = e.Item.FindControl("btnEliminar") as Button;
+                Button btnSumar = e.Item.FindControl("btnSumar") as Button;
+                Button btnRestar = e.Item.FindControl("btnRestar") as Button;
+
+                CarroConArticulos currentCart = Session["Cart"] as CarroConArticulos;
+
+                if (currentCart != null && currentCart.tieneIdArticulo(articulo.ArtId))
+                {
+                    btnAgregado.Visible = true;
+                    btnEliminar.Visible = true;
+                    btnAgregar.Visible = false;
+                    btnSumar.Visible = true;
+                    btnRestar.Visible = true;
+                }
+                else
+                {
+                    btnAgregado.Visible = false;
+                    btnEliminar.Visible = false;
+                    btnAgregar.Visible = true;
+                    btnSumar.Visible = false;
+                    btnRestar.Visible = false;
+                }
+            }
+        }
+
+        protected void btnAgregado_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Carrito.aspx");
+        }
+
     }
 
 }
