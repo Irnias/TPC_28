@@ -10,22 +10,31 @@
     <h2>Holis Inicio
     </h2>
 
-    <asp:GridView ID="dgvArticulos" runat="server" CssClass="table"></asp:GridView>
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
 
-            <asp:Repeater runat="server" ID="repRepetidor" OnItemDataBound="repRepetidor_ItemDataBound">
+        <asp:Repeater runat="server" ID="repRepetidor" OnItemDataBound="repRepetidor_ItemDataBound">
 
             <ItemTemplate>
-                <div class="col">
+                <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
                     <div class="card">
-                        <img src="<%#Eval("Imagenes")%>" class="card-img-top" alt="<%#Eval("Nombre")%>-foto" onerror="this.src='https://static.wikia.nocookie.net/videojuego/images/9/9c/Imagen_no_disponible-0.png/revision/latest/thumbnail/width/360/height/360?cb=20170910134200'">
+                        <img
+                            src="<%#Eval("Imagenes") %>"
+                            class="card-img-top"
+                            alt="Imagen del producto <%#Eval("Nombre") %>"
+                            onerror="this.src='https://static.wikia.nocookie.net/videojuego/images/9/9c/Imagen_no_disponible-0.png/revision/latest/thumbnail/width/360/height/360?cb=20170910134200'" />
+
                         <div class="card-body">
-                            <h5 class="card-title"><%#Eval("Nombre") %></h5>
-                            <p class="card-text"><%#Eval("ArtId")%></p>
-                            <p class="card-text"><%#Eval("Marca") %></p>
-                            <p class="card-text"><%#Eval("Categoria") %></p>
-                            <p class="card-text"><%#Eval("Descripcion") %></p>
+                            <div class="d-flex justify-content-between">
+                                <p class="small"><a href="#!" class="text-muted"><%#Eval("Descripcion") %></a></p>
+                                <p class="small text-danger"><s>$<%#Eval("PrecioViejo") %></s></p>
+                            </div>
+
+                            <div class="d-flex justify-content-between mb-3">
+                                <h5 class="mb-0"><%#Eval("Nombre") %></h5>
+                                <p class="card-text"><%#Eval("Marca") %></p>
+                                <h5 class="text-dark mb-0">$<%#Eval("Precio") %></h5>
+                            </div>
 
                             <asp:Label Visible="false" ID="lblArtId" Text='<%#Eval("ArtId")%>' runat="server" />
 

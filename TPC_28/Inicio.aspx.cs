@@ -135,6 +135,7 @@ namespace TPC_28
             {
                 ArticulosConDetalles articulo = e.Item.DataItem as ArticulosConDetalles;
 
+
                 Button btnAgregado = e.Item.FindControl("btnAgregado") as Button;
                 Button btnAgregar = e.Item.FindControl("btnAgregar") as Button;
                 Button btnEliminar = e.Item.FindControl("btnEliminar") as Button;
@@ -159,6 +160,8 @@ namespace TPC_28
                     btnSumar.Visible = false;
                     btnRestar.Visible = false;
                 }
+
+
             }
         }
 
