@@ -1,5 +1,4 @@
-﻿
-<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="TPC_28.Inicio" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="TPC_28.Inicio" %>
 
 
 <%@ MasterType VirtualPath="~/MasterPage.Master" %>
@@ -29,16 +28,19 @@
 
                             <asp:Label Visible="false" ID="lblArtId" Text='<%#Eval("ArtId")%>' runat="server" />
 
-
-                            <asp:Button Text="Ver mas" ID="verMas" class="btn btn-warning" runat="server" OnClick="verMas_Click" CommandArgument='<%#Eval("ArtId")%>' NavigateUrl='<%#"ArtDetalles.aspx?id=" + Eval("ArtId")%>' />
-                            <asp:Button Text=" Agregar al Carrito" ID="irCarrito" runat="server"
-                                class="btn btn-primary" OnClick="irCarrito_Click" CommandArgument='<%#Eval("ArtId")%> ' 
-                                NavigateUrl='<%#"Carrito.aspx?id=" + Eval("ArtId")%>' />
-                            
-                            <asp:Button Text="Eliminar del Carrito" ID="eliminarArticulo" runat="server" 
-                                class="btn btn-danger" OnClick="eliminarArticulo_Click" 
+                            <div>
+                                <asp:Button Text=" Agregar" ID="irCarrito" runat="server"
+                                    class="btn btn-primary" OnClick="irCarrito_Click" CommandArgument='<%#Eval("ArtId")%> '
+                                    NavigateUrl='<%#"Carrito.aspx?id=" + Eval("ArtId")%>' />
+                                <asp:Button Text="Ver mas" ID="verMas" class="btn btn-warning"
+                                    runat="server" OnClick="verMas_Click" CommandArgument='<%#Eval("ArtId")%>'
+                                    NavigateUrl='<%#"ArtDetalles.aspx?id=" + Eval("ArtId")%>' />
+                            </div>
+                            <div>
+                            <asp:Button Text="Eliminar" ID="eliminarArticulo" runat="server"
+                                class="btn btn-danger" OnClick="eliminarArticulo_Click"
                                 CommandArgument='<%#Eval("ArtId")%> ' NavigateUrl='<%#"Carrito.aspx?id=" + Eval("ArtId")%>' />
-
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -61,7 +61,7 @@ namespace TPC_28
             {
                 Carro agregarArt = new Carro(articleId);
 
-                carroArt.AddArticle(agregarArt);
+                carroArt.agregarArticulo(agregarArt);
                 Session["Cart"] = carroArt;
                 Master.UpdateCartItemCount(carroArt.GetTotalItems());
                 repRepetidor.DataSource = ListadoDeArticulos;
@@ -72,30 +72,25 @@ namespace TPC_28
 
         protected void eliminarArticulo_Click(object sender, EventArgs e)
         {
+
             Button eliminarArticulo = (Button)sender;
             string id = eliminarArticulo.CommandArgument;
 
-            Carro carro = Session["Cart"] as Carro;
-            if (carro != null)
+            CarroConArticulos currentCart = Session["Cart"] as CarroConArticulos;
+            if (currentCart != null)
             {
                 int articleId;
                 if (int.TryParse(id, out articleId))
                 {
-                    Articulo articulo = carro.ListaArticulos.FirstOrDefault(a => a.ArtId == articleId);
-
-                    if (articulo != null)
-                    {
-                        carro.ListaArticulos.Remove(articulo);
-
-                        Session["Cart"] = carro;
-
-                         Master.UpdateCartItemCount(carro.ListaArticulos.Count);
-
-                        repRepetidor.DataSource = carro.ListaArticulos;
-                        repRepetidor.DataBind();
-                    }
+                    Carro current = new Carro(articleId);
+                    currentCart.removerArticulo(current);
+                    Session["Cart"] = currentCart;
+                    Master.UpdateCartItemCount(currentCart.GetTotalItems());
+                    repRepetidor.DataSource = ListadoDeArticulos;
+                    repRepetidor.DataBind();
                 }
             }
+
         }
     }
 

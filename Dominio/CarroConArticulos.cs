@@ -10,7 +10,7 @@ namespace Dominio
     {
         List<Carro> ArtList = new List<Carro>();
 
-        public void AddArticle(Carro art)
+        public void agregarArticulo(Carro art)
         {
             Carro existingArticle = ArtList.Find(a => a.idCarrito== art.idCarrito);
             if (existingArticle != null)
@@ -23,7 +23,7 @@ namespace Dominio
             }
         }
 
-        public void deleteArticle(Carro art)
+        public void eliminarArticulo(Carro art)
         {
             Carro existingArticle = ArtList.Find(a => a.idCarrito== art.idCarrito);
             if (existingArticle != null && existingArticle.Cantidad > 1)
@@ -32,28 +32,28 @@ namespace Dominio
             }
             else if (existingArticle != null && existingArticle.Cantidad == 1)
             {
-                RemoveArticle(art);
+                removerArticulo(art);
             }
         }
 
 
-        public void RemoveArticle(Carro art)
+        public void removerArticulo(Carro art)
         {
-            Carro current = GetArticle(art.idCarrito);
+            Carro current = obtenerArticulo(art.idCarrito);
             ArtList.Remove(current);
         }
 
-        public Carro GetArticle(int id)
+        public Carro obtenerArticulo(int id)
         {
             return ArtList.Find(a => a.idCarrito == id);
         }
 
-        public bool HasArticleId(int id)
+        public bool tieneIdArticulo(int id)
         {
-            return ArtList.Contains(GetArticle(id));
+            return ArtList.Contains(obtenerArticulo(id));
         }
 
-        public List<Carro> GetArticles()
+        public List<Carro> obtenerListaArticulos()
         {
             return ArtList;
         }
@@ -70,7 +70,7 @@ namespace Dominio
 
         public int GetArticleQuantity(int id)
         {
-            return GetArticle(id).Cantidad;
+            return obtenerArticulo(id).Cantidad;
         }
     }
 }
