@@ -161,14 +161,18 @@ namespace TPC_28
                     btnRestar.Visible = false;
                 }
 
-
             }
+
+
         }
+    
 
         protected void btnAgregado_Click(object sender, EventArgs e)
         {
             Response.Redirect("Carrito.aspx");
         }
+
+   
 
     }
 

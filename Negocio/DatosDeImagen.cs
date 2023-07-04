@@ -40,6 +40,65 @@ namespace Negocio
             }
         }
 
+
+
+        public Imagen ListarConId(int id)
+        {
+            AccesoDatos db = new AccesoDatos();
+
+            try
+            {
+                db.setQuery("select Id, IdArticulo, ImagenUrl from IMAGENES where IdArticulo  = " + id);
+                db.ejecutar();
+
+                while (db.sqlLector.Read())
+                {
+                    Imagen aux = new Imagen(
+                        (!(db.sqlLector["IdImagenes"] is DBNull)) ? (int)db.sqlLector["IdImagenes"] : 0,
+                        (!(db.sqlLector["IdArt"] is DBNull)) ? (int)db.sqlLector["IdArt"] : 0,
+                        (!(db.sqlLector["ImagenUrl"] is DBNull)) ? (string)db.sqlLector["ImagenUrl"] : ""
+                        );
+                    return aux;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public Imagen GetFirstImageById(int idArticulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setQuery("SELECT TOP 1 IdArt, ImagenUrl FROM IMAGENES WHERE IdArt = " + idArticulo);
+                datos.ejecutar();
+
+                if (datos.sqlLector.Read())
+                {
+                    Imagen aux = new Imagen(
+                        (!(datos.sqlLector["IdArt"] is DBNull)) ? (int)datos.sqlLector["IdArt"] : 0,
+                        (!(datos.sqlLector["ImagenUrl"] is DBNull)) ? (string)datos.sqlLector["ImagenUrl"] : ""
+                    );
+                    return aux;
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrar();
+            }
+        }
+
     }
 
 
