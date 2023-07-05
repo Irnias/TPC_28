@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
 using Dominio;
+using System.Threading;
+
 
 
 namespace TPC_28
@@ -26,7 +28,7 @@ namespace TPC_28
                     Recargar_Marca();
                     Recargar_Categoria();
 
-                    chkEliminacion.Checked =false;
+                    chkEliminacion.Checked = false;
 
                 }
 
@@ -88,14 +90,43 @@ namespace TPC_28
         {
             try
             {
+
+                if (string.IsNullOrEmpty(txtNombre.Text) ||
+                  string.IsNullOrEmpty(txtDescripcion.Text) ||
+                  string.IsNullOrEmpty(txtDescripcionLarga.Text) ||
+                  string.IsNullOrEmpty(txtPrecio.Text) ||
+                  string.IsNullOrEmpty(ddlMarca.SelectedValue) ||
+                  string.IsNullOrEmpty(ddlCategoria.SelectedValue))
+                {
+                    lblError.Text = "Todos los campos son obligatorios.";
+                    lblError.Visible = true;
+                    return;
+                }
+
                 Articulo articulo = new Articulo();
                 DatosDeArticulos articuloNuevo = new DatosDeArticulos();
 
                 articulo.Nombre = txtNombre.Text;
                 articulo.Descripcion = txtDescripcion.Text;
                 articulo.DescripcionLarga = txtDescripcionLarga.Text;
-                articulo.Precio = decimal.Parse(txtPrecio.Text);
 
+                decimal precio;
+
+                if (!decimal.TryParse(txtPrecio.Text, out precio))
+                {
+                    // El valor ingresado no es un número válido
+                    lblErrorPrecio.Text = "Por favor, ingresa un valor válido para el precio.";
+                    return;
+                }
+
+                if (precio <= 0)
+                {
+                    // El precio debe ser mayor que cero
+                    lblErrorPrecio.Text = "El precio debe ser mayor que cero.";
+                    return;
+                }
+
+                articulo.Precio = precio;
                 articulo.Imagenes = new Imagen();
                 articulo.Imagenes.ImageUrl = txtImagen.Text;
 
@@ -114,9 +145,12 @@ namespace TPC_28
                 else
                 {
                     articuloNuevo.agregarConSp(articulo);
+
                 }
 
+
                 Response.Redirect("AgregarArticulos.aspx", false);
+                
             }
             catch (Exception)
             {
@@ -172,7 +206,7 @@ namespace TPC_28
 
                 if (artId != null && chkEliminacion.Checked)
                 {
-                    if (int.TryParse(artId, out idArticulo)) 
+                    if (int.TryParse(artId, out idArticulo))
                     {
                         DatosDeArticulos articulo = new DatosDeArticulos();
 
@@ -196,11 +230,17 @@ namespace TPC_28
 
         protected void txtImagen_TextChanged(object sender, EventArgs e)
         {
-           imagenUrl = txtImagen.Text;
-           imgArticulo.ImageUrl = imagenUrl;
+            imagenUrl = txtImagen.Text;
+            imgArticulo.ImageUrl = imagenUrl;
 
 
 
+
+        }
+
+        protected void chkEliminacion_CheckedChanged(object sender, EventArgs e)
+        {
+            btnEliminar.Visible = chkEliminacion.Checked;
 
         }
     }

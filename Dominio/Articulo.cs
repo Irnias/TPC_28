@@ -21,6 +21,5 @@ namespace Dominio
         // public int Precio { get; set; }
         public decimal Precio { get; set; }
 
-    
     }
 }

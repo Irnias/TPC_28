@@ -10,7 +10,6 @@
     <h2>Productos en Stock !! 
     </h2>
 
-
     <section style="background-color: #eee;">
         <div class="container py-5">
             <div class="row">
