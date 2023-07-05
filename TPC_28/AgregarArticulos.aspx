@@ -45,11 +45,12 @@
             <div class="mb-3">
                 <asp:Button Text="Agregar" runat="server" ID="btnAgregar" OnClick="btnAgregar_Click" CssClass="btn btn-outline-warning" />
             </div>
+            <asp:Label ID="lblConfirmacion" runat="server" Visible="false" CssClass="mensaje"></asp:Label>
 
             <div class="mb-3">
                 <asp:CheckBox Text="¿Eliminar?" runat="server" ID="chkEliminacion" AutoPostBack="true" OnCheckedChanged="chkEliminacion_CheckedChanged" />
 
-                <asp:Button Text="Eliminar" ID="btnEliminar" OnClick="btnEliminar_Click" runat="server" CssClass="btn btn-outline-danger" visible="false"/>
+                <asp:Button Text="Eliminar" ID="btnEliminar" OnClick="btnEliminar_Click" runat="server" CssClass="btn btn-outline-danger" Visible="false" />
             </div>
         </div>
 
@@ -103,5 +104,13 @@
         </div>
 
     </div>
+    <script type="text/javascript">
+        function showConfirmationMessage() {
+            var message = document.getElementById('<%= lblConfirmacion.ClientID %>').innerText;
+            message = message.replace("localhost", ""); 
+            alert(message);
+            window.location.href = "AgregarArticulos.aspx";
+        }
+    </script>
 
 </asp:Content>

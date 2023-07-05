@@ -148,9 +148,10 @@ namespace TPC_28
 
                 }
 
+                lblConfirmacion.Text = "El artículo se ha agregado/modificado exitosamente.";
+                lblConfirmacion.Visible = true;
+                ScriptManager.RegisterStartupScript(this, GetType(), "ShowMessage", "showConfirmationMessage();", true);
 
-                Response.Redirect("AgregarArticulos.aspx", false);
-                
             }
             catch (Exception)
             {
@@ -217,6 +218,7 @@ namespace TPC_28
 
                     }
                 }
+
                 Response.Redirect("ListadoDeArticulos.aspx", false);
 
 
