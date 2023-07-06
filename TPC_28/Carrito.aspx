@@ -30,7 +30,7 @@
                                     <div class="row d-flex justify-content-between align-items-center">
                                         <div class="col-md-2 col-lg-2 col-xl-2">
                                             <img
-                                                src="<%#Eval("Imagenes") %>"
+                                                src='<%# Eval("Imagenes[0].ImageUrl") %>'
                                                 class="img-fluid rounded-3"
                                                 alt="Imagen del producto <%#Eval("Nombre") %>"
                                                 onerror="this.src='https://static.wikia.nocookie.net/videojuego/images/9/9c/Imagen_no_disponible-0.png/revision/latest/thumbnail/width/360/height/360?cb=20170910134200'" />

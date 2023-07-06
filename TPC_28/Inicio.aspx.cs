@@ -172,7 +172,17 @@ namespace TPC_28
             Response.Redirect("Carrito.aspx");
         }
 
-   
+        protected string GetFirstImageUrl(object imagenesObject)
+        {
+            string defaultImageUrl = "https://static.wikia.nocookie.net/videojuego/images/9/9c/Imagen_no_disponible-0.png/revision/latest/thumbnail/width/360/height/360?cb=20170910134200";
+
+            if (imagenesObject != null && imagenesObject is List<Imagen> imagenes && imagenes.Count > 0)
+            {
+                return imagenes[0].ImageUrl;
+            }
+
+            return defaultImageUrl;
+        }
 
     }
 

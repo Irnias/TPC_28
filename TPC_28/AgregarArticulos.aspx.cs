@@ -48,7 +48,8 @@ namespace TPC_28
                         txtDescripcion.Text = articulo.Descripcion;
                         txtDescripcionLarga.Text = articulo.DescripcionLarga;
                         txtPrecio.Text = articulo.Precio.ToString();
-                        txtImagen.Text = articulo.Imagenes.ImageUrl;
+                        txtImagen.Text = articulo.Imagenes.Count > 0 ? articulo.Imagenes[0]?.ImageUrl : "";
+
 
                         ddlMarca.SelectedValue = articulo.Marca.Id.ToString();
                         ddlCategoria.SelectedValue = articulo.Categoria.Id.ToString();
@@ -127,8 +128,8 @@ namespace TPC_28
                 }
 
                 articulo.Precio = precio;
-                articulo.Imagenes = new Imagen();
-                articulo.Imagenes.ImageUrl = txtImagen.Text;
+                articulo.Imagenes = new List<Imagen>();
+                articulo.Imagenes.Add(new Imagen { ImageUrl = txtImagen.Text });
 
                 articulo.Marca = new Marca();
                 articulo.Marca.Id = int.Parse(ddlMarca.SelectedValue);

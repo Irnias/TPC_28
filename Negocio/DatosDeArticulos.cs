@@ -15,9 +15,18 @@ namespace Negocio
 
             try
             {
-                string Query = "SELECT A.IdArticulo as artId, A.Nombre as nombre, A.Descripcion as descrip, A.DescripcionLarga as DescripLarga,M.IdMarca as idMarca, M.Descripcion as descripMarca, " +
+                /*string Query = "SELECT A.IdArticulo as artId, A.Nombre as nombre, A.Descripcion as descrip, A.DescripcionLarga as DescripLarga,M.IdMarca as idMarca, M.Descripcion as descripMarca, " +
                     "C.IdCategoria as idCat,C.Descripcion as descripCat, A.Precio as precio, I.IdImagenes as idImagen, I.ImagenUrl as imgUrl FROM Articulos A " +
-                    "inner join Marcas M on A.IdMarca = M.IdMarca left join Imagenes I on A.IdArticulo = I.IdArt inner join Categorias C on A.IdCategoria = C.IdCategoria";
+                    "inner join Marcas M on A.IdMarca = M.IdMarca left join Imagenes I on A.IdArticulo = I.IdArt inner join Categorias C on A.IdCategoria = C.IdCategoria";*/
+
+
+                string Query = "SELECT A.IdArticulo AS artId, A.Nombre AS nombre, A.Descripcion AS descrip, A.DescripcionLarga AS DescripLarga, M.IdMarca AS idMarca, " +
+                                "M.Descripcion AS descripMarca, C.IdCategoria AS idCat, C.Descripcion AS descripCat, A.Precio AS precio, " +
+                                "MAX(I.IdImagenes) AS idImagen, MAX(I.ImagenUrl) AS imgUrl FROM Articulos A " +
+                                "INNER JOIN Marcas M ON A.IdMarca = M.IdMarca LEFT JOIN Imagenes I ON A.IdArticulo = I.IdArt " +
+                                "INNER JOIN Categorias C ON A.IdCategoria = C.IdCategoria " +
+                                "GROUP BY A.IdArticulo, A.Nombre, A.Descripcion, A.DescripcionLarga, M.IdMarca, M.Descripcion, C.IdCategoria, C.Descripcion, A.Precio";
+
 
                 data.setQuery(Query);
                 data.ejecutar();
@@ -38,10 +47,14 @@ namespace Negocio
                         (!(data.sqlLector["idMarca"] is DBNull)) ? (int)data.sqlLector["idMarca"] : 0,
                         (!(data.sqlLector["descripMarca"] is DBNull)) ? (string)data.sqlLector["descripMarca"] : ""
                         );
-                    aux.Imagenes = new Imagen(
-                        (!(data.sqlLector["idImagen"] is DBNull)) ? (int)data.sqlLector["idImagen"] : 0,
-                        (!(data.sqlLector["imgUrl"] is DBNull)) ? (string)data.sqlLector["imgUrl"] : ""
-                        );
+                    aux.Imagenes = new List<Imagen>
+{
+                    new Imagen
+                    {
+                        Id = (!(data.sqlLector["idImagen"] is DBNull)) ? (int)data.sqlLector["idImagen"] : 0,
+                        ImageUrl = (!(data.sqlLector["imgUrl"] is DBNull)) ? (string)data.sqlLector["imgUrl"] : ""
+                     }
+                    };
 
                     ListaArticulos.Add(aux);
                 }
@@ -66,7 +79,7 @@ namespace Negocio
                 data.setQuery("SELECT A.IdArticulo AS artId, A.Nombre AS nombre, A.Descripcion AS descrip, A.DescripcionLarga AS DescripLarga, M.IdMarca AS idMarca, " +
                     "M.Descripcion AS descripMarca, C.IdCategoria AS idCat, C.Descripcion AS descripCat, A.Precio AS precio, I.IdImagenes as idImagen, I.ImagenUrl as imgUrl FROM Articulos A INNER JOIN " +
                     "Marcas M ON A.IdMarca = M.IdMarca INNER JOIN Categorias C ON A.IdCategoria = C.IdCategoria INNER JOIN Imagenes I ON A.IdArticulo = I.IdArt WHERE A.IdArticulo = @id;");
-                
+
                 data.setearParametro("@id", id);
 
                 data.ejecutar();
@@ -88,13 +101,17 @@ namespace Negocio
                         (!(data.sqlLector["idMarca"] is DBNull)) ? (int)data.sqlLector["idMarca"] : 0,
                         (!(data.sqlLector["descripMarca"] is DBNull)) ? (string)data.sqlLector["descripMarca"] : ""
                         );
-                    aux.Imagenes = new Imagen(
-                        (!(data.sqlLector["idImagen"] is DBNull)) ? (int)data.sqlLector["idImagen"] : 0,
-                        (!(data.sqlLector["imgUrl"] is DBNull)) ? (string)data.sqlLector["imgUrl"] : ""
-                        );
+                    aux.Imagenes = new List<Imagen>();
+                    int idImagen = (!(data.sqlLector["idImagen"] is DBNull)) ? (int)data.sqlLector["idImagen"] : 0;
+                    string imgUrl = (!(data.sqlLector["imgUrl"] is DBNull)) ? (string)data.sqlLector["imgUrl"] : "";
+                    if (idImagen != 0)
+                    {
+                        aux.Imagenes.Add(new Imagen(idImagen, imgUrl));
+                    }
 
                     return aux;
                 }
+
                 return null;
             }
             catch (Exception ex)
@@ -134,10 +151,11 @@ namespace Negocio
                 data.setearParametro("@DescripcionLarga", articulo.DescripcionLarga);
                 data.setearParametro("@IdMarca", articulo.Marca.Id);
                 data.setearParametro("@IdCategoria", articulo.Categoria.Id);
-              //  data.setearParametro("@IdImagen", articulo.Imagenes.Id);
+                //  data.setearParametro("@IdImagen", articulo.Imagenes.Id);
                 data.setearParametro("@Precio", articulo.Precio);
                 // data.setearParametro("@Calificacion", articulo.Calificacion);
-                data.setearParametro("@ImagenUrl", articulo.Imagenes.ImageUrl);
+                data.setearParametro("@ImagenUrl", articulo.Imagenes[0]?.ImageUrl);
+
 
 
                 data.ejecutar();
@@ -164,7 +182,7 @@ namespace Negocio
                 data.setearParametro("@DescripcionLarga", articulo.DescripcionLarga);
                 data.setearParametro("@IdMarca", articulo.Marca.Id);
                 data.setearParametro("@IdCategoria", articulo.Categoria.Id);
-                data.setearParametro("@ImagenUrl", articulo.Imagenes.ImageUrl);
+                data.setearParametro("@ImagenUrl", articulo.Imagenes[0]?.ImageUrl);
                 data.setearParametro("@Precio", articulo.Precio);
 
                 data.ejecutar();
