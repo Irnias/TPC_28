@@ -44,10 +44,12 @@
             </div>
             <div class="mb-3">
                 <asp:Button Text="Agregar" runat="server" ID="btnAgregar" OnClick="btnAgregar_Click" CssClass="btn btn-outline-warning" />
+                <asp:Label ID="lblConfirmacion" runat="server" Visible="false" CssClass="text-success font-weight-bold"></asp:Label>
+                <asp:Label ID="lblModificarMas" runat="server" Visible="false" CssClass="text-success font-weight-bold"></asp:Label>
             </div>
-            <asp:Label ID="lblConfirmacion" runat="server" Visible="false" CssClass="mensaje"></asp:Label>
-
-            <div class="mb-3">
+             <asp:Button Text="Agregar otro articulo" runat="server" ID="btnAgregarMas" OnClick="btnAgregarMas_Click" CssClass="btn btn-outline-warning" Visible="false" />
+             <asp:Button Text="Modificar otro articulo" runat="server" ID="btnModificarMas" OnClick="btnModificarMas_Click" CssClass="btn btn-outline-warning" Visible="false" />
+                <div class="mb-3">
                 <asp:CheckBox Text="¿Eliminar?" runat="server" ID="chkEliminacion" AutoPostBack="true" OnCheckedChanged="chkEliminacion_CheckedChanged" />
 
                 <asp:Button Text="Eliminar" ID="btnEliminar" OnClick="btnEliminar_Click" runat="server" CssClass="btn btn-outline-danger" Visible="false" />
@@ -104,5 +106,5 @@
         </div>
 
     </div>
-    
+
 </asp:Content>

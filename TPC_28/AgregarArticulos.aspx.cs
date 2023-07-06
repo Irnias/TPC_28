@@ -55,16 +55,6 @@ namespace TPC_28
                     }
                 }
 
-                if (Request.QueryString["mensaje"] != null)
-                {
-                    // Obtener el mensaje de la URL
-                    string mensaje = Request.QueryString["mensaje"];
-
-                    // Actualizar el texto de lblConfirmacion
-                    lblConfirmacion.Text = mensaje;
-                    lblConfirmacion.Visible = true;
-                }
-
             }
             catch (Exception)
             {
@@ -151,17 +141,22 @@ namespace TPC_28
                 {
                     articulo.ArtId = int.Parse(txtId.Text);
                     articuloNuevo.modificarConSp(articulo);
+                    lblModificarMas.Text = "¡Modificado exitosamente!";
+                    lblModificarMas.Visible = true;
+                    btnAgregar.Visible = false;
+                    btnModificarMas.Visible = true;
                 }
                 else
                 {
                     articuloNuevo.agregarConSp(articulo);
+                    lblConfirmacion.Text = "¡Guardado exitosamente!";
+                    lblConfirmacion.Visible = true;
+                    btnAgregar.Visible = false;
+                    btnAgregarMas.Visible = true;
 
                 }
 
-                lblConfirmacion.Text = "¡Guardado/modificado exitosamente!";
-                lblConfirmacion.Visible = true;
-
-                Response.Redirect("AgregarArticulos.aspx?mensaje=" + HttpUtility.UrlEncode(lblConfirmacion.Text));
+     
 
             }
             catch (Exception)
@@ -256,5 +251,17 @@ namespace TPC_28
             btnEliminar.Visible = chkEliminacion.Checked;
 
         }
+
+        protected void btnAgregarMas_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AgregarArticulos.aspx"); 
+        }
+
+        protected void btnModificarMas_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ListadoDeArticulos.aspx");
+        }
+
+ 
     }
 }

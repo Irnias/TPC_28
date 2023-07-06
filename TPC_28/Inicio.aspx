@@ -18,7 +18,7 @@
                         <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
 
                             <div class="card">
-                                <img src="<%#Eval("Imagenes.ImageUrl") %>" class="card-img-top" alt="Imagen del producto <%#Eval("Nombre") %>"
+                                <img src="<%#Eval("Imagenes") %>" class="card-img-top" alt="Imagen del producto <%#Eval("Nombre") %>"
                                     onerror="this.src='https://static.wikia.nocookie.net/videojuego/images/9/9c/Imagen_no_disponible-0.png/revision/latest/thumbnail/width/360/height/360?cb=20170910134200'" />
 
                                 <div class="card-body">
@@ -90,6 +90,6 @@
                     </ItemTemplate>
                 </asp:Repeater>
             </div>
-        </div>
+          </div>  
     </section>
 </asp:Content>

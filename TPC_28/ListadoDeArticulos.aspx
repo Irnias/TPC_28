@@ -3,18 +3,21 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <hr />
     <div class="row">
         <div class="column">
-            <asp:GridView runat="server" DataKeyNames="ArtId" ID="dgvListaArticulos" onSelectedIndexChanged="dgvListaArticulos_SelectedIndexChanged" cssClass="table table-warning table-striped" AutoGenerateColumns="false">
-            <Columns>
-               <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-               <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
-               <asp:BoundField HeaderText="Marca" DataField="Nombre" />
-               <asp:BoundField HeaderText="Categoria" DataField="Categoria" />
-               <asp:BoundField HeaderText="Precio" DataField="Precio" />
-               <asp:CommandField ShowSelectButton="true" SelectText="Modificar Articulo" HeaderText="Modificar" />
-            </Columns>
+            <asp:GridView runat="server" DataKeyNames="ArtId" ID="dgvListaArticulos"
+                OnSelectedIndexChanged="dgvListaArticulos_SelectedIndexChanged" CssClass="table table-warning table-striped"
+                AutoGenerateColumns="false" OnPageIndexChanging="dgvListaArticulos_PageIndexChanging"
+                AllowPaging="true" PageSize="6">
+                <Columns>
+                    <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                    <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
+                    <asp:BoundField HeaderText="Marca" DataField="Nombre" />
+                    <asp:BoundField HeaderText="Categoria" DataField="Categoria" />
+                    <asp:BoundField HeaderText="Precio" DataField="Precio" />
+                    <asp:CommandField ShowSelectButton="true" SelectText="Modificar Articulo" HeaderText="Modificar" />
+                </Columns>
             </asp:GridView>
         </div>
     </div>
