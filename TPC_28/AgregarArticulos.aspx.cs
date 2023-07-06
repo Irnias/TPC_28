@@ -55,6 +55,16 @@ namespace TPC_28
                     }
                 }
 
+                if (Request.QueryString["mensaje"] != null)
+                {
+                    // Obtener el mensaje de la URL
+                    string mensaje = Request.QueryString["mensaje"];
+
+                    // Actualizar el texto de lblConfirmacion
+                    lblConfirmacion.Text = mensaje;
+                    lblConfirmacion.Visible = true;
+                }
+
             }
             catch (Exception)
             {
@@ -148,9 +158,10 @@ namespace TPC_28
 
                 }
 
-                lblConfirmacion.Text = "El artículo se ha agregado/modificado exitosamente.";
+                lblConfirmacion.Text = "¡Guardado/modificado exitosamente!";
                 lblConfirmacion.Visible = true;
-                ScriptManager.RegisterStartupScript(this, GetType(), "ShowMessage", "showConfirmationMessage();", true);
+
+                Response.Redirect("AgregarArticulos.aspx?mensaje=" + HttpUtility.UrlEncode(lblConfirmacion.Text));
 
             }
             catch (Exception)

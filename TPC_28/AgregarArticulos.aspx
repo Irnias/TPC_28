@@ -104,13 +104,5 @@
         </div>
 
     </div>
-    <script type="text/javascript">
-        function showConfirmationMessage() {
-            var message = document.getElementById('<%= lblConfirmacion.ClientID %>').innerText;
-            message = message.replace("localhost", ""); 
-            alert(message);
-            window.location.href = "AgregarArticulos.aspx";
-        }
-    </script>
-
+    
 </asp:Content>
