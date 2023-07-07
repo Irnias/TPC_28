@@ -60,6 +60,30 @@ namespace Negocio
                 accesoNuevo.cerrar();
             }
         }
+
+        public void BorradoLogicoPorId(int id)
+        {
+            AccesoDatos accesoNuevo = new AccesoDatos();
+            //TODO agregar columna de borrado loogico
+            try
+            {
+                if (id > 0)
+                {
+                    accesoNuevo.setQuery("DELETE Categorias WHERE IdCategoria = @id");
+                    accesoNuevo.setearParametro("@id", id);
+                    accesoNuevo.ejecutar();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoNuevo.cerrar();
+            }
+        }
     }
 }
 

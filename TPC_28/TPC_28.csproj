@@ -70,6 +70,7 @@
     <Content Include="Global.asax" />
     <Content Include="Inicio.aspx" />
     <Content Include="ListadoDeArticulos.aspx" />
+    <Content Include="ListadoDeCategorias.aspx" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
@@ -111,6 +112,13 @@
     </Compile>
     <Compile Include="ListadoDeArticulos.aspx.designer.cs">
       <DependentUpon>ListadoDeArticulos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListadoDeCategorias.aspx.cs">
+      <DependentUpon>ListadoDeCategorias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListadoDeCategorias.aspx.designer.cs">
+      <DependentUpon>ListadoDeCategorias.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>

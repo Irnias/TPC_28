@@ -45,7 +45,6 @@ namespace TPC_28
                         txtPrecio.Text = articulo.Precio.ToString();
                         txtImagen.Text = articulo.Imagenes.Count > 0 ? articulo.Imagenes[0]?.ImageUrl : "";
 
-
                         ddlMarca.SelectedValue = articulo.Marca.Id.ToString();
                         ddlCategoria.SelectedValue = articulo.Categoria.Id.ToString();
                     }
