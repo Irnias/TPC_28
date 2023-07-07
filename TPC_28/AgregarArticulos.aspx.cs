@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Dominio;
 using Negocio;
-using Dominio;
-using System.Threading;
+using System;
+using System.Collections.Generic;
 
 
 
@@ -153,7 +152,7 @@ namespace TPC_28
 
                 }
 
-     
+
 
             }
             catch (Exception)
@@ -251,7 +250,7 @@ namespace TPC_28
 
         protected void btnAgregarMas_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AgregarArticulos.aspx"); 
+            Response.Redirect("AgregarArticulos.aspx");
         }
 
         protected void btnModificarMas_Click(object sender, EventArgs e)
@@ -259,6 +258,6 @@ namespace TPC_28
             Response.Redirect("ListadoDeArticulos.aspx");
         }
 
- 
+
     }
 }

@@ -1,7 +1,9 @@
-﻿using System;
-using System.Web.UI.WebControls;
-using Dominio;
+﻿using Dominio;
 using Negocio;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.UI.WebControls;
 
 namespace TPC_28
 {
@@ -161,7 +163,7 @@ namespace TPC_28
 
 
         }
-    
+
 
         protected void btnAgregado_Click(object sender, EventArgs e)
         {

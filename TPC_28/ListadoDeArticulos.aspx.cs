@@ -1,5 +1,6 @@
-﻿using System;
-using Negocio;
+﻿using Negocio;
+using System;
+using System.Web.UI.WebControls;
 
 namespace TPC_28
 {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Dominio
 {
@@ -12,7 +8,7 @@ namespace Dominio
 
         public void agregarArticulo(Carro art)
         {
-            Carro existingArticle = ArtList.Find(a => a.idCarrito== art.idCarrito);
+            Carro existingArticle = ArtList.Find(a => a.idCarrito == art.idCarrito);
             if (existingArticle != null)
             {
                 existingArticle.Cantidad++;
@@ -25,7 +21,7 @@ namespace Dominio
 
         public void eliminarArticulo(Carro art)
         {
-            Carro existingArticle = ArtList.Find(a => a.idCarrito== art.idCarrito);
+            Carro existingArticle = ArtList.Find(a => a.idCarrito == art.idCarrito);
             if (existingArticle != null && existingArticle.Cantidad > 1)
             {
                 existingArticle.Cantidad--;
