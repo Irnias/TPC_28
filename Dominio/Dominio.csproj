@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Articulo.cs" />
+    <Compile Include="ArticulosConDetalles.cs" />
     <Compile Include="Calificacion.cs" />
-    <Compile Include="Carrito.cs" />
+    <Compile Include="Carro.cs" />
+    <Compile Include="CarroConArticulos.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="EstadoCarrito.cs" />
     <Compile Include="Imagen.cs" />

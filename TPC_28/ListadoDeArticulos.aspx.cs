@@ -27,5 +27,12 @@ namespace TPC_28
             var ArtId = dgvListaArticulos.SelectedDataKey.Value.ToString();
             Response.Redirect("AgregarArticulos.aspx?ArtId=" + ArtId);
         }
+
+        protected void dgvListaArticulos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgvListaArticulos.PageIndex = e.NewPageIndex;
+            dgvListaArticulos.DataBind();
+
+        }
     }
 }

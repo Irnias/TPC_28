@@ -15,21 +15,44 @@ namespace TPC_28
     {
 
         /// <summary>
-        /// verMas control.
+        /// probando control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button verMas;
+        protected global::System.Web.UI.WebControls.Label probando;
 
         /// <summary>
-        /// irInicio control.
+        /// repRepetidorCarrito control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button irInicio;
+        protected global::System.Web.UI.WebControls.Repeater repRepetidorCarrito;
+
+        /// <summary>
+        /// lblTotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotal;
+
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new TPC_28.MasterPage Master
+        {
+            get
+            {
+                return ((TPC_28.MasterPage)(base.Master));
+            }
+        }
     }
 }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Negocio;
 using Dominio;
+using System.Threading;
+
 
 
 namespace TPC_28
@@ -42,7 +44,8 @@ namespace TPC_28
                         txtDescripcion.Text = articulo.Descripcion;
                         txtDescripcionLarga.Text = articulo.DescripcionLarga;
                         txtPrecio.Text = articulo.Precio.ToString();
-                        txtImagen.Text = articulo.Imagenes.ImageUrl;
+                        txtImagen.Text = articulo.Imagenes.Count > 0 ? articulo.Imagenes[0]?.ImageUrl : "";
+
 
                         ddlMarca.SelectedValue = articulo.Marca.Id.ToString();
                         ddlCategoria.SelectedValue = articulo.Categoria.Id.ToString();
@@ -84,16 +87,45 @@ namespace TPC_28
         {
             try
             {
+
+                if (string.IsNullOrEmpty(txtNombre.Text) ||
+                  string.IsNullOrEmpty(txtDescripcion.Text) ||
+                  string.IsNullOrEmpty(txtDescripcionLarga.Text) ||
+                  string.IsNullOrEmpty(txtPrecio.Text) ||
+                  string.IsNullOrEmpty(ddlMarca.SelectedValue) ||
+                  string.IsNullOrEmpty(ddlCategoria.SelectedValue))
+                {
+                    lblError.Text = "Todos los campos son obligatorios.";
+                    lblError.Visible = true;
+                    return;
+                }
+
                 Articulo articulo = new Articulo();
                 DatosDeArticulos articuloNuevo = new DatosDeArticulos();
 
                 articulo.Nombre = txtNombre.Text;
                 articulo.Descripcion = txtDescripcion.Text;
                 articulo.DescripcionLarga = txtDescripcionLarga.Text;
-                articulo.Precio = decimal.Parse(txtPrecio.Text);
 
-                articulo.Imagenes = new Imagen();
-                articulo.Imagenes.ImageUrl = txtImagen.Text;
+                decimal precio;
+
+                if (!decimal.TryParse(txtPrecio.Text, out precio))
+                {
+                    // El valor ingresado no es un número válido
+                    lblErrorPrecio.Text = "Por favor, ingresa un valor válido para el precio.";
+                    return;
+                }
+
+                if (precio <= 0)
+                {
+                    // El precio debe ser mayor que cero
+                    lblErrorPrecio.Text = "El precio debe ser mayor que cero.";
+                    return;
+                }
+
+                articulo.Precio = precio;
+                articulo.Imagenes = new List<Imagen>();
+                articulo.Imagenes.Add(new Imagen { ImageUrl = txtImagen.Text });
 
                 articulo.Marca = new Marca();
                 articulo.Marca.Id = int.Parse(ddlMarca.SelectedValue);
@@ -106,13 +138,23 @@ namespace TPC_28
                 {
                     articulo.ArtId = int.Parse(txtId.Text);
                     articuloNuevo.modificarConSp(articulo);
+                    lblModificarMas.Text = "¡Modificado exitosamente!";
+                    lblModificarMas.Visible = true;
+                    btnAgregar.Visible = false;
+                    btnModificarMas.Visible = true;
                 }
                 else
                 {
                     articuloNuevo.agregarConSp(articulo);
+                    lblConfirmacion.Text = "¡Guardado exitosamente!";
+                    lblConfirmacion.Visible = true;
+                    btnAgregar.Visible = false;
+                    btnAgregarMas.Visible = true;
+
                 }
 
-                Response.Redirect("AgregarArticulos.aspx", false);
+     
+
             }
             catch (Exception)
             {
@@ -179,6 +221,7 @@ namespace TPC_28
 
                     }
                 }
+
                 Response.Redirect("ListadoDeArticulos.aspx", false);
 
 
@@ -199,5 +242,23 @@ namespace TPC_28
 
 
         }
+
+        protected void chkEliminacion_CheckedChanged(object sender, EventArgs e)
+        {
+            btnEliminar.Visible = chkEliminacion.Checked;
+
+        }
+
+        protected void btnAgregarMas_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AgregarArticulos.aspx"); 
+        }
+
+        protected void btnModificarMas_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ListadoDeArticulos.aspx");
+        }
+
+ 
     }
 }

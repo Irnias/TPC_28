@@ -5,7 +5,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <hr />
 
     <div class="row">
         <div class="col-6">
@@ -45,10 +44,15 @@
             </div>
             <div class="mb-3">
                 <asp:Button Text="Agregar" runat="server" ID="btnAgregar" OnClick="btnAgregar_Click" CssClass="btn btn-outline-warning" />
+                <asp:Label ID="lblConfirmacion" runat="server" Visible="false" CssClass="text-success font-weight-bold"></asp:Label>
+                <asp:Label ID="lblModificarMas" runat="server" Visible="false" CssClass="text-success font-weight-bold"></asp:Label>
             </div>
-            <div class="mb-3">
-                <asp:CheckBox Text="  ¿ Eliminar ?" runat="server" ID="chkEliminacion" />
-                <asp:Button Text="Eliminar" ID="btnEliminar" OnClick="btnEliminar_Click" runat="server" CssClass="btn btn-outline-danger" />
+             <asp:Button Text="Agregar otro articulo" runat="server" ID="btnAgregarMas" OnClick="btnAgregarMas_Click" CssClass="btn btn-outline-warning" Visible="false" />
+             <asp:Button Text="Modificar otro articulo" runat="server" ID="btnModificarMas" OnClick="btnModificarMas_Click" CssClass="btn btn-outline-warning" Visible="false" />
+                <div class="mb-3">
+                <asp:CheckBox Text="¿Eliminar?" runat="server" ID="chkEliminacion" AutoPostBack="true" OnCheckedChanged="chkEliminacion_CheckedChanged" />
+
+                <asp:Button Text="Eliminar" ID="btnEliminar" OnClick="btnEliminar_Click" runat="server" CssClass="btn btn-outline-danger" Visible="false" />
             </div>
         </div>
 
@@ -76,6 +80,7 @@
             <div class="mb-3">
                 <label for="txtPrecio" class="form-label">Precio</label>
                 <asp:TextBox runat="server" ID="txtPrecio" CssClass="form-control" />
+                <asp:Label runat="server" ID="lblErrorPrecio" CssClass="text-danger"></asp:Label>
             </div>
 
             <asp:UpdatePanel runat="server">
@@ -89,6 +94,10 @@
                     <asp:Image ImageUrl="https://cdn-icons-png.flaticon.com/512/5798/5798294.png"
                         runat="server" ID="imgArticulo" Width="40%" />
                     <%--                    <img src="<% =imagenUrl %>" alt="" Width="40%" />--%>
+                    <div>
+                        <asp:Label ID="lblError" runat="server" CssClass="text-danger"></asp:Label>
+                    </div>
+
                 </ContentTemplate>
             </asp:UpdatePanel>
 
@@ -97,6 +106,5 @@
         </div>
 
     </div>
-
 
 </asp:Content>
