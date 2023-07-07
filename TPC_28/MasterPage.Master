@@ -54,7 +54,7 @@
                                     <li>
                                         <a class="dropdown-item" href="ListadoDeArticulos.aspx">Listado De Articulos</a>
                                     </li>
-                                    <li><a class="dropdown-item" href="#">Marcas</a></li>
+                                    <li><a class="dropdown-item" href="ListadoDeMarcas.aspx">Marcas</a></li>
                                     <li><a class="dropdown-item" href="ListadoDeCategorias.aspx">Categorias</a></li>
                                     <li><a class="dropdown-item" href="#">Usuarios</a></li>
                                 </ul>
