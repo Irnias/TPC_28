@@ -1,11 +1,11 @@
-﻿using System;
+﻿namespace Dominio
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Dominio
 {
     public class Articulo
     {
@@ -20,6 +20,7 @@ namespace Dominio
        // public Imagen Imagenes { get; set; }
         // public int Precio { get; set; }
         public decimal Precio { get; set; }
+
 
     }
 }

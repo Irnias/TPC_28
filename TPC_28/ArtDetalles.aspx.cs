@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using Dominio;
 using Negocio;
 
@@ -18,7 +14,7 @@ namespace TPC_28
         {
 
             Articulo art = new Articulo();
-            DatosDeArticulos  conector = new DatosDeArticulos();
+            DatosDeArticulos conector = new DatosDeArticulos();
 
             Imagen imagenes = new Imagen();
             DatosDeImagen iConector = new DatosDeImagen();

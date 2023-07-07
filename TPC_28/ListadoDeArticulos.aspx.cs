@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Dominio;
 using Negocio;
 
 namespace TPC_28
@@ -31,7 +25,7 @@ namespace TPC_28
         protected void dgvListaArticulos_SelectedIndexChanged(object sender, EventArgs e)
         {
             var ArtId = dgvListaArticulos.SelectedDataKey.Value.ToString();
-            Response.Redirect("AgregarArticulos.aspx?ArtId="+ ArtId);
+            Response.Redirect("AgregarArticulos.aspx?ArtId=" + ArtId);
         }
 
         protected void dgvListaArticulos_PageIndexChanging(object sender, GridViewPageEventArgs e)

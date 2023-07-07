@@ -7,18 +7,18 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h2>Productos en Stock !! 
+    <h2>Productos en Stock !!
     </h2>
 
     <section style="background-color: #eee;">
         <div class="container py-5">
-            <div class="row">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
                 <asp:Repeater runat="server" ID="repRepetidor" OnItemDataBound="repRepetidor_ItemDataBound">
                     <ItemTemplate>
                         <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
 
                             <div class="card">
-                                <img src='<%# GetFirstImageUrl(Eval("Imagenes")) %>' class="card-img-top" alt="Imagen del producto <%#Eval("Nombre") %>"
+                                <img src='<%# GetFirstImageUrl(Eval("Imagenes")) %>' style="height: 400px; width: 350px" class="card-img-top" alt="Imagen del producto <%#Eval("Nombre") %>"
                                     onerror="this.src='https://static.wikia.nocookie.net/videojuego/images/9/9c/Imagen_no_disponible-0.png/revision/latest/thumbnail/width/360/height/360?cb=20170910134200'" />
 
                                 <div class="card-body">
@@ -90,6 +90,6 @@
                     </ItemTemplate>
                 </asp:Repeater>
             </div>
-          </div>  
+          </div>
     </section>
 </asp:Content>

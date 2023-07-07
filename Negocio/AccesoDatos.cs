@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
-using Dominio;
 
 namespace Negocio
 {
@@ -16,8 +11,8 @@ namespace Negocio
 
         public AccesoDatos()
         {
-            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=Catalogo_Articulos; integrated security=true ");
-            //conexion = new SqlConnection("server=localhost; database=Catalogo_Articulos;User Id=sa; password=fakePassw0rd"); 
+            // conexion = new SqlConnection("server=.\\SQLEXPRESS; database=Catalogo_Articulos; integrated security=true ");
+            conexion = new SqlConnection("server=localhost; database=Catalogo_Articulos;User Id=sa; password=fakePassw0rd");
             comando = new SqlCommand();
         }
 
@@ -27,7 +22,7 @@ namespace Negocio
             comando.CommandText = query;
         }
 
- 
+
 
         public void setearSp(string Sp)
         {
@@ -86,7 +81,7 @@ namespace Negocio
         {
             if (lector != null)
                 lector.Close();
-                conexion.Close();
+            conexion.Close();
         }
     }
 }
