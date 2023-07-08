@@ -32,6 +32,8 @@ namespace TPC_28
 
                 if (ArtId != "" && !IsPostBack)
                 {
+                    chkEliminacion.Visible = true;
+
                     int idArt;
                     if (int.TryParse(ArtId, out idArt))
                     {
@@ -47,7 +49,14 @@ namespace TPC_28
 
                         ddlMarca.SelectedValue = articulo.Marca.Id.ToString();
                         ddlCategoria.SelectedValue = articulo.Categoria.Id.ToString();
+
                     }
+                    
+                }
+                else
+                {
+                    chkEliminacion.Visible = false;
+
                 }
 
             }
@@ -109,14 +118,12 @@ namespace TPC_28
 
                 if (!decimal.TryParse(txtPrecio.Text, out precio))
                 {
-                    // El valor ingresado no es un número válido
                     lblErrorPrecio.Text = "Por favor, ingresa un valor válido para el precio.";
                     return;
                 }
 
                 if (precio <= 0)
                 {
-                    // El precio debe ser mayor que cero
                     lblErrorPrecio.Text = "El precio debe ser mayor que cero.";
                     return;
                 }
@@ -148,7 +155,6 @@ namespace TPC_28
                     lblConfirmacion.Visible = true;
                     btnAgregar.Visible = false;
                     btnAgregarMas.Visible = true;
-
                 }
 
 
@@ -216,11 +222,15 @@ namespace TPC_28
                         articuloEliminar.ArtId = idArticulo;
 
                         articulo.eliminarConSp(articuloEliminar);
+                        lblConfirmaEliminacion.Text = "¡Eliminado exitosamente!";
+                        lblConfirmaEliminacion.Visible = true;
+                        btnAgregar.Visible = false;
+                        btnEliminar.Visible = false;
+                        btnListado.Visible = true;
+                        borrarTodo();
 
                     }
                 }
-
-                Response.Redirect("ListadoDeArticulos.aspx", false);
 
 
             }
@@ -257,6 +267,22 @@ namespace TPC_28
             Response.Redirect("ListadoDeArticulos.aspx");
         }
 
+        protected void btnListado_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ListadoDeArticulos.aspx");
 
+        }
+
+        void borrarTodo()
+        {
+            txtId.Text = "";
+            txtNombre.Text = "";
+            txtDescripcion.Text = "";
+            txtDescripcionLarga.Text = "";
+            txtPrecio.Text = "";
+            txtImagen.Text = "";
+            ddlMarca.SelectedIndex = 0;
+            ddlCategoria.SelectedIndex = 0;
+        }
     }
 }
