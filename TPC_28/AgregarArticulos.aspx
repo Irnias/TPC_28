@@ -53,7 +53,8 @@
                 <asp:CheckBox Text="¿Eliminar?" runat="server" ID="chkEliminacion" AutoPostBack="true" OnCheckedChanged="chkEliminacion_CheckedChanged" />
 
                 <asp:Button Text="Eliminar" ID="btnEliminar" OnClick="btnEliminar_Click" runat="server" CssClass="btn btn-outline-danger" Visible="false" />
-                <asp:Label runat="server" ID="lblConfirmaEliminacion" Visible ="false" CssClass="text-success font-weight-bold"></asp:Label>
+               
+               <asp:Label runat="server" ID="lblConfirmaEliminacion" Visible ="false" CssClass="text-success font-weight-bold"></asp:Label>
                 </div>
              <asp:Button Text="Ir a Listado De Articulos" ID="btnListado" runat="server" CssClass="btn btn-outline-primary" visible="false" OnClick="btnListado_Click"/>
         </div>

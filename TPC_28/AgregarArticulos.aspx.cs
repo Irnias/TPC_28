@@ -24,6 +24,8 @@ namespace TPC_28
                     Recargar_Categoria();
 
                     chkEliminacion.Checked = false;
+                    chkEliminacion.Visible = false; // Ocultar checkbox inicialmente
+
 
                 }
 
@@ -32,7 +34,6 @@ namespace TPC_28
 
                 if (ArtId != "" && !IsPostBack)
                 {
-                    chkEliminacion.Visible = true;
 
                     int idArt;
                     if (int.TryParse(ArtId, out idArt))
@@ -49,15 +50,12 @@ namespace TPC_28
 
                         ddlMarca.SelectedValue = articulo.Marca.Id.ToString();
                         ddlCategoria.SelectedValue = articulo.Categoria.Id.ToString();
+                        chkEliminacion.Visible = true;
 
                     }
-                    
-                }
-                else
-                {
-                    chkEliminacion.Visible = false;
 
                 }
+           
 
             }
             catch (Exception)
@@ -147,6 +145,8 @@ namespace TPC_28
                     lblModificarMas.Visible = true;
                     btnAgregar.Visible = false;
                     btnModificarMas.Visible = true;
+                    chkEliminacion.Visible = false;
+                    
                 }
                 else
                 {
@@ -155,6 +155,7 @@ namespace TPC_28
                     lblConfirmacion.Visible = true;
                     btnAgregar.Visible = false;
                     btnAgregarMas.Visible = true;
+                    
                 }
 
 
@@ -227,6 +228,7 @@ namespace TPC_28
                         btnAgregar.Visible = false;
                         btnEliminar.Visible = false;
                         btnListado.Visible = true;
+                        chkEliminacion.Visible = false;
                         borrarTodo();
 
                     }
@@ -284,5 +286,6 @@ namespace TPC_28
             ddlMarca.SelectedIndex = 0;
             ddlCategoria.SelectedIndex = 0;
         }
+
     }
 }
