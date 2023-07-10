@@ -32,10 +32,11 @@ namespace TPC_28
             }
         }
 
-        protected void verMas_Click(object sender, EventArgs e)
+        protected void btnVerMas_Click(object sender, EventArgs e)
         {
             Button verMas = (Button)sender;
             string id = verMas.CommandArgument;
+          
 
             Response.Redirect("artDetalles.aspx?id=" + id);
         }
@@ -91,7 +92,7 @@ namespace TPC_28
 
         }
 
-        protected void btnRestar_Click(object sender, EventArgs e)
+        /*protected void btnRestar_Click(object sender, EventArgs e)
         {
             Button btnRestar_Click = (Button)sender;
             int artId = int.Parse(btnRestar_Click.CommandArgument);
@@ -106,9 +107,9 @@ namespace TPC_28
 
             carro.eliminarArticulo(current);
             Response.Redirect("Inicio.aspx");
-        }
+        }*/
 
-        protected void btnSumar_Click(object sender, EventArgs e)
+       /* protected void btnSumar_Click(object sender, EventArgs e)
         {
             Button btnSumar_Click = (Button)sender;
             int artId = int.Parse(btnSumar_Click.CommandArgument);
@@ -123,7 +124,7 @@ namespace TPC_28
 
             cart.agregarArticulo(current);
             Response.Redirect("Inicio.aspx");
-        }
+        }*/
 
 
 
@@ -139,6 +140,8 @@ namespace TPC_28
                 Button btnEliminar = e.Item.FindControl("btnEliminar") as Button;
                 Button btnSumar = e.Item.FindControl("btnSumar") as Button;
                 Button btnRestar = e.Item.FindControl("btnRestar") as Button;
+                Button btnIrAlCarrito = e.Item.FindControl("btnIrAlCarrito") as Button;
+                Button btnVerMas = e.Item.FindControl("btnVerMas") as Button;
 
                 CarroConArticulos currentCart = Session["Cart"] as CarroConArticulos;
 
@@ -147,16 +150,20 @@ namespace TPC_28
                     btnAgregado.Visible = true;
                     btnEliminar.Visible = true;
                     btnAgregar.Visible = false;
-                    btnSumar.Visible = true;
-                    btnRestar.Visible = true;
+                    // btnSumar.Visible = true;
+                    // btnRestar.Visible = true;
+                    btnIrAlCarrito.Visible = true;
+                    btnVerMas.Visible = false;
                 }
                 else
                 {
                     btnAgregado.Visible = false;
                     btnEliminar.Visible = false;
                     btnAgregar.Visible = true;
-                    btnSumar.Visible = false;
-                    btnRestar.Visible = false;
+                    // btnSumar.Visible = false;
+                    // btnRestar.Visible = false;
+                    btnIrAlCarrito.Visible = false;
+                    btnVerMas.Visible = true;
                 }
 
             }
@@ -182,6 +189,10 @@ namespace TPC_28
             return defaultImageUrl;
         }
 
+        protected void btnIrAlCarrito_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Carrito.aspx");
+        }
     }
 
 }

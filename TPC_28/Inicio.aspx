@@ -37,10 +37,10 @@
 
                                     <asp:Button
                                         Text="Ver mas"
-                                        ID="verMas"
+                                        ID="btnVerMas"
                                         class="btn btn-outline-secondary"
                                         runat="server"
-                                        OnClick="verMas_Click"
+                                        OnClick="btnVerMas_Click"
                                         CommandArgument='<%#Eval("ArtId")%>'
                                         NavigateUrl='<%#"ArtDetalles.aspx?id=" + Eval("ArtId")%>' />
 
@@ -73,14 +73,17 @@
                                         Visible="false" />
 
                                     <div>
-                                        <asp:Button Text="-" ID="btnRestar"
-                                            class="btn btn-outline-warning" runat="server"
-                                            OnClick="btnRestar_Click"
-                                            CommandArgument='<%# Eval("ArtId") %>' />
-                                        <asp:Button Text="+" ID="btnSumar"
+                                        <asp:Button Text="Ir al carrito" runat="server"
+                                            class="btn btn-outline-warning" ID="btnIrAlCarrito"
+                                            onClick="btnIrAlCarrito_Click"/>
+                                       <%-- <asp:Button Text="+" ID="btnSumar"
                                             class="btn btn-outline-warning" runat="server"
                                             OnClick="btnSumar_Click"
                                             CommandArgument='<%# Eval("ArtId") %>' />
+                                        <asp:Button Text="-" ID="btnRestar"
+                                            class="btn btn-outline-success" runat="server"
+                                            OnClick="btnRestar_Click"
+                                            CommandArgument='<%# Eval("ArtId") %>' />--%>
                                     </div>
 
 
@@ -90,6 +93,6 @@
                     </ItemTemplate>
                 </asp:Repeater>
             </div>
-          </div>
+        </div>
     </section>
 </asp:Content>
