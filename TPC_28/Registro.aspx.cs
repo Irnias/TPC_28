@@ -4,14 +4,14 @@ using System;
 
 namespace TPC_28
 {
-    public partial class Login : System.Web.UI.Page
+    public partial class Registro : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             ((TPC_28.MasterPage)(base.Master)).OcultarFotter();
         }
 
-        protected void btnLogin_Click(object sender, EventArgs e)
+        protected void btnRegistro_Click(object sender, EventArgs e)
         {
             try
             {
@@ -20,17 +20,7 @@ namespace TPC_28
                 usuario.Mail = txtMail.Text;
                 usuario.Contrasenia = txtContrasenia.Text;
 
-                usuario = usuarioNegocio.Logear(usuario);
-                if (usuario.UserId > 0)
-                {
-                    Session.Add("usuario", usuario);
-                }
-                else
-                {
-                    Session.Remove("usuario");
-                    Session.Add("error", "Usuario o contraseña incorrecto!");
-                    Response.Redirect("Error.aspx", false);
-                }
+
             }
             catch (Exception ex)
             {

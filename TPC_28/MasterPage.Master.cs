@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Dominio;
+﻿using Dominio;
+using System;
 
 namespace TPC_28
 {
@@ -19,7 +14,7 @@ namespace TPC_28
             }
             else
             {
-               // lblItemCountSpan.Style["display"] = "none";
+                // lblItemCountSpan.Style["display"] = "none";
             }
         }
 
@@ -28,6 +23,11 @@ namespace TPC_28
             lblItemCount.Text = itemCount.ToString();
             lblItemCountNav.Text = itemCount.ToString();
             lblItemCountSpan.Style["display"] = "inline-flex;";
+        }
+
+        public void OcultarFotter()
+        {
+            footerGlobal.Visible = false;
         }
     }
 

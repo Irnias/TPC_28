@@ -64,9 +64,9 @@
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
-            <footer>
+            <footer ID="footerGlobal" runat="server">
                 <p>Total de artículos en el carrito: <asp:Label runat="server" ID="lblItemCount">0</asp:Label></p>
-                </footer>
+            </footer>
          </div>
 
     </form>
