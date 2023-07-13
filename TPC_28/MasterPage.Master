@@ -56,6 +56,9 @@
                                     <li><a class="dropdown-item" href="#">Usuarios</a></li>
                                 </ul>
                             </li>
+                            <span class="navbar-text">
+                                <a class="nav-link" aria-current="page" href="Login.aspx">Logueate!</a>
+                            </span>
                         </ul>
                     </div>
                 </div>

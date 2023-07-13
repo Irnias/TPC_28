@@ -19,8 +19,9 @@ namespace TPC_28
                 UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
                 usuario.Mail = txtMail.Text;
                 usuario.Contrasenia = txtContrasenia.Text;
-
-
+                usuario.TipoUsuario = TipoUsuario.Normal;
+                usuario.Nombre = txtNombre.Text;
+                usuario.Apellido = txtApellido.Text;
             }
             catch (Exception ex)
             {
