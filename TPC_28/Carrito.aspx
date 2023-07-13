@@ -85,7 +85,7 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <button type="button" class="btn btn-warning btn-block btn-lg">Proceed to Pay</button>
+                            <asp:Button Text="Comprar" ID="btnComprar" OnClick="btnComprar_Click" runat="server" class="btn btn-warning" />
                         </div>
                     </div>
                 </div>

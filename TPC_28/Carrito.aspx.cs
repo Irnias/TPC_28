@@ -111,5 +111,10 @@ namespace TPC_28
             }
 
         }
+
+        protected void btnComprar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ResumenDeCompra.aspx");
+        }
     }
 }
