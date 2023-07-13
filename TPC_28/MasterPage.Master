@@ -41,9 +41,6 @@
                                 <a class="nav-link active" aria-current="page" href="Inicio.aspx">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="ArtDetalles.aspx">Detalles</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="/Carrito.aspx">Carrito<span class="badge text-bg-success" runat="server" id="lblItemCountSpan" style="display: none;"><asp:Label runat="server" ID="lblItemCountNav"></asp:Label></span></a>
                             </li>
 
