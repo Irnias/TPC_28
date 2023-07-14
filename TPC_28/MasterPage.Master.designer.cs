@@ -33,6 +33,15 @@ namespace TPC_28
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// Control dropdownMenu.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dropdownMenu;
+
+        /// <summary>
         /// Control lblItemCountSpan.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace TPC_28
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblItemCountNav;
+
+        /// <summary>
+        /// Control userDropdown.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl userDropdown;
 
         /// <summary>
         /// Control navbarText.

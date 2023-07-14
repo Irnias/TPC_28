@@ -37,27 +37,15 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
+                        <ul class="navbar-nav" id="dropdownMenu" runat="server">
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="Inicio.aspx">Inicio</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/Carrito.aspx">Carrito<span class="badge text-bg-success" runat="server" id="lblItemCountSpan" style="display: none;"><asp:Label runat="server" ID="lblItemCountNav"></asp:Label></span></a>
                             </li>
-
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Configuraciones
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a class="dropdown-item" href="ListadoDeArticulos.aspx">Listado De Articulos</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="ListadoDeMarcas.aspx">Marcas</a></li>
-                                    <li><a class="dropdown-item" href="ListadoDeCategorias.aspx">Categorias</a></li>
-                                    <li><a class="dropdown-item" href="#">Usuarios</a></li>
-                                </ul>
-                            </li>
                         </ul>
+                        <ul class="navbar-nav" id="userDropdown" runat="server"></ul>
                         <span id="navbarText" runat="server"></span>
                     </div>
                 </div>
