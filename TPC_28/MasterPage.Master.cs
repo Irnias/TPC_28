@@ -16,6 +16,17 @@ namespace TPC_28
             {
                 // lblItemCountSpan.Style["display"] = "none";
             }
+
+            if (Session["usuario"] != null)
+            {
+                Usuario user = (Usuario)Session["usuario"];
+                navbarText.InnerHtml = "Bienvenido, " + user.Nombre;
+            }
+            else
+            {
+                navbarText.InnerHtml = "<a class=\"nav-link\" aria-current=\"page\" href=\"Login.aspx\">Logueate!</a>";
+            }
+
         }
 
         public void UpdateCartItemCount(int itemCount)
