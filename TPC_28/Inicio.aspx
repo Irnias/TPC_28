@@ -7,8 +7,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h2>Productos en Stock !!
-    </h2>
+    <hr />
+    <asp:TextBox ID="TxtFilter" runat="server"></asp:TextBox>
+    <asp:Button ID="BtnFiltro" Text="buscar" class="btn btn-dark" runat="server" OnClick="BtnFiltro_Click"/>
 
     <section style="background-color: #eee;">
         <div class="container py-5">
@@ -75,8 +76,8 @@
                                     <div>
                                         <asp:Button Text="Ir al carrito" runat="server"
                                             class="btn btn-outline-warning" ID="btnIrAlCarrito"
-                                            onClick="btnIrAlCarrito_Click"/>
-                                       <%-- <asp:Button Text="+" ID="btnSumar"
+                                            OnClick="btnIrAlCarrito_Click" />
+                                        <%-- <asp:Button Text="+" ID="btnSumar"
                                             class="btn btn-outline-warning" runat="server"
                                             OnClick="btnSumar_Click"
                                             CommandArgument='<%# Eval("ArtId") %>' />

@@ -1,9 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="ResumenDeCompra.aspx.cs" Inherits="TPC_28.ResumenDeCompra" %>
-
 <%@ MasterType VirtualPath="~/MasterPage.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
+        .main-container {
+            background-color: #FF7143;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
         .card {
             background-color: #fff;
             border: 1px solid #ddd;
@@ -50,46 +55,47 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div>
+    <div class="main-container">
         <asp:Label ID="lblUsuarioNombre" runat="server"></asp:Label>
-    </div>
 
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="mb-4">
-                        <h3 class="fw-normal mb-0 text-black">Resumen de compra</h3>
-                    </div>
-                    <asp:Repeater runat="server" ID="repRepetidorCarrito">
-                        <ItemTemplate>
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <img src='<%# Eval("Imagenes[0].ImageUrl") %>' alt="Imagen del producto <%#Eval("Nombre") %>" />
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p class="lead fw-normal mb-2"><%#Eval("Nombre") %></p>
-                                            <p><span class="text-muted">Categoría: </span><%#Eval("Categoria")%> <span class="text-muted">Marca: </span><%#Eval("Marca") %></p>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <span class="badge"><%#Eval("Cantidad") %></span>
-                                            <h5 class="mb-0">$<%#Eval("Precio") %></h5>
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mb-4">
+                            <h3 class="fw-normal mb-0 text-black">Resumen de compra</h3>
+                        </div>
+                        <asp:Repeater runat="server" ID="repRepetidorCarrito">
+                            <ItemTemplate>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <img src='<%# Eval("Imagenes[0].ImageUrl") %>' alt="Imagen del producto <%#Eval("Nombre") %>" />
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="lead fw-normal mb-2"><%#Eval("Nombre") %></p>
+                                                <p><span class="text-muted">Categoría: </span><%#Eval("Categoria")%> <span class="text-muted">Marca: </span><%#Eval("Marca") %></p>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <span class="badge"><%#Eval("Cantidad") %></span>
+                                                <h5 class="mb-0">$<%#Eval("Precio") %></h5>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                        <div class="card">
+                            <div class="card-body">
+                                <asp:Label Text="Total a pagar:" runat="server" CssClass="total-label" />
+                                <asp:Label ID="lblTotal" runat="server" CssClass="total-price"></asp:Label>
                             </div>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                    <div class="card">
-                        <div class="card-body">
-                             <asp:Label Text="Total a pagar:" runat="server" />
-                            <asp:Label ID="lblTotal" runat="server"></asp:Label>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 </asp:Content>
+

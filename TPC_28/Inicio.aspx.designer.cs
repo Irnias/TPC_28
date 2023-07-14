@@ -15,6 +15,24 @@ namespace TPC_28
     {
 
         /// <summary>
+        /// TxtFilter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtFilter;
+
+        /// <summary>
+        /// BtnFiltro control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnFiltro;
+
+        /// <summary>
         /// repRepetidor control.
         /// </summary>
         /// <remarks>
