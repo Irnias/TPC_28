@@ -13,6 +13,8 @@
         public string Contrasenia { get; set; }
         public string Mail { get; set; }
         public TipoUsuario TipoUsuario { get; set; }
+        public Carro Carro { get; set; }  
+
 
         public Usuario(string Nom, string Ape, string Pass, string Email)
         {
@@ -26,7 +28,10 @@
         public Usuario()
         {
             UserId = 0;
+            Carro = new Carro();
         }
+
+
     }
 
 }

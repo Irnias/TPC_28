@@ -9,7 +9,10 @@ namespace Dominio
             idCarrito = carId;
             Cantidad = 1;
         }
+        public Carro()
+        {
 
+        }
         public int idCarrito { get; set; }
         public List<Articulo> ListaArticulos { get; set; }
         public int precioCarrito { get; set; }

@@ -4,4 +4,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
         <h1>Ups parece que tenemos un problema...</h1>
         <asp:Label runat="server" Text="" ID="lblText" />
+
+    <div>
+    <asp:Button Text="Iniciar sesión" runat="server" ID="iniciarSesion" OnClick="iniciarSesion_Click" CssClass="btn btn-info" />    
+    </div>
+
 </asp:Content>

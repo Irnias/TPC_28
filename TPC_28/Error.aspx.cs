@@ -11,10 +11,16 @@ namespace TPC_28
                 lblText.Text = Session["error"].ToString();
                 Session.Remove("error");
             }
-            else
+            else if (Session["usuario"] == null)
             {
-                Response.Redirect("Inicio.aspx");
+                Response.Redirect("Login.aspx"); 
             }
+        }
+
+        protected void iniciarSesion_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Login.aspx");
+
         }
     }
 }
