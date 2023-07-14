@@ -9,6 +9,10 @@ namespace TPC_28
         protected void Page_Load(object sender, EventArgs e)
         {
             ((TPC_28.MasterPage)(base.Master)).OcultarFotter();
+            if (Session["usuario"] != null)
+            {
+                Response.Redirect("Inicio.aspx", false);
+            }
         }
 
         protected void btnRegistro_Click(object sender, EventArgs e)

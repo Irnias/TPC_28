@@ -89,6 +89,7 @@
     <Content Include="ArtDetalles.aspx" />
     <Content Include="Carrito.aspx" />
     <Content Include="Error.aspx" />
+    <Content Include="Logout.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Global.asax" />
@@ -127,6 +128,13 @@
     </Compile>
     <Compile Include="Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Registro.aspx.cs">
       <DependentUpon>Registro.aspx</DependentUpon>

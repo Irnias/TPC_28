@@ -1,4 +1,5 @@
-﻿using Negocio;
+﻿using Dominio;
+using Negocio;
 using System;
 using System.Web.UI.WebControls;
 
@@ -8,6 +9,18 @@ namespace TPC_28
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["usuario"] == null)
+            {
+                Response.Redirect("Inicio.aspx", false);
+            }
+            else
+            {
+                Usuario user = (Usuario)Session["usuario"];
+                if (user.TipoUsuario != TipoUsuario.SuperAdmin)
+                {
+                    Response.Redirect("Inicio.aspx", false);
+                }
+            }
             categoriaPopup.Visible = false;
             Recargar_Categoria();
         }

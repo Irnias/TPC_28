@@ -11,8 +11,19 @@ namespace TPC_28
     {
         public string imagenUrl { get; set; }
         protected void Page_Load(object sender, EventArgs e)
-
         {
+            if (Session["usuario"] == null)
+            {
+                Response.Redirect("Inicio.aspx", false);
+            }
+            else
+            {
+                Usuario user = (Usuario)Session["usuario"];
+                if (user.TipoUsuario != TipoUsuario.SuperAdmin)
+                {
+                    Response.Redirect("Inicio.aspx", false);
+                }
+            }
             try
             {
                 txtId.Enabled = false;
@@ -55,7 +66,7 @@ namespace TPC_28
                     }
 
                 }
-           
+
 
             }
             catch (Exception)
@@ -146,7 +157,7 @@ namespace TPC_28
                     btnAgregar.Visible = false;
                     btnModificarMas.Visible = true;
                     chkEliminacion.Visible = false;
-                    
+
                 }
                 else
                 {
@@ -155,7 +166,7 @@ namespace TPC_28
                     lblConfirmacion.Visible = true;
                     btnAgregar.Visible = false;
                     btnAgregarMas.Visible = true;
-                    
+
                 }
 
 
