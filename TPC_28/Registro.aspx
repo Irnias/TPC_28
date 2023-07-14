@@ -3,6 +3,16 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <script type="text/javascript">
+        function handleEmailInputChange() {
+            var txtMail = document.getElementById('<%= txtMail.ClientID %>');
+            txtMail.classList.remove("is-invalid");
+        }
+        function handlePassInputChange() {
+            var txtPass2 = document.getElementById('<%= txtContrasenia2.ClientID %>');
+            txtPass2.classList.remove("is-invalid");
+        }
+    </script>
 <style>
     .h-custom {
         height: calc(100%);
@@ -27,9 +37,14 @@
 
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
           <div class="form-outline mb-4">
-            <asp:TextBox runat="server" type="email" required id="txtMail" class="form-control form-control-lg"
+            <asp:TextBox runat="server" type="email" required id="txtMail" oninput="handleEmailInputChange()" class="form-control form-control-lg"
               placeholder="Ingresa tu email" />
             <label class="form-label" for="txtMail">Email</label>
+             
+            <div id="txtMailFeedback" class="invalid-feedback">
+                <asp:Literal runat="server" ID="lblFeedback" Mode="PassThrough" Text="El mail ya esta registrado!" />
+            </div>
+
           </div>
           <div class="form-outline mb-4">
             <asp:TextBox runat="server" type="text" required id="txtNombre" class="form-control form-control-lg"
@@ -47,14 +62,18 @@
             <label class="form-label" for="txtContrasenia">Contraseña</label>
           </div>
          <div class="form-outline mb-3">
-            <asp:TextBox runat="server" type="password" required id="txtContrasenia2" class="form-control form-control-lg"
+            <asp:TextBox runat="server" type="password" required oninput="handlePassInputChange()" id="txtContrasenia2" class="form-control form-control-lg"
               placeholder="Re-ingresa tu contraseña" />
             <label class="form-label" for="txtContrasenia2">Contraseña</label>
+            <div id="txtContrasenia2Feedback" class="invalid-feedback">
+                <asp:Literal runat="server" ID="lblFeedback2" Mode="PassThrough" Text="La contraseña no coincide" />
+            </div>
           </div>
 
           <div class="text-center text-lg-start mt-4 pt-2">
-            <asp:Button Text="Registrar" runat="server" ID="btnResgistro" OnClick="btnRegistro_Click" type="button" class="btn btn-outline-primary btn-lg"
-              style="padding-left: 2.5rem; padding-right: 2.5rem;" />
+            <asp:Button Text="Registrar" runat="server" ID="btnRegistro" OnClick="btnRegistro_Click" class="btn btn-outline-primary btn-lg"
+            style="padding-left: 2.5rem; padding-right: 2.5rem;" />
+
             <p class="small fw-bold mt-2 pt-1 mb-0">Ya tenes cuenta? <a href="Login.aspx"
                 class="link-success">Logueate!</a></p>
           </div>
@@ -63,5 +82,6 @@
     </div>
   </div>
 </section>
+
 
 </asp:Content>

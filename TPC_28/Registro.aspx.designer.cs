@@ -24,6 +24,15 @@ namespace TPC_28
         protected global::System.Web.UI.WebControls.TextBox txtMail;
 
         /// <summary>
+        /// Control lblFeedback.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lblFeedback;
+
+        /// <summary>
         /// Control txtNombre.
         /// </summary>
         /// <remarks>
@@ -60,12 +69,21 @@ namespace TPC_28
         protected global::System.Web.UI.WebControls.TextBox txtContrasenia2;
 
         /// <summary>
-        /// Control btnResgistro.
+        /// Control lblFeedback2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnResgistro;
+        protected global::System.Web.UI.WebControls.Literal lblFeedback2;
+
+        /// <summary>
+        /// Control btnRegistro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRegistro;
     }
 }
