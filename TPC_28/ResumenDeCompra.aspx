@@ -4,7 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
         .main-container {
-            background-color: #FF7143;
+            background-color: #ffa040;
             padding-top: 20px;
             padding-bottom: 20px;
         }

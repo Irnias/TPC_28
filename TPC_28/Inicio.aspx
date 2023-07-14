@@ -7,9 +7,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <hr />
+
     <asp:TextBox ID="TxtFilter" runat="server"></asp:TextBox>
-    <asp:Button ID="BtnFiltro" Text="buscar" class="btn btn-dark" runat="server" OnClick="BtnFiltro_Click"/>
+    <asp:Button ID="BtnFiltro" Text="buscar" class="btn btn-dark" runat="server" OnClick="BtnFiltro_Click" />
 
     <section style="background-color: #eee;">
         <div class="container py-5">
