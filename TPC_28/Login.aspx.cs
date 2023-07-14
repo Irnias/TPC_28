@@ -29,7 +29,7 @@ namespace TPC_28
                 if (usuario.UserId > 0)
                 {
                     Session.Add("usuario", usuario);
-                    Response.Redirect("Inicio.aspx", false);
+                    Response.Redirect("MiCuenta.aspx", false);
 
                 }
                 else
