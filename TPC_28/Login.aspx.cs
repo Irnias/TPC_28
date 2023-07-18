@@ -9,6 +9,11 @@ namespace TPC_28
         protected void Page_Load(object sender, EventArgs e)
         {
             ((TPC_28.MasterPage)(base.Master)).OcultarFotter();
+
+            if (Session["usuario"] != null)
+            {
+                Response.Redirect("Inicio.aspx", false);
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -24,6 +29,8 @@ namespace TPC_28
                 if (usuario.UserId > 0)
                 {
                     Session.Add("usuario", usuario);
+                    Response.Redirect("MiCuenta.aspx", false);
+
                 }
                 else
                 {
