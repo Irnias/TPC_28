@@ -17,11 +17,9 @@ namespace TPC_28
                 else
                 {
                     Usuario user = (Usuario)Session["usuario"];
-                    
-                    
-                    //lblNombre.Text = user.Nombre.ToString();
-                    //lblApellido.Text = user.Apellido.ToString();
-                    //lblMail.Text = user.Mail.ToString();
+                    lblNombre.Text = user.Nombre.ToString();
+                    lblApellido.Text = user.Apellido.ToString();
+                    lblMail.Text = user.Mail.ToString();
                 }
             }
 
