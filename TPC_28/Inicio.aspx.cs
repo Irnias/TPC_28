@@ -193,6 +193,20 @@ namespace TPC_28
         {
             Response.Redirect("Carrito.aspx");
         }
+
+        protected void BtnFiltro_Click(object sender, EventArgs e)
+        {
+            string filtro = TxtFilter.Text;
+
+            List<Articulo> listaFiltrada =
+            ArtList.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper())
+            || x.Categoria.Descripcion.ToUpper().Contains(filtro.ToUpper())
+            || x.Marca.Descripcion.ToUpper().Contains(filtro.ToUpper())
+            );
+
+            repRepetidor.DataSource = listaFiltrada;
+            repRepetidor.DataBind();
+        }
     }
 
 }

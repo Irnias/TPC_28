@@ -30,6 +30,8 @@ Create Table Usuarios(
 	Mail varchar(60),
 	Contrasenia varchar(30),
 )
+ALTER TABLE Usuarios
+ADD TipoUsuario INT;
 GO 
 
 Create Table Calificaciones(
@@ -98,3 +100,7 @@ as
 	DELETE FROM Articulos WHERE IdArticulo = @id 
 GO
 
+insert into Usuarios (Nombre, Apellido, Mail,Contrasenia, TipoUsuario)
+values 
+('Ramiro', 'DAccorso', 'ramiro.daccorso@gmail.com','123456',99),
+('User', 'Comprador', 'montoto@mail.com','123456',1)
