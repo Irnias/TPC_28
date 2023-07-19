@@ -18,5 +18,10 @@
             Id = id;
             Descripcion = desc;
         }
+
+        public DireccionEnvio()
+        {
+
+        }
     }
 }

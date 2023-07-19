@@ -19,6 +19,8 @@ namespace Dominio
         public EstadoCarrito Estado { get; set; }
         public Usuario usuario { get; set; }
         public int Cantidad { get; set; }
+        public Envios EnvioActual { get; set; }
+
     }
 
 }

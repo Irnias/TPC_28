@@ -139,8 +139,8 @@
                             <div style="display: inline-block; border: 1px solid #ccc; padding: 10px; width: 240px;">
                                 <div class="mb-3">
                                     <asp:Label Text="Envio" runat="server" CssClass="custom-label" />
-                                    <asp:DropDownList ID="ddlEnvio" runat="server" CssClass="form-select" Style="width: 200px;" AutoPostBack="true"  OnSelectedIndexChanged="ddlEnvio_SelectedIndexChanged" ></asp:DropDownList>
-                                    <asp:Label Text="Calle falsa 123" ID="lblEnvio" runat="server"/>
+                                    <asp:DropDownList ID="ddlEnvio" runat="server" CssClass="form-select" Style="width: 200px;" AutoPostBack="true" OnSelectedIndexChanged="ddlEnvio_SelectedIndexChanged"></asp:DropDownList>
+                                    <asp:Label Text=" Dirección de retiro : Calle Falsa 123 - Tigre -Buenos Aires" ID="lblEnvio" runat="server" />
                                 </div>
                             </div>
                         </div>
@@ -161,9 +161,10 @@
                                 <asp:TextBox ID="txtCiudad" runat="server" class="cajita" Placeholder="Ciudad" Visible="false"></asp:TextBox>
                                 <asp:TextBox ID="txtPais" runat="server" class="cajita" Placeholder="Pais" Visible="false"></asp:TextBox>
                             </div>
+                            <asp:Button Text="Guardar Direccion" ID="guardarDireccion" runat="server" class="btn btn-secondary" OnClick="guardarDireccion_Click" />
                         </div>
                         <div style="margin-top: 10px;">
-                            <asp:Button Text="Aceptar" runat="server" CssClass="btn btn-primary" ID="Aceptar" OnClick="Aceptar_Click" />
+                            <asp:Button Text="Aceptar" runat="server" class="btn btn-info" ID="Aceptar" OnClick="Aceptar_Click" />
                         </div>
                     </div>
                 </div>
