@@ -47,6 +47,10 @@
     <Compile Include="DatosDeArticulos.cs" />
     <Compile Include="DatosDeImagen.cs" />
     <Compile Include="DatosDireccionEnvio.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="DatosEnvios.cs" />
+>>>>>>> 6a4c2a6910850b387a72a656c2e995f17075ee4d
     <Compile Include="DatosMarca.cs" />
     <Compile Include="DatosTipoEnvios.cs" />
     <Compile Include="DatosTipoPagos.cs" />

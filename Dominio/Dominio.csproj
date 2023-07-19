@@ -48,6 +48,10 @@
     <Compile Include="CarroConArticulos.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="DireccionEnvio.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="Envios.cs" />
+>>>>>>> 6a4c2a6910850b387a72a656c2e995f17075ee4d
     <Compile Include="EstadoCarrito.cs" />
     <Compile Include="Imagen.cs" />
     <Compile Include="Marca.cs" />
@@ -55,7 +59,6 @@
     <Compile Include="TipoEnvios.cs" />
     <Compile Include="TipoPagos.cs" />
     <Compile Include="Usuario.cs" />
-    <Compile Include="Venta.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.editorconfig">
