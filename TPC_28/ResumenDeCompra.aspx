@@ -105,13 +105,18 @@
                                             <div class="col-md-3">
                                                 <img src='<%# Eval("Imagenes[0].ImageUrl") %>' alt="Imagen del producto <%#Eval("Nombre") %>" />
                                             </div>
-                                            <div class="col-md-6">
-                                                <p class="lead fw-normal mb-2"><%#Eval("Nombre") %></p>
-                                                <p><span class="text-muted">Categoría: </span><%#Eval("Categoria")%> <span class="text-muted">Marca: </span><%#Eval("Marca") %></p>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <span class="badge"><%#Eval("Cantidad") %></span>
-                                                <h5 class="mb-0">$<%#Eval("Precio") %></h5>
+                                            <div class="col-md-9">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <p class="lead fw-normal mb-2"><%#Eval("Nombre") %></p>
+                                                        <p><span class="text-muted">Marca: </span><%#Eval("Marca") %></p>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <p><span class="text-muted">Cantidad: </span><%#Eval("Cantidad") %></p>
+                                                        <p><span class="text-muted">Precio Unitario: </span><%#Eval("Precio") %></p>
+                                                        <p><span class="text-muted">Precio Total: </span><%# (Convert.ToDouble(Eval("Cantidad")) * Convert.ToDouble(Eval("Precio"))).ToString("0.00") %></p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -139,21 +144,21 @@
                             </div>
                         </div>
                         <div style="margin-top: 10px;">
-                            <asp:Label Text="Formulario de Envio:" runat="server" CssClass="total-label" />
+                            <asp:Label Text="Formulario de Envio:" runat="server" CssClass="total-label" Visible="false" />
                         </div>
                         <div cssclass="form-container">
 
                             <div style="margin-top: 10px;">
-                                <asp:TextBox ID="txtDomicilio" runat="server" class="cajita" Placeholder="Domicilio - Calle"></asp:TextBox>
-                                <asp:TextBox ID="txtNumero" runat="server" class="cajita" Placeholder="Numero"></asp:TextBox>
-                                <asp:TextBox ID="txtPiso" runat="server" class="cajita" Placeholder="Piso"></asp:TextBox>
-                                <asp:TextBox ID="txtDepartamento" runat="server" class="cajita" Placeholder="Departamento"></asp:TextBox>
+                                <asp:TextBox ID="txtDomicilio" runat="server" class="cajita" Placeholder="Domicilio - Calle" Visible="false"></asp:TextBox>
+                                <asp:TextBox ID="txtNumero" runat="server" class="cajita" Placeholder="Numero" Visible="false"></asp:TextBox>
+                                <asp:TextBox ID="txtPiso" runat="server" class="cajita" Placeholder="Piso" Visible="false"></asp:TextBox>
+                                <asp:TextBox ID="txtDepartamento" runat="server" class="cajita" Placeholder="Departamento" Visible="false"></asp:TextBox>
                             </div>
                             <div style="margin-top: 10px;">
 
-                                <asp:TextBox ID="txtCodigoPostal" runat="server" class="cajita" Placeholder="Codigo Postal"></asp:TextBox>
-                                <asp:TextBox ID="txtCiudad" runat="server" class="cajita" Placeholder="Ciudad"></asp:TextBox>
-                                <asp:TextBox ID="txtPais" runat="server" class="cajita" Placeholder="Pais"></asp:TextBox>
+                                <asp:TextBox ID="txtCodigoPostal" runat="server" class="cajita" Placeholder="Codigo Postal" Visible="false"></asp:TextBox>
+                                <asp:TextBox ID="txtCiudad" runat="server" class="cajita" Placeholder="Ciudad" Visible="false"></asp:TextBox>
+                                <asp:TextBox ID="txtPais" runat="server" class="cajita" Placeholder="Pais" Visible="false"></asp:TextBox>
                             </div>
                         </div>
                         <div style="margin-top: 10px;">
