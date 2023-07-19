@@ -63,7 +63,10 @@ namespace TPC_28
             }
         }
 
-     
+        protected void Aceptar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
     
 }

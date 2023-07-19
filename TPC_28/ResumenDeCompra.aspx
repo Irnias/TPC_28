@@ -59,6 +59,30 @@
             font-size: 14px;
             color: #333;
         }
+
+        .cajita {
+            width: 150px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .form-container {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+        }
+
+        .small-textbox {
+            width: 150px;
+            height: 20px;
+            padding: 5px;
+            font-size: 14px;
+        }
     </style>
 </asp:Content>
 
@@ -100,7 +124,7 @@
                                 <asp:Label ID="lblTotal" runat="server" CssClass="total-price"></asp:Label>
                             </div>
                         </div>
-                        <div style="border: 1px solid #ccc; padding: 10px; width: 500px; display:flex">
+                        <div style="border: 1px solid #ccc; padding: 10px; width: 500px; display: flex">
                             <div style="display: inline-block; border: 1px solid #ccc; padding: 10px; width: 240px;">
                                 <div class="mb-3">
                                     <asp:Label Text="Forma de pago" runat="server" CssClass="custom-label" />
@@ -114,10 +138,27 @@
                                 </div>
                             </div>
                         </div>
-                          <div>
-                                <asp:Button Text="Aceptar" runat="server" />
+                        <div style="margin-top: 10px;">
+                            <asp:Label Text="Formulario de Envio:" runat="server" CssClass="total-label" />
+                        </div>
+                        <div cssclass="form-container">
+
+                            <div style="margin-top: 10px;">
+                                <asp:TextBox ID="txtDomicilio" runat="server" class="cajita" Placeholder="Domicilio - Calle"></asp:TextBox>
+                                <asp:TextBox ID="txtNumero" runat="server" class="cajita" Placeholder="Numero"></asp:TextBox>
+                                <asp:TextBox ID="txtPiso" runat="server" class="cajita" Placeholder="Piso"></asp:TextBox>
+                                <asp:TextBox ID="txtDepartamento" runat="server" class="cajita" Placeholder="Departamento"></asp:TextBox>
                             </div>
-                       
+                            <div style="margin-top: 10px;">
+
+                                <asp:TextBox ID="txtCodigoPostal" runat="server" class="cajita" Placeholder="Codigo Postal"></asp:TextBox>
+                                <asp:TextBox ID="txtCiudad" runat="server" class="cajita" Placeholder="Ciudad"></asp:TextBox>
+                                <asp:TextBox ID="txtPais" runat="server" class="cajita" Placeholder="Pais"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <asp:Button Text="Aceptar" runat="server" CssClass="btn btn-primary" ID="Aceptar" OnClick="Aceptar_Click" />
+                        </div>
                     </div>
                 </div>
             </div>
