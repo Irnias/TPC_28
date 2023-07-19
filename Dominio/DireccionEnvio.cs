@@ -12,5 +12,11 @@
         public string CodigoPostal { get; set; }
         public string Ciudad { get; set; }
         public string Pais { get; set; }
+
+        public DireccionEnvio(int id, string desc)
+        {
+            Id = id;
+            Descripcion = desc;
+        }
     }
 }
