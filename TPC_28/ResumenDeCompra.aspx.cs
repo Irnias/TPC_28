@@ -15,7 +15,7 @@ namespace TPC_28
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             if (Session["usuario"] != null)
             {
                 Usuario usuario = (Usuario)Session["usuario"];
@@ -24,8 +24,32 @@ namespace TPC_28
                 List<ArticulosConDetalles> toShow = new List<ArticulosConDetalles>();
                 CarroConArticulos carro = Session["Cart"] as CarroConArticulos;
 
+                DatosTipoPagos tipos = new DatosTipoPagos();
+                List<TipoPagos> listar = tipos.Listar();
+
+                ddlFormaDePago.DataSource = listar;
+                ddlFormaDePago.DataValueField = "Id";
+                ddlFormaDePago.DataTextField = "Descripcion";
+                ddlFormaDePago.DataBind();
+
+                DatosTipoEnvios envio = new DatosTipoEnvios();
+                List<TipoEnvios> lista = envio.Listar();
+
+                ddlEnvio.DataSource = lista;
+                ddlEnvio.DataValueField = "Id";
+                ddlEnvio.DataTextField = "Descripcion";
+                ddlEnvio.DataBind();
+
                 if (carro != null)
                 {
+                    
+
+                    TipoEnvios envios = new TipoEnvios();
+                    ddlEnvio.SelectedValue = envios.Id.ToString();
+
+                    ddlEnvio.SelectedIndexChanged += ddlEnvio_SelectedIndexChanged;
+
+
                     foreach (var item in ListadoDeArticulos)
                     {
                         if (carro.tieneIdArticulo(item.ArtId))
@@ -66,6 +90,26 @@ namespace TPC_28
         protected void Aceptar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void ddlEnvio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlEnvio.SelectedValue == "1")
+            {
+                lblEnvio.Visible = true;
+            }
+            else if (ddlEnvio.SelectedValue == "2")
+            {
+                lblEnvio.Visible = false;
+
+                txtCiudad.Visible = true;
+                txtCodigoPostal.Visible = true;
+                txtDepartamento.Visible = true;
+                txtDomicilio.Visible = true;
+                txtNumero.Visible = true;
+                txtPais.Visible = true;
+                txtPiso.Visible = true;
+            }
         }
     }
     

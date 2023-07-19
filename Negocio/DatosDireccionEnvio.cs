@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Negocio
 {
-    internal class DatosDireccionEnvio
+    public class DatosDireccionEnvio
     {
         public List<DireccionEnvio> ListarPorUserId(int id)
         {

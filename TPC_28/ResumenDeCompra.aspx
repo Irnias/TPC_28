@@ -139,7 +139,8 @@
                             <div style="display: inline-block; border: 1px solid #ccc; padding: 10px; width: 240px;">
                                 <div class="mb-3">
                                     <asp:Label Text="Envio" runat="server" CssClass="custom-label" />
-                                    <asp:DropDownList ID="ddlEnvio" runat="server" CssClass="form-select" Style="width: 200px;"></asp:DropDownList>
+                                    <asp:DropDownList ID="ddlEnvio" runat="server" CssClass="form-select" Style="width: 200px;" AutoPostBack="true"  OnSelectedIndexChanged="ddlEnvio_SelectedIndexChanged" ></asp:DropDownList>
+                                    <asp:Label Text="Calle falsa 123" ID="lblEnvio" runat="server"/>
                                 </div>
                             </div>
                         </div>

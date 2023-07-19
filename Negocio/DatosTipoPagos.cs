@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Negocio
 {
-    internal class DatosTipoPagos
+    public class DatosTipoPagos
     {
         public List<TipoPagos> Listar()
         {
