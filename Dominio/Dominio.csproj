@@ -47,12 +47,15 @@
     <Compile Include="Carro.cs" />
     <Compile Include="CarroConArticulos.cs" />
     <Compile Include="Categoria.cs" />
+    <Compile Include="DireccionEnvio.cs" />
+    <Compile Include="Envios.cs" />
     <Compile Include="EstadoCarrito.cs" />
     <Compile Include="Imagen.cs" />
     <Compile Include="Marca.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoEnvios.cs" />
+    <Compile Include="TipoPagos.cs" />
     <Compile Include="Usuario.cs" />
-    <Compile Include="Venta.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.editorconfig">
