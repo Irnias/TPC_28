@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="ResumenDeCompra.aspx.cs" Inherits="TPC_28.ResumenDeCompra" %>
+
 <%@ MasterType VirtualPath="~/MasterPage.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -21,18 +22,18 @@
             padding: 20px;
         }
 
-        .card-body p {
-            margin-bottom: 10px;
-        }
+            .card-body p {
+                margin-bottom: 10px;
+            }
 
-        .card-body img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 4px;
-            display: block;
-            margin: 0 auto;
-            max-height: 100px;
-        }
+            .card-body img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 4px;
+                display: block;
+                margin: 0 auto;
+                max-height: 100px;
+            }
 
         .badge {
             background-color: #f0ad4e;
@@ -51,6 +52,13 @@
             font-size: 20px;
             color: #f0ad4e;
         }
+
+        .custom-label {
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: #333;
+        }
     </style>
 </asp:Content>
 
@@ -63,7 +71,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="mb-4">
-                            <h3 class="fw-normal mb-0 text-black">Resumen de compra</h3>
+                            <h3 class="fw-normal mb-0 text-black">Finalizar compra</h3>
                         </div>
                         <asp:Repeater runat="server" ID="repRepetidorCarrito">
                             <ItemTemplate>
@@ -92,6 +100,24 @@
                                 <asp:Label ID="lblTotal" runat="server" CssClass="total-price"></asp:Label>
                             </div>
                         </div>
+                        <div style="border: 1px solid #ccc; padding: 10px; width: 500px; display:flex">
+                            <div style="display: inline-block; border: 1px solid #ccc; padding: 10px; width: 240px;">
+                                <div class="mb-3">
+                                    <asp:Label Text="Forma de pago" runat="server" CssClass="custom-label" />
+                                    <asp:DropDownList ID="ddlFormaDePago" runat="server" CssClass="form-select" Style="width: 200px;"></asp:DropDownList>
+                                </div>
+                            </div>
+                            <div style="display: inline-block; border: 1px solid #ccc; padding: 10px; width: 240px;">
+                                <div class="mb-3">
+                                    <asp:Label Text="Envio" runat="server" CssClass="custom-label" />
+                                    <asp:DropDownList ID="ddlEnvio" runat="server" CssClass="form-select" Style="width: 200px;"></asp:DropDownList>
+                                </div>
+                            </div>
+                        </div>
+                          <div>
+                                <asp:Button Text="Aceptar" runat="server" />
+                            </div>
+                       
                     </div>
                 </div>
             </div>
