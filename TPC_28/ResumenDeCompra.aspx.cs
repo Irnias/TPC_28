@@ -128,25 +128,6 @@ namespace TPC_28
             ddlEnvio.DataBind();
         }
 
-
-        /*protected void Aceptar_Click(object sender, EventArgs e)
-        {
-            DireccionEnvio direccion = new DireccionEnvio();
-
-            direccion.Calle = txtDomicilio.Text ?? string.Empty;
-            direccion.Numero = int.TryParse(txtNumero.Text, out int numero) ? numero : 0;
-            direccion.Piso = int.TryParse(txtPiso.Text, out int piso) ? piso : 0;
-            direccion.Departamento = txtDepartamento.Text ?? string.Empty;
-            direccion.CodigoPostal = txtCodigoPostal.Text ?? string.Empty;
-            direccion.Ciudad = txtCiudad.Text ?? string.Empty;
-            direccion.Pais = txtPais.Text ?? string.Empty;
-
-            List<DireccionEnvio> listaDirecciones = new List<DireccionEnvio>();
-            listaDirecciones.Add(direccion);
-
-            Session["listaDirecciones"] = listaDirecciones;
-        }*/
-
         protected void Aceptar_Click(object sender, EventArgs e)
         {
             try
@@ -180,6 +161,11 @@ namespace TPC_28
 
                     Session["FormaEnvioId"] = formaEnvioId;
 
+                    CarroConArticulos currentCart = Session["Cart"] as CarroConArticulos;
+                    if (currentCart != null)
+                    {
+                        currentCart.limpiarCarrito();
+                    }
 
                     datosDireccion.NuevaDireccionDeEnvio(direccion);
 

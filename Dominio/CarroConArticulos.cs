@@ -68,6 +68,11 @@ namespace Dominio
         {
             return obtenerArticulo(id).Cantidad;
         }
+
+        public void limpiarCarrito()
+        {
+            ArtList.Clear(); // Vaciar la lista de artículos del carrito
+        }
     }
 }
 

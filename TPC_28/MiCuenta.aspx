@@ -72,7 +72,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <h6 class="label-linda">Info de Envio</h6>
+                <h6 class="label-linda">Info/Dirección de Envio</h6>
                 <asp:Label Text="Calle : " ID="lblCalle" runat="server" CssClass="label-linda" Visible="false" />
                 <asp:Label Text="Número : " ID="lblNumero" runat="server" CssClass="label-linda" Visible="false" />
                 <asp:Label Text="Ciudad : " ID="lblCiudad" runat="server" CssClass="label-linda" Visible="false" />
@@ -91,7 +91,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="mb-4">
-                        <h3 class="label-linda">Productos en tu carrito</h3>
+                        <h3 class="label-linda">Productos que compraste ! </h3>
                     </div>
                     <asp:Repeater runat="server" ID="repRepetidor">
                         <ItemTemplate>
