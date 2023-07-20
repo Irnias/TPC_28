@@ -18,6 +18,7 @@ namespace TPC_28
 
                 if (Session["usuario"] != null)
                 {
+                    Compra = new Compra();
                     Usuario usuario = (Usuario)Session["usuario"];
                     DatosDeArticulos conector = new DatosDeArticulos();
                     ListadoDeArticulos = conector.obtenerArticulosConDetalles();
@@ -58,7 +59,7 @@ namespace TPC_28
 
                         Compra.PrecioTotal = total;
                         CargarCarritoACompra(toShow);
-
+                        Session.Add("Compra", Compra);
                         lblTotal.Text = total.ToString("0.00");
 
                         if (carro != null)
@@ -147,6 +148,7 @@ namespace TPC_28
             {
                 if (Session["usuario"] is Usuario usuario)
                 {
+                    Compra = Session["Compra"] as Compra;
                     DatosDireccionEnvio datosDireccion = new DatosDireccionEnvio();
 
                     DireccionEnvio direccion = new DireccionEnvio
@@ -187,7 +189,7 @@ namespace TPC_28
                     Compra.Pago = pago;
                     Compra.Envio = envio;
                     Compra.Usuario = usuario;
-                    Compra.Estado = "Pendiente";
+                    Compra.Estado = Estado.Pendiente;
 
                     Response.Redirect("MiCuenta.aspx");
                 }

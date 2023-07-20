@@ -42,8 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoDatos.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="DatosCategoria.cs" />
+    <Compile Include="DatosCompra.cs" />
     <Compile Include="DatosDeArticulos.cs" />
     <Compile Include="DatosDeImagen.cs" />
     <Compile Include="DatosDireccionEnvio.cs" />
