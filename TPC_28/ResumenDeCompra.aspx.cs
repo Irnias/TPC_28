@@ -151,11 +151,18 @@ namespace TPC_28
 
                     usuario.DireccionEnvio = direccion;
 
-                    Session["usuario"] = usuario;
+
+                    DatosTipoPagos datosPagos = new DatosTipoPagos();
 
                     int formaPagoId = int.Parse(ddlFormaDePago.SelectedValue);
 
                     Session["FormaPagoId"] = formaPagoId;
+
+                    string descripcionPago = ddlFormaDePago.SelectedItem.Text;
+           
+                    datosPagos.NuevoTipoDePago(descripcionPago);
+
+                    Session["usuario"] = usuario;
 
                     int formaEnvioId = int.Parse(ddlEnvio.SelectedValue);
 

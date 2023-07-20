@@ -15,6 +15,7 @@
         public TipoUsuario TipoUsuario { get; set; }
         public Carro Carro { get; set; }
         public DireccionEnvio DireccionEnvio { get; set; }
+        public TipoPagos pagos { get; set; }
 
 
 
