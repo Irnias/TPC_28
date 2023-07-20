@@ -53,13 +53,6 @@ namespace TPC_28
                         repRepetidorCarrito.DataSource = toShow;
                         repRepetidorCarrito.DataBind();
 
-                        /*  TipoEnvios envios = new TipoEnvios();
-                          ddlEnvio.SelectedValue = envios.Id.ToString();
-                        */
-
-
-                        // ddlEnvio.SelectedIndexChanged += ddlEnvio_SelectedIndexChanged;
-
 
                         decimal total = 0;
                         foreach (var item in toShow)
@@ -159,10 +152,7 @@ namespace TPC_28
             try
             {
                 if (Session["usuario"] is Usuario usuario)
-                {
-
-                    int formaPagoId = int.Parse(ddlFormaDePago.SelectedValue);
-                    
+                {                    
                     DatosDireccionEnvio datosDireccion = new DatosDireccionEnvio();
 
                     DireccionEnvio direccion = new DireccionEnvio
@@ -182,9 +172,14 @@ namespace TPC_28
 
                     Session["usuario"] = usuario;
 
+                    int formaPagoId = int.Parse(ddlFormaDePago.SelectedValue);
+
+                    Session["FormaPagoId"] = formaPagoId;
+
                     int formaEnvioId = int.Parse(ddlEnvio.SelectedValue);
 
                     Session["FormaEnvioId"] = formaEnvioId;
+
 
                     datosDireccion.NuevaDireccionDeEnvio(direccion);
 
