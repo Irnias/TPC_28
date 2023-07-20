@@ -49,6 +49,7 @@
     <Compile Include="DatosDireccionEnvio.cs" />
     <Compile Include="DatosEnvios.cs" />
     <Compile Include="DatosMarca.cs" />
+    <Compile Include="DatosPagos.cs" />
     <Compile Include="DatosTipoEnvios.cs" />
     <Compile Include="DatosTipoPagos.cs" />
     <Compile Include="EmailService.cs" />
