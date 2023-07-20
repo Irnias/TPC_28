@@ -1,6 +1,7 @@
 ﻿using Dominio;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Negocio
 {
@@ -51,5 +52,47 @@ namespace Negocio
                 db.Cerrar();
             }
         }
+        public int NuevoEnvio(Envio e)
+        {
+            AccesoDatos db = new AccesoDatos();
+            try
+            {
+                int dirID = (e.DireccionEnvio is null) ? 1 : e.DireccionEnvio.Id;
+                db.setQuery("INSERT INTO Envios (CodigoEnvio,TipoEnvio,DireccionEnvio,Usuario,Estado) OUTPUT Inserted.IdEnvio VALUES (@CodigoEnvio,@TipoEnvio,@DireccionEnvio,@Usuario,@Estado)");
+                db.setearParametro("@CodigoEnvio", this.GenerarCodigoEnvio());
+                db.setearParametro("@TipoEnvio", e.TipoEnvios.Id);
+                db.setearParametro("@DireccionEnvio", dirID);
+                db.setearParametro("@Usuario", e.Usuario.UserId);
+                db.setearParametro("@Estado", EstadoEnvio.Pendiente);
+
+                return db.EjecutarEscalar();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                db.Cerrar();
+            }
+        }
+
+        public string GenerarCodigoEnvio()
+        {
+            StringBuilder sb = new StringBuilder(5);
+            Random random = new Random();
+            string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+            for (int i = 0; i < 5; i++)
+            {
+                int randomIndex = random.Next(characters.Length);
+                char randomChar = characters[randomIndex];
+                sb.Append(randomChar);
+            }
+
+            return sb.ToString();
+        }
+
     }
 }

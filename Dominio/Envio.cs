@@ -1,5 +1,16 @@
 ﻿namespace Dominio
 {
+    public enum FormaEnvio
+    {
+        Retiro = 1,
+        Domicilio = 2,
+    }
+    public enum EstadoEnvio
+    {
+        Pendiente,
+        EnCamino,
+        Entregago
+    }
     public class Envio
     {
         public int Id { get; set; }

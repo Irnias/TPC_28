@@ -44,13 +44,12 @@ namespace Negocio
                 db.Cerrar();
             }
         }
-        public void NuevaDireccionDeEnvio(DireccionEnvio DirEnvio)
+        public int NuevaDireccionDeEnvio(DireccionEnvio DirEnvio)
         {
             AccesoDatos db = new AccesoDatos();
             try
             {
-
-                db.setQuery("INSERT INTO DireccionEnvio (Descripcion,  Calle,  Numero,  Piso,  Departamento,  CodigoPostal,  Ciudad,  Pais) values " +
+                db.setQuery("INSERT INTO DireccionEnvio (Descripcion,  Calle,  Numero,  Piso,  Departamento,  CodigoPostal,  Ciudad,  Pais)  OUTPUT Inserted.IdDireccionEnvio values " +
                                                       "(@Descripcion, @Calle, @Numero, @Piso, @Departamento, @CodigoPostal, @Ciudad, @Pais)");
 
                 db.setearParametro("@Descripcion", DirEnvio.Descripcion);
@@ -61,7 +60,7 @@ namespace Negocio
                 db.setearParametro("@CodigoPostal", DirEnvio.CodigoPostal);
                 db.setearParametro("@Ciudad", DirEnvio.Ciudad);
                 db.setearParametro("@Pais", DirEnvio.Pais);
-                db.ejecutar();
+                return db.EjecutarEscalar();
             }
             catch (Exception ex)
             {

@@ -16,8 +16,11 @@ namespace Negocio
                 db.Cerrar();
                 db.ClearQuery();
 
+                DatosEnvios datos = new DatosEnvios();
+                int IdEnvio = datos.NuevoEnvio(compra.Envio);
+
                 db.setQuery("INSERT INTO Compras (Envio,Pago,Usuario,PrecioTotal,Estado) OUTPUT Inserted.IdCompra VALUES (@EnvioId,@PagoId,@UsuarioId,@PrecioTotal,@Estado)");
-                db.setearParametro("@EnvioId", compra.Envio.Id);
+                db.setearParametro("@EnvioId", IdEnvio);
                 db.setearParametro("@PagoId", idNuevoPago);
                 db.setearParametro("@UsuarioId", compra.Usuario.UserId);
                 db.setearParametro("@PrecioTotal", compra.PrecioTotal);
