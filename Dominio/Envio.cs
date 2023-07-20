@@ -8,5 +8,14 @@
         public DireccionEnvio DireccionEnvio { get; set; }
         public Usuario Usuario { get; set; }
         public string Estado { get; set; }
+
+        public Envio(string codigoEnvio)
+        {
+            CodigoEnvio = codigoEnvio;
+        }
+        public Envio()
+        {
+
+        }
     }
 }

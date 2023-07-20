@@ -1,4 +1,6 @@
 ﻿using Dominio;
+using System;
+using System.Collections.Generic;
 
 namespace Negocio
 {
@@ -48,6 +50,49 @@ namespace Negocio
             }
         }
 
+        public List<Compra> Listar()
+
+        {
+            List<Compra> listaCompra = new List<Compra>();
+            AccesoDatos accesoNuevo = new AccesoDatos();
+
+            try
+            {
+                accesoNuevo.setQuery("SELECT  C.IdCompra, C.PrecioTotal, C.Estado AS EstadoCompra, E.CodigoEnvio, E.DireccionEnvio AS IdDireccionEnvio, P.TipoPago FROM Compras C LEFT JOIN Envios E ON C.Envio = E.IdEnvio LEFT JOIN Pagos P ON C.Pago = P.IdPago; ");
+                accesoNuevo.ejecutar();
+
+                while (accesoNuevo.sqlLector.Read())
+                {
+                    Compra compra = new Compra();
+
+                    compra.IdCompra = (!(accesoNuevo.sqlLector["Id"] is DBNull)) ? (int)accesoNuevo.sqlLector["artId"] : 0;
+                    compra.InfoExtra = (!(accesoNuevo.sqlLector["Info"] is DBNull)) ? (string)accesoNuevo.sqlLector["Info"] : "";
+                    compra.Envio = new Envio
+                    (
+                        (!(accesoNuevo.sqlLector["CodigoEnvio"] is DBNull)) ? (string)accesoNuevo.sqlLector["CodigoEnvio"] : ""
+
+                    );
+                    compra.Envio.DireccionEnvio = new DireccionEnvio
+                    (
+                     (!(accesoNuevo.sqlLector["NumeroDireccion"] is DBNull)) ? (int)accesoNuevo.sqlLector["NumeroDireccion"] : 0,
+                     (!(accesoNuevo.sqlLector["CalleDireccion"] is DBNull)) ? (string)accesoNuevo.sqlLector["CalleDireccion"].ToString() : ""
+                    );
+                    compra.Pago = new Pago(
+                      (!(accesoNuevo.sqlLector["TipoPago"] is DBNull)) ? (int)accesoNuevo.sqlLector["TipoPago"] : 0
+
+                    );
+
+                    listaCompra.Add(compra);
+                }
+
+                return listaCompra;
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
         public void PasarCompraAPagago(int IdCompra)
         {
 

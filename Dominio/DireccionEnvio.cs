@@ -23,5 +23,10 @@
         {
 
         }
+        public DireccionEnvio(string c, int num)
+        {
+            Calle = c;
+            Numero = num;
+        }
     }
 }
