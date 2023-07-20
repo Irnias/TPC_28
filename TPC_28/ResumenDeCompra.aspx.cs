@@ -179,7 +179,16 @@ namespace TPC_28
                     Session["FormaEnvioId"] = formaEnvioId;
 
                     Envio envio = new Envio();
-                    envio.Id = formaEnvioId;
+                    if (formaEnvioId == (int)FormaEnvio.Domicilio)
+                    {
+                        int idDireccionEnvio = datosDireccion.NuevaDireccionDeEnvio(direccion);
+                        direccion.Id = idDireccionEnvio;
+                        envio.DireccionEnvio = direccion;
+                    }
+                    envio.Usuario = usuario;
+                    TipoEnvios tipoEnvio = new TipoEnvios();
+                    tipoEnvio.Id = formaEnvioId;
+                    envio.TipoEnvios = tipoEnvio;
 
                     Compra.Pago = pago;
                     Compra.Envio = envio;
@@ -188,6 +197,8 @@ namespace TPC_28
 
                     DatosCompra datosCompra = new DatosCompra();
                     datosCompra.GuardarCompra(Compra);
+                    Session["Cart"] = "";
+                    Session["Compra"] = "";
                     Response.Redirect("MiCuenta.aspx");
                 }
             }
