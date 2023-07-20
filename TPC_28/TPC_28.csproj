@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AgregarArticulos.aspx" />
+    <Content Include="ListadoDeTiposDePago.aspx" />
     <Content Include="MiCuenta.aspx" />
     <Content Include="ArtDetalles.aspx" />
     <Content Include="Carrito.aspx" />
@@ -108,6 +109,13 @@
     </Compile>
     <Compile Include="AgregarArticulos.aspx.designer.cs">
       <DependentUpon>AgregarArticulos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListadoDeTiposDePago.aspx.cs">
+      <DependentUpon>ListadoDeTiposDePago.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListadoDeTiposDePago.aspx.designer.cs">
+      <DependentUpon>ListadoDeTiposDePago.aspx</DependentUpon>
     </Compile>
     <Compile Include="MiCuenta.aspx.cs">
       <DependentUpon>MiCuenta.aspx</DependentUpon>
