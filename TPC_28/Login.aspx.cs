@@ -31,11 +31,16 @@ namespace TPC_28
                 usuario.Contrasenia = txtContrasenia.Text;
 
                 usuario = usuarioNegocio.Logear(usuario);
-                if (usuario.UserId > 0)
+                if (usuario.UserId > 0 && usuario.TipoUsuario != TipoUsuario.SuperAdmin)
                 {
                     Session.Add("usuario", usuario);
                     Response.Redirect("MiCuenta.aspx", false);
 
+                }
+                else if (usuario.UserId > 0 && usuario.TipoUsuario == TipoUsuario.SuperAdmin)
+                {
+                    Session.Add("usuario", usuario);
+                    Response.Redirect("MisVentas.aspx", false);
                 }
                 else
                 {
