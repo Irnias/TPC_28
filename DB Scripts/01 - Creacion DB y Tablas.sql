@@ -22,6 +22,7 @@ Create Table Imagenes(
 	ImagenUrl varchar(1000) not null
 )
 GO
+	
 
 Create Table Usuarios(
 	UserId int not null primary key identity(1,1),
@@ -30,8 +31,6 @@ Create Table Usuarios(
 	Mail varchar(60),
 	Contrasenia varchar(30),
 )
-ALTER TABLE Usuarios
-ADD TipoUsuario INT;
 GO 
 
 Create Table Calificaciones(
@@ -100,7 +99,62 @@ as
 	DELETE FROM Articulos WHERE IdArticulo = @id 
 GO
 
-insert into Usuarios (Nombre, Apellido, Mail,Contrasenia, TipoUsuario)
-values 
-('Ramiro', 'DAccorso', 'ramiro.daccorso@gmail.com','123456',99),
-('User', 'Comprador', 'montoto@mail.com','123456',1)
+ALTER TABLE Usuarios
+ADD TipoUsuario INT;
+
+GO
+CREATE TABLE TipoEnvios (
+    IdTipoEnvio int not null primary key identity (1,1),
+    Descripcion varchar(50)
+);
+
+CREATE TABLE TipoPagos (
+    IdTipoPago int not null primary key identity (1,1),
+    Descripcion varchar(50)
+);
+
+CREATE TABLE DireccionEnvio (
+    IdDireccionEnvio int not null primary key identity (1,1),
+    Usuario int null foreign key references Usuarios(UserId),
+    Descripcion varchar(50) null,
+    Calle varchar(50) not null,
+    Numero int not null,
+    Piso int null,
+    Departamento varchar(6) null,
+    CodigoPostal varchar(6) not null,
+    Ciudad varchar(50) not null,
+    Pais varchar(50) not null
+);
+
+CREATE TABLE Envios (
+    IdEnvio int not null primary key identity (1,1),
+    CodigoEnvio varchar(5),
+    TipoEnvio int not null foreign key references TipoEnvios(IdTipoEnvio),
+    DireccionEnvio int not null foreign key references DireccionEnvio(IdDireccionEnvio),
+    Usuario int null foreign key references Usuarios(UserId),
+    Estado varchar(50)
+);
+
+CREATE TABLE Pagos (
+    IdPago int not null primary key identity (1,1),
+    TipoPago int not null foreign key references TipoPagos(IdTipoPago),
+    Estado varchar(50)
+);
+
+CREATE TABLE Compras (
+    IdCompra int not null primary key identity (1,1),
+    InfoExtra varchar(150),
+    Envio int null foreign key references Envios(IdEnvio),
+    Pago int null foreign key references Pagos(IdPago),
+    Usuario int null foreign key references Usuarios(UserId),
+    PrecioTotal money not null,
+    Estado varchar(50)
+);
+
+CREATE TABLE ProductosCompra (
+    IdProductosCompra int not null primary key identity (1,1),
+    Compra int null foreign key references Compras(IdCompra),
+    Articulo int null foreign key references Articulos(IdArticulo),
+    Cant int NOT NULL,
+    PrecioCobrado money NOT NULL
+);

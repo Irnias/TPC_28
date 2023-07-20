@@ -38,7 +38,7 @@ namespace Negocio
             }
         }
 
-        public void NuevoTipoDeEnvio(string Nombre)
+        public void NuevoTipoDePago(string Nombre)
         {
             AccesoDatos db = new AccesoDatos();
             try

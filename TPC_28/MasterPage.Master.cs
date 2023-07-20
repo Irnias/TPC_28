@@ -43,11 +43,10 @@ namespace TPC_28
                         <a class='nav-link dropdown-toggle' href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false'>Configuraciones
                         </a>
                         <ul class='dropdown-menu'>
-                            <li>
-                                <a class='dropdown-item' href='ListadoDeArticulos.aspx'>Listado De Articulos</a>
-                            </li>
+                            <li><a class='dropdown-item' href='ListadoDeArticulos.aspx'>Listado De Articulos</a></li>
                             <li><a class='dropdown-item' href='ListadoDeMarcas.aspx'>Marcas</a></li>
                             <li><a class='dropdown-item' href='ListadoDeCategorias.aspx'>Categorias</a></li>
+                            <li><a class='dropdown-item' href='ListadoDeTiposDePago.aspx'>Tipos De Envio</a></li>
                             <li><a class='dropdown-item' href='#'>Usuarios</a></li>
                         </ul>
                     </li>";
