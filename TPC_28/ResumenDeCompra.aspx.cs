@@ -161,12 +161,6 @@ namespace TPC_28
 
                     Session["FormaEnvioId"] = formaEnvioId;
 
-                    CarroConArticulos currentCart = Session["Cart"] as CarroConArticulos;
-                    if (currentCart != null)
-                    {
-                        currentCart.limpiarCarrito();
-                    }
-
                     datosDireccion.NuevaDireccionDeEnvio(direccion);
 
                     Response.Redirect("MiCuenta.aspx");
