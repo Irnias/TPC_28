@@ -160,8 +160,8 @@
                                 <asp:TextBox ID="txtCodigoPostal" runat="server" class="cajita" Placeholder="Codigo Postal" Visible="false"></asp:TextBox>
                                 <asp:TextBox ID="txtCiudad" runat="server" class="cajita" Placeholder="Ciudad" Visible="false"></asp:TextBox>
                                 <asp:TextBox ID="txtPais" runat="server" class="cajita" Placeholder="Pais" Visible="false"></asp:TextBox>
+                                <asp:TextBox ID="txtDescripcion" runat="server" class="cajita" Placeholder="Descripcion" Visible="false"></asp:TextBox>
                             </div>
-                            <asp:Button Text="Guardar Direccion" ID="guardarDireccion" runat="server" class="btn btn-secondary" OnClick="guardarDireccion_Click" />
                         </div>
                         <div style="margin-top: 10px;">
                             <asp:Button Text="Aceptar" runat="server" class="btn btn-info" ID="Aceptar" OnClick="Aceptar_Click" />

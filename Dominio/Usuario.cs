@@ -14,6 +14,8 @@
         public string Mail { get; set; }
         public TipoUsuario TipoUsuario { get; set; }
         public Carro Carro { get; set; }
+        public DireccionEnvio DireccionEnvio { get; set; }
+
 
 
         public Usuario(string Nom, string Ape, string Pass, string Email)

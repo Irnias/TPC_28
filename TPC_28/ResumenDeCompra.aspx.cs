@@ -27,11 +27,16 @@ namespace TPC_28
                     List<ArticulosConDetalles> toShow = new List<ArticulosConDetalles>();
                     CarroConArticulos carro = Session["Cart"] as CarroConArticulos;
 
+                    //
+                    DireccionEnvio direccion = new DireccionEnvio();
+                    direccion.Usuario = usuario;
+
+                    Session["direccionEnvio"] = direccion;
 
                     RecargarFormaDePago();
                     RecargarFormaDeEnvio();
 
-               
+
                     if (carro != null)
                     {
 
@@ -48,12 +53,12 @@ namespace TPC_28
                         repRepetidorCarrito.DataSource = toShow;
                         repRepetidorCarrito.DataBind();
 
-                      /*  TipoEnvios envios = new TipoEnvios();
-                        ddlEnvio.SelectedValue = envios.Id.ToString();
-                      */
+                        /*  TipoEnvios envios = new TipoEnvios();
+                          ddlEnvio.SelectedValue = envios.Id.ToString();
+                        */
 
 
-                       // ddlEnvio.SelectedIndexChanged += ddlEnvio_SelectedIndexChanged;
+                        // ddlEnvio.SelectedIndexChanged += ddlEnvio_SelectedIndexChanged;
 
 
                         decimal total = 0;
@@ -130,28 +135,68 @@ namespace TPC_28
             ddlEnvio.DataBind();
         }
 
-        protected void guardarDireccion_Click(object sender, EventArgs e)
+
+        /*protected void Aceptar_Click(object sender, EventArgs e)
         {
             DireccionEnvio direccion = new DireccionEnvio();
 
-            direccion.Calle = txtDomicilio.Text;
-            direccion.Numero = int.Parse(txtNumero.Text);
-            direccion.Piso = int.Parse(txtPiso.Text);
-            direccion.Departamento = txtDepartamento.Text;
-            direccion.CodigoPostal = txtCodigoPostal.Text;
-            direccion.Ciudad = txtCiudad.Text;
-            direccion.Pais = txtPais.Text;
+            direccion.Calle = txtDomicilio.Text ?? string.Empty;
+            direccion.Numero = int.TryParse(txtNumero.Text, out int numero) ? numero : 0;
+            direccion.Piso = int.TryParse(txtPiso.Text, out int piso) ? piso : 0;
+            direccion.Departamento = txtDepartamento.Text ?? string.Empty;
+            direccion.CodigoPostal = txtCodigoPostal.Text ?? string.Empty;
+            direccion.Ciudad = txtCiudad.Text ?? string.Empty;
+            direccion.Pais = txtPais.Text ?? string.Empty;
 
             List<DireccionEnvio> listaDirecciones = new List<DireccionEnvio>();
             listaDirecciones.Add(direccion);
 
             Session["listaDirecciones"] = listaDirecciones;
+        }*/
 
-        }
         protected void Aceptar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (Session["usuario"] is Usuario usuario)
+                {
 
+                    int formaPagoId = int.Parse(ddlFormaDePago.SelectedValue);
+                    
+                    DatosDireccionEnvio datosDireccion = new DatosDireccionEnvio();
+
+                    DireccionEnvio direccion = new DireccionEnvio
+                    {
+                        Usuario = usuario,
+                        Calle = txtDomicilio.Text ?? string.Empty,
+                        Numero = int.TryParse(txtNumero.Text, out int numero) ? numero : 0,
+                        Piso = int.TryParse(txtPiso.Text, out int piso) ? piso : 0,
+                        Departamento = txtDepartamento.Text ?? string.Empty,
+                        CodigoPostal = txtCodigoPostal.Text ?? string.Empty,
+                        Ciudad = txtCiudad.Text ?? string.Empty,
+                        Pais = txtPais.Text ?? string.Empty,
+                        Descripcion = txtDescripcion.Text ?? string.Empty
+                    };
+
+                    usuario.DireccionEnvio = direccion;
+
+                    Session["usuario"] = usuario;
+
+                    int formaEnvioId = int.Parse(ddlEnvio.SelectedValue);
+
+                    Session["FormaEnvioId"] = formaEnvioId;
+
+                    datosDireccion.NuevaDireccionDeEnvio(direccion);
+
+                    Response.Redirect("MiCuenta.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
-    }
+    }  
 
 }
+
