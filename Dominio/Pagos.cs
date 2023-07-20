@@ -8,9 +8,9 @@ namespace Dominio
 {
     public class Pagos
     {
-        int idPago { get; set; }
-        int tipoPago { get; set; }
-        string estado { get; set; }
+       public int idPago { get; set; }
+        public int tipoPago { get; set; }
+        public string estado { get; set; }
 
     }
 }

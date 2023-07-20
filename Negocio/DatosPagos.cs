@@ -24,7 +24,7 @@ namespace Negocio
                     Pagos pagos = new Pagos();
                     pagos.idPago = (int)accesoNuevo.sqlLector["Id"];
                     pagos.tipoPago = (int)accesoNuevo.sqlLector["Tipo"];
-                    pagos.estado = (string)accesoNuevo.sqlLector["Estado"]
+                    pagos.estado = (string)accesoNuevo.sqlLector["Estado"];
 
                     listaPagos.Add(pagos);
                 }
