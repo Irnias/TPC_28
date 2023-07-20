@@ -166,13 +166,9 @@ namespace TPC_28
 
                     usuario.DireccionEnvio = direccion;
 
-
-                    DatosTipoPagos datosPagos = new DatosTipoPagos();
-
                     int formaPagoId = int.Parse(ddlFormaDePago.SelectedValue);
                     Session["FormaPagoId"] = formaPagoId;
                     string descripcionPago = ddlFormaDePago.SelectedItem.Text;
-                    datosPagos.NuevoTipoDePago(descripcionPago);
 
                     Pago pago = new Pago();
                     pago.tipoPago = formaPagoId;
@@ -181,7 +177,6 @@ namespace TPC_28
 
                     int formaEnvioId = int.Parse(ddlEnvio.SelectedValue);
                     Session["FormaEnvioId"] = formaEnvioId;
-                    datosDireccion.NuevaDireccionDeEnvio(direccion);
 
                     Envio envio = new Envio();
                     envio.Id = formaEnvioId;
@@ -191,6 +186,8 @@ namespace TPC_28
                     Compra.Usuario = usuario;
                     Compra.Estado = Estado.Pendiente;
 
+                    DatosCompra datosCompra = new DatosCompra();
+                    datosCompra.GuardarCompra(Compra);
                     Response.Redirect("MiCuenta.aspx");
                 }
             }

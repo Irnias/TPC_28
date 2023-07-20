@@ -34,7 +34,7 @@ namespace Negocio
             }
             finally
             {
-                accesoNuevo.cerrar();
+                accesoNuevo.Cerrar();
             }
         }
 
@@ -57,7 +57,7 @@ namespace Negocio
             }
             finally
             {
-                accesoNuevo.cerrar();
+                accesoNuevo.Cerrar();
             }
         }
 
@@ -81,7 +81,7 @@ namespace Negocio
             }
             finally
             {
-                accesoNuevo.cerrar();
+                accesoNuevo.Cerrar();
             }
         }
     }

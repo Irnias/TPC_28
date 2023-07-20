@@ -34,7 +34,7 @@ namespace Negocio
             }
             finally
             {
-                db.cerrar();
+                db.Cerrar();
             }
         }
 
@@ -57,7 +57,7 @@ namespace Negocio
             }
             finally
             {
-                db.cerrar();
+                db.Cerrar();
             }
         }
 
@@ -81,7 +81,7 @@ namespace Negocio
             }
             finally
             {
-                db.cerrar();
+                db.Cerrar();
             }
         }
     }

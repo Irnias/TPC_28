@@ -14,6 +14,11 @@ namespace TPC_28
             {
                 Response.Redirect("Inicio.aspx", false);
             }
+            CarroConArticulos currentCart = Session["Cart"] as CarroConArticulos;
+            if (currentCart != null)
+            {
+                ((TPC_28.MasterPage)(base.Master)).UpdateCartItemCount(currentCart.GetTotalItems());
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)

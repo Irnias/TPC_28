@@ -6,7 +6,8 @@ namespace Dominio
     {
         Pendiente,
         EnProceso,
-        Completado
+        Completado,
+        Eliminado,
     }
 
     public class Compra

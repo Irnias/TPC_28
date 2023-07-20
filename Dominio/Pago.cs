@@ -1,5 +1,12 @@
 ﻿namespace Dominio
 {
+    public enum EstadoPago
+    {
+        Pendiente,
+        Pagado,
+        Rechazado,
+        Devuelto
+    }
     public class Pago
     {
         public int idPago { get; set; }

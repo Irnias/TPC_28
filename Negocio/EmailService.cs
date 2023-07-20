@@ -39,7 +39,7 @@ namespace Negocio
             }
             finally
             {
-                db.cerrar();
+                db.Cerrar();
             }
 
             Mail = new MailMessage();

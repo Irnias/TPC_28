@@ -41,7 +41,7 @@ namespace Negocio
             }
             finally
             {
-                db.cerrar();
+                db.Cerrar();
             }
         }
         public void NuevaDireccionDeEnvio(DireccionEnvio DirEnvio)
@@ -70,7 +70,7 @@ namespace Negocio
             }
             finally
             {
-                db.cerrar();
+                db.Cerrar();
             }
         }
 

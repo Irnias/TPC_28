@@ -26,7 +26,7 @@ namespace Negocio
             }
             finally
             {
-                d.cerrar();
+                d.Cerrar();
             }
 
             return true;
@@ -57,7 +57,7 @@ namespace Negocio
             }
             finally
             {
-                d.cerrar();
+                d.Cerrar();
             }
             return new Usuario();
         }
@@ -82,7 +82,7 @@ namespace Negocio
             }
             finally
             {
-                d.cerrar();
+                d.Cerrar();
             }
         }
     }

@@ -35,6 +35,11 @@ namespace Negocio
             comando.Parameters.AddWithValue(nombre, valor);
         }
 
+        public void ClearParametro()
+        {
+            comando.Parameters.Clear();
+        }
+
         public void ClearQuery()
         {
             comando.CommandText = "";
@@ -53,6 +58,22 @@ namespace Negocio
                 throw ex;
             }
 
+        }
+        public int EjecutarEscalar()
+        {
+            comando.Connection = conexion;
+            try
+            {
+                conexion.Open();
+                int entityId = (int)comando.ExecuteScalar();
+                conexion.Close();
+                return entityId;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public SqlDataReader sqlLector
@@ -77,11 +98,12 @@ namespace Negocio
         }
 
 
-        public void cerrar()
+        public void Cerrar()
         {
             if (lector != null)
                 lector.Close();
             conexion.Close();
         }
+
     }
 }

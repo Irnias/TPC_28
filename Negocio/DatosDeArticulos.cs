@@ -67,7 +67,7 @@ namespace Negocio
             }
             finally
             {
-                data.cerrar();
+                data.Cerrar();
             }
         }
 

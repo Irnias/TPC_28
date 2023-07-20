@@ -33,7 +33,7 @@ namespace Negocio
             }
             finally
             {
-                datos.cerrar();
+                datos.Cerrar();
             }
         }
 
@@ -92,7 +92,7 @@ namespace Negocio
             }
             finally
             {
-                datos.cerrar();
+                datos.Cerrar();
             }
         }
 

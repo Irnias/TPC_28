@@ -48,7 +48,7 @@ namespace Negocio
             }
             finally
             {
-                db.cerrar();
+                db.Cerrar();
             }
         }
     }
