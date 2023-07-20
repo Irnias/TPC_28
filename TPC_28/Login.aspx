@@ -39,6 +39,7 @@
 
           <div class="d-flex justify-content-between align-items-center">
             <a href="#!" class="text-body">Olvidste tu contraseña?</a>
+            <asp:LinkButton runat="server" OnClick="btnOlvidePass_Click" CssClass="text-body" Text="Olvidste tu contraseña?" />
           </div>
 
           <div class="text-center text-lg-start mt-4 pt-2">

@@ -51,6 +51,7 @@
     <Compile Include="DatosMarca.cs" />
     <Compile Include="DatosTipoEnvios.cs" />
     <Compile Include="DatosTipoPagos.cs" />
+    <Compile Include="EmailService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsuarioNegocio.cs" />
   </ItemGroup>

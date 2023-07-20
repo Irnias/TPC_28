@@ -46,5 +46,20 @@ namespace TPC_28
 
             }
         }
+
+        protected void btnOlvidePass_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                EmailService emailService = new EmailService();
+                emailService.CrearMail("ramiro.daccorso@gmail.com", "AA", "PROBANDO");
+                emailService.EnviarMail();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
