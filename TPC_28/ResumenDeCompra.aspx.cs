@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Dominio;
+﻿using Dominio;
 using Negocio;
+using System;
+using System.Collections.Generic;
 
 namespace TPC_28
 {
     public partial class ResumenDeCompra : System.Web.UI.Page
     {
         public List<ArticulosConDetalles> ListadoDeArticulos { get; set; }
+        private Compra Compra { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,7 +24,6 @@ namespace TPC_28
                     List<ArticulosConDetalles> toShow = new List<ArticulosConDetalles>();
                     CarroConArticulos carro = Session["Cart"] as CarroConArticulos;
 
-                    //
                     DireccionEnvio direccion = new DireccionEnvio();
                     direccion.Usuario = usuario;
 
@@ -60,12 +56,14 @@ namespace TPC_28
                             total += item.Precio * item.Cantidad;
                         }
 
+                        Compra.PrecioTotal = total;
+                        CargarCarritoACompra(toShow);
+
                         lblTotal.Text = total.ToString("0.00");
 
-                        CarroConArticulos currentCart = Session["Cart"] as CarroConArticulos;
-                        if (currentCart != null)
+                        if (carro != null)
                         {
-                            Master.UpdateCartItemCount(currentCart.GetTotalItems());
+                            Master.UpdateCartItemCount(carro.GetTotalItems());
                         }
                     }
                 }
@@ -75,6 +73,21 @@ namespace TPC_28
                     Response.Redirect("Error.aspx", false);
                 }
             }
+        }
+
+        private void CargarCarritoACompra(List<ArticulosConDetalles> toShow)
+        {
+            List<ProductoCompra> l = new List<ProductoCompra>();
+            foreach (var item in toShow)
+            {
+                ProductoCompra productoCompra = new ProductoCompra();
+                productoCompra.ArticuloID = item.ArtId;
+                productoCompra.Cant = item.Cantidad;
+                productoCompra.PrecioCobrado = item.Precio;
+
+                l.Add(productoCompra);
+            }
+            Compra.ListaProductosEnCompra = l;
         }
 
         protected void ddlEnvio_SelectedIndexChanged(object sender, EventArgs e)
@@ -133,7 +146,7 @@ namespace TPC_28
             try
             {
                 if (Session["usuario"] is Usuario usuario)
-                {                    
+                {
                     DatosDireccionEnvio datosDireccion = new DatosDireccionEnvio();
 
                     DireccionEnvio direccion = new DireccionEnvio
@@ -155,20 +168,26 @@ namespace TPC_28
                     DatosTipoPagos datosPagos = new DatosTipoPagos();
 
                     int formaPagoId = int.Parse(ddlFormaDePago.SelectedValue);
-
                     Session["FormaPagoId"] = formaPagoId;
-
                     string descripcionPago = ddlFormaDePago.SelectedItem.Text;
-           
                     datosPagos.NuevoTipoDePago(descripcionPago);
+
+                    Pago pago = new Pago();
+                    pago.tipoPago = formaPagoId;
 
                     Session["usuario"] = usuario;
 
                     int formaEnvioId = int.Parse(ddlEnvio.SelectedValue);
-
                     Session["FormaEnvioId"] = formaEnvioId;
-
                     datosDireccion.NuevaDireccionDeEnvio(direccion);
+
+                    Envio envio = new Envio();
+                    envio.Id = formaEnvioId;
+
+                    Compra.Pago = pago;
+                    Compra.Envio = envio;
+                    Compra.Usuario = usuario;
+                    Compra.Estado = "Pendiente";
 
                     Response.Redirect("MiCuenta.aspx");
                 }
@@ -178,7 +197,7 @@ namespace TPC_28
                 throw ex;
             }
         }
-    }  
+    }
 
 }
 

@@ -6,14 +6,14 @@ namespace Negocio
 {
     public class DatosEnvios
     {
-        public List<Envios> Listar()
+        public List<Envio> Listar()
         {
-            List<Envios> l = new List<Envios>();
+            List<Envio> l = new List<Envio>();
             AccesoDatos db = new AccesoDatos();
 
             try
             {
-                db.setQuery("select e.CodigoEnvio, t.Descripcion as TipoEnvio, t.IdTipoEnvio, d.Descripcion as AliasDireccion, d.IdDireccionEnvio, u.Mail as UserMail, u.Nombre ,u.UserId, e.Estado from Envios e inner join TipoEnvios t on t.IdTipoEnvio = e.TipoEnvio inner join DireccionEnvio d on d.IdDireccionEnvio = e.DireccionEnvio inner join Usuarios u on u.UserId = e.Usuario");
+                db.setQuery("select e.CodigoEnvio, t.Descripcion as TipoEnvio, t.IdTipoEnvio, d.Descripcion as AliasDireccion, d.IdDireccionEnvio, u.Mail as UserMail, u.Nombre ,u.UserId, e.Estado from Envio e inner join TipoEnvios t on t.IdTipoEnvio = e.TipoEnvio inner join DireccionEnvio d on d.IdDireccionEnvio = e.DireccionEnvio inner join Usuarios u on u.UserId = e.Usuario");
                 db.ejecutar();
 
                 while (db.sqlLector.Read())
@@ -24,7 +24,7 @@ namespace Negocio
                         (!(db.sqlLector["UserMail"] is DBNull)) ? (string)db.sqlLector["UserMail"] : ""
                     );
 
-                    Envios e = new Envios();
+                    Envio e = new Envio();
                     e.CodigoEnvio = (!(db.sqlLector["CodigoEnvio"] is DBNull)) ? (string)db.sqlLector["CodigoEnvio"] : "";
                     e.TipoEnvios = new TipoEnvios(
                         (!(db.sqlLector["IdTipoEnvio"] is DBNull)) ? (int)db.sqlLector["IdTipoEnvio"] : 0,

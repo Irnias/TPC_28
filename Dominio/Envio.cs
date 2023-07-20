@@ -1,6 +1,6 @@
 ﻿namespace Dominio
 {
-    public class Envios
+    public class Envio
     {
         public int Id { get; set; }
         public string CodigoEnvio { get; set; }

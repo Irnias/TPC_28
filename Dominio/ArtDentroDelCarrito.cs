@@ -2,14 +2,14 @@
 
 namespace Dominio
 {
-    public class Carro
+    public class ArtDentroDelCarrito
     {
-        public Carro(int carId)
+        public ArtDentroDelCarrito(int carId)
         {
             idCarrito = carId;
             Cantidad = 1;
         }
-        public Carro()
+        public ArtDentroDelCarrito()
         {
 
         }
@@ -19,7 +19,7 @@ namespace Dominio
         public EstadoCarrito Estado { get; set; }
         public Usuario usuario { get; set; }
         public int Cantidad { get; set; }
-        public Envios EnvioActual { get; set; }
+        public Envio EnvioActual { get; set; }
 
     }
 

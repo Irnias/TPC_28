@@ -36,7 +36,7 @@ namespace TPC_28
         {
             Button verMas = (Button)sender;
             string id = verMas.CommandArgument;
-          
+
 
             Response.Redirect("artDetalles.aspx?id=" + id);
         }
@@ -57,7 +57,7 @@ namespace TPC_28
             int articleId;
             if (int.TryParse(id, out articleId))
             {
-                Carro agregarArt = new Carro(articleId);
+                ArtDentroDelCarrito agregarArt = new ArtDentroDelCarrito(articleId);
 
                 carroArt.agregarArticulo(agregarArt);
                 Session["Cart"] = carroArt;
@@ -81,7 +81,7 @@ namespace TPC_28
                 int articleId;
                 if (int.TryParse(id, out articleId))
                 {
-                    Carro current = new Carro(articleId);
+                    ArtDentroDelCarrito current = new ArtDentroDelCarrito(articleId);
                     currentCart.removerArticulo(current);
                     Session["Cart"] = currentCart;
                     Master.UpdateCartItemCount(currentCart.GetTotalItems());
@@ -103,28 +103,28 @@ namespace TPC_28
                 carro = new CarroConArticulos();
                 Session["Cart"] = carro;
             }
-            Carro current = new Carro(artId);
+            ArtDentroDelCarrito current = new ArtDentroDelCarrito(artId);
 
             carro.eliminarArticulo(current);
             Response.Redirect("Inicio.aspx");
         }*/
 
-       /* protected void btnSumar_Click(object sender, EventArgs e)
-        {
-            Button btnSumar_Click = (Button)sender;
-            int artId = int.Parse(btnSumar_Click.CommandArgument);
+        /* protected void btnSumar_Click(object sender, EventArgs e)
+         {
+             Button btnSumar_Click = (Button)sender;
+             int artId = int.Parse(btnSumar_Click.CommandArgument);
 
-            CarroConArticulos cart = Session["Cart"] as CarroConArticulos;
-            if (cart == null)
-            {
-                cart = new CarroConArticulos();
-                Session["Cart"] = cart;
-            }
-            Carro current = new Carro(artId);
+             CarroConArticulos cart = Session["Cart"] as CarroConArticulos;
+             if (cart == null)
+             {
+                 cart = new CarroConArticulos();
+                 Session["Cart"] = cart;
+             }
+             ArtDentroDelCarrito current = new ArtDentroDelCarrito(artId);
 
-            cart.agregarArticulo(current);
-            Response.Redirect("Inicio.aspx");
-        }*/
+             cart.agregarArticulo(current);
+             Response.Redirect("Inicio.aspx");
+         }*/
 
 
 

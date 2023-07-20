@@ -70,7 +70,7 @@ namespace TPC_28
                 carro = new CarroConArticulos();
                 Session["Cart"] = carro;
             }
-            Carro current = new Carro(artId);
+            ArtDentroDelCarrito current = new ArtDentroDelCarrito(artId);
 
             carro.agregarArticulo(current);
             Response.Redirect("Carrito.aspx");
@@ -88,7 +88,7 @@ namespace TPC_28
                 carro = new CarroConArticulos();
                 Session["Cart"] = carro;
             }
-            Carro current = new Carro(artId);
+            ArtDentroDelCarrito current = new ArtDentroDelCarrito(artId);
 
             carro.eliminarArticulo(current);
             Response.Redirect("Carrito.aspx");
@@ -104,7 +104,7 @@ namespace TPC_28
             if (currentCart != null)
             {
 
-                Carro current = new Carro(artId);
+                ArtDentroDelCarrito current = new ArtDentroDelCarrito(artId);
                 currentCart.removerArticulo(current);
 
                 Response.Redirect("Carrito.aspx");

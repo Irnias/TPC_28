@@ -13,7 +13,7 @@
         public string Contrasenia { get; set; }
         public string Mail { get; set; }
         public TipoUsuario TipoUsuario { get; set; }
-        public Carro Carro { get; set; }
+        public ArtDentroDelCarrito Carro { get; set; }
         public DireccionEnvio DireccionEnvio { get; set; }
         public TipoPagos pagos { get; set; }
 
@@ -38,7 +38,7 @@
         public Usuario()
         {
             UserId = 0;
-            Carro = new Carro();
+            Carro = new ArtDentroDelCarrito();
         }
 
 

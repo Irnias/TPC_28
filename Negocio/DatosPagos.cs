@@ -9,19 +9,19 @@ namespace Negocio
 {
     class DatosPagos
     {
-        public List<Pagos> Listar()
+        public List<Pago> Listar()
         {
-            List<Pagos> listaPagos = new List<Pagos>();
+            List<Pago> listaPagos = new List<Pago>();
             AccesoDatos accesoNuevo = new AccesoDatos();
 
             try
             {
-                accesoNuevo.setQuery("select IdPago as Id, TipoPago as Tipo , Estado From Pagos");
+                accesoNuevo.setQuery("select IdPago as Id, TipoPago as Tipo , Estado From Pago");
                 accesoNuevo.ejecutar();
 
                 while (accesoNuevo.sqlLector.Read())
                 {
-                    Pagos pagos = new Pagos();
+                    Pago pagos = new Pago();
                     pagos.idPago = (int)accesoNuevo.sqlLector["Id"];
                     pagos.tipoPago = (int)accesoNuevo.sqlLector["Tipo"];
                     pagos.estado = (string)accesoNuevo.sqlLector["Estado"];

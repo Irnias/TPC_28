@@ -68,7 +68,7 @@ namespace TPC_28
                         Session["Cart"] = carroArt;
                     }
 
-                    Carro agregarArt = new Carro(articleId);
+                    ArtDentroDelCarrito agregarArt = new ArtDentroDelCarrito(articleId);
                     carroArt.agregarArticulo(agregarArt);
 
                     Session["Cart"] = carroArt;
@@ -90,7 +90,7 @@ namespace TPC_28
                 int articleId;
                 if (int.TryParse(id, out articleId))
                 {
-                    Carro current = new Carro(articleId);
+                    ArtDentroDelCarrito current = new ArtDentroDelCarrito(articleId);
                     currentCart.removerArticulo(current);
                     Session["Cart"] = currentCart;
                     Master.UpdateCartItemCount(currentCart.GetTotalItems());
