@@ -98,11 +98,10 @@
                             <div class="card mb-2">
                                 <div class="card-body">
                                     <div class="product-info">
-                                        <p><span class="text-muted">Nombre: <%#Eval("Nombre") %></p>
-                                        <p><span class="text-muted">Marca: </span><%#Eval("Marca") %></p>
-                                        <p><span class="text-muted">Cantidad: </span><%#Eval("Cantidad") %></p>
-                                        <p><span class="text-muted">Precio Unitario: </span><%#Eval("Precio") %></p>
-                                        <p><span class="text-muted">Precio Total: </span><%# (Convert.ToDouble(Eval("Cantidad")) * Convert.ToDouble(Eval("Precio"))).ToString("0.00") %></p>
+                                        <p><span class="text-muted">Pedido: <%#Eval("CodigoEnvio") %></p>
+                                        <p><span class="text-muted">Estado: </span><%#Eval("EstadoCompra") %></p>
+                                        <p><span class="text-muted">Envio: </span><%#Eval("DireccionEnvio") %></p>
+                                        <p><span class="text-muted">Precio Total: </span><%# (Convert.ToDouble(Eval("PrecioTotal")).ToString("0.00")) %></p>
                                     </div>
                                 </div>
                             </div>

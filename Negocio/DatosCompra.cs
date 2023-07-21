@@ -101,6 +101,39 @@ namespace Negocio
                 throw;
             }
         }
+
+        public List<CompraVista> ListarComprasPorUsuario(string UserID)
+        {
+            List<CompraVista> ListaCompra = new List<CompraVista>();
+            AccesoDatos Db = new AccesoDatos();
+
+            try
+            {
+                Db.setQuery("SELECT C.IdCompra, C.PrecioTotal, C.Estado AS EstadoCompra, E.CodigoEnvio, P.TipoPago, de.Calle + ' ' + CAST(de.Numero AS VARCHAR(10)) + ', ' + de.Ciudad as Direccion FROM Compras C LEFT JOIN Envios E ON C.Envio = E.IdEnvio left JOIN DireccionEnvio de on e.DireccionEnvio = de.IdDireccionEnvio LEFT JOIN Pagos P ON C.Pago = P.IdPago where C.Usuario = @userId");
+                Db.setearParametro("@userId", UserID);
+                Db.ejecutar();
+                while (Db.sqlLector.Read())
+                {
+                    CompraVista CompraVista = new CompraVista();
+                    CompraVista.IdCompra = (!(Db.sqlLector["IdCompra"] is DBNull)) ? (int)Db.sqlLector["IdCompra"] : 0;
+                    CompraVista.PrecioTotal = (!(Db.sqlLector["PrecioTotal"] is DBNull)) ? (decimal)Db.sqlLector["PrecioTotal"] : 0;
+                    CompraVista.EstadoCompra = (!(Db.sqlLector["EstadoCompra"] is DBNull)) ? (string)Db.sqlLector["EstadoCompra"].ToString() : "";
+                    CompraVista.CodigoEnvio = (!(Db.sqlLector["CodigoEnvio"] is DBNull)) ? (string)Db.sqlLector["CodigoEnvio"].ToString() : "";
+                    CompraVista.DireccionEnvio = (!(Db.sqlLector["Direccion"] is DBNull)) ? (string)Db.sqlLector["Direccion"].ToString() : "";
+                    ListaCompra.Add(CompraVista);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Db.Cerrar();
+            }
+            return ListaCompra;
+        }
+
         public void PasarCompraAPagago(int IdCompra)
         {
 
