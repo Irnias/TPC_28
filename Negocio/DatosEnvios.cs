@@ -14,7 +14,7 @@ namespace Negocio
 
             try
             {
-                db.setQuery("select e.CodigoEnvio, t.Descripcion as TipoEnvio, t.IdTipoEnvio, d.Descripcion as AliasDireccion, d.IdDireccionEnvio, u.Mail as UserMail, u.Nombre ,u.UserId, e.Estado from Envio e inner join TipoEnvios t on t.IdTipoEnvio = e.TipoEnvio inner join DireccionEnvio d on d.IdDireccionEnvio = e.DireccionEnvio inner join Usuarios u on u.UserId = e.Usuario");
+                db.setQuery("select e.CodigoEnvio, t.Descripcion as TipoEnvio, t.IdTipoEnvio, d.Descripcion as AliasDireccion, d.IdDireccionEnvio, u.Mail as UserMail, u.Nombre ,u.Apellido ,u.UserId, e.Estado from Envio e inner join TipoEnvios t on t.IdTipoEnvio = e.TipoEnvio inner join DireccionEnvio d on d.IdDireccionEnvio = e.DireccionEnvio inner join Usuarios u on u.UserId = e.Usuario");
                 db.ejecutar();
 
                 while (db.sqlLector.Read())
@@ -22,6 +22,7 @@ namespace Negocio
                     Usuario Usuario = new Usuario(
                         (!(db.sqlLector["UserId"] is DBNull)) ? (int)db.sqlLector["UserId"] : 0,
                         (!(db.sqlLector["Nombre"] is DBNull)) ? (string)db.sqlLector["Nombre"] : "",
+                        (!(db.sqlLector["Apellido"] is DBNull)) ? (string)db.sqlLector["Apellido"] : "",
                         (!(db.sqlLector["UserMail"] is DBNull)) ? (string)db.sqlLector["UserMail"] : ""
                     );
 

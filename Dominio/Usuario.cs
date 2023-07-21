@@ -26,10 +26,11 @@
             TipoUsuario = TipoUsuario.Normal;
         }
 
-        public Usuario(int id, string N, string M)
+        public Usuario(int id, string N, string A, string M)
         {
             UserId = id;
             Nombre = N;
+            Apellido = A;
             Mail = M;
         }
 

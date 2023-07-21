@@ -63,7 +63,7 @@ namespace Negocio
             {
                 //accesoNuevo.setQuery("SELECT  C.IdCompra as Id, C.PrecioTotal as PrecioTotal, C.Estado AS EstadoCompra, E.CodigoEnvio, E.DireccionEnvio AS IdDireccionEnvio, P.TipoPago, U.UserId as IdUsuario, U.Nombre, U.Mail FROM Compras C LEFT JOIN Envios E ON C.Envio = E.IdEnvio LEFT JOIN Pagos P ON C.Pago = P.IdPago LEFT JOIN Usuarios U on U.UserId = C.Usuario");
 
-                accesoNuevo.setQuery("SELECT C.IdCompra as Id, C.PrecioTotal as PrecioTotal, C.Estado AS EstadoCompra, E.CodigoEnvio,  DE.Calle, DE.Numero, P.TipoPago, U.UserId as IdUsuario, U.Nombre, U.Mail FROM Compras C LEFT JOIN Envios E ON C.Envio = E.IdEnvio LEFT JOIN DireccionEnvio DE ON E.DireccionEnvio = DE.IdDireccionEnvio LEFT JOIN Pagos P ON C.Pago = P.IdPago LEFT JOIN Usuarios U ON U.UserId = C.Usuario");
+                accesoNuevo.setQuery("SELECT C.IdCompra as Id, C.PrecioTotal as PrecioTotal, C.Estado AS EstadoCompra, E.CodigoEnvio,  DE.Calle, DE.Numero, P.TipoPago, U.UserId as IdUsuario, U.Nombre, U.Apellido, U.Mail FROM Compras C LEFT JOIN Envios E ON C.Envio = E.IdEnvio LEFT JOIN DireccionEnvio DE ON E.DireccionEnvio = DE.IdDireccionEnvio LEFT JOIN Pagos P ON C.Pago = P.IdPago LEFT JOIN Usuarios U ON U.UserId = C.Usuario");
                 accesoNuevo.ejecutar();
 
                 while (accesoNuevo.sqlLector.Read())
@@ -92,6 +92,7 @@ namespace Negocio
                     compra.Usuario = new Usuario(
                     (!(accesoNuevo.sqlLector["idUsuario"] is DBNull)) ? (int)accesoNuevo.sqlLector["idUsuario"] : 0,
                     (!(accesoNuevo.sqlLector["Nombre"] is DBNull)) ? (string)accesoNuevo.sqlLector["Nombre"] : "",
+                    (!(accesoNuevo.sqlLector["Apellido"] is DBNull)) ? (string)accesoNuevo.sqlLector["Apellido"] : "",
                     (!(accesoNuevo.sqlLector["Mail"] is DBNull)) ? (string)accesoNuevo.sqlLector["Mail"] : ""
 
                     );
