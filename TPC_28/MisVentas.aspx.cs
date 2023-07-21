@@ -58,7 +58,11 @@ namespace TPC_28
 
         protected void dgvListaVentas_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-
+            DatosCompra compras = new DatosCompra();
+            List<Compra> listaCompras = datosCompra.Listar();
+            dgvListaVentas.PageIndex = e.NewPageIndex;
+            dgvListaVentas.DataSource = listaCompras;
+            dgvListaVentas.DataBind();
         }
         protected void ModificarEstado_Click(object sender, EventArgs e)
         {

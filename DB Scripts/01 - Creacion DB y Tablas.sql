@@ -152,12 +152,23 @@ CREATE TABLE Compras (
     PrecioTotal money not null,
     Estado varchar(50)
 );
+select * from Compras 
+
+insert into Compras(Envio,Pago,Usuario,PrecioTotal,Estado)
 
 SELECT  C.IdCompra as Id, C.PrecioTotal as PrecioTotal, C.Estado AS EstadoCompra, E.CodigoEnvio, E.DireccionEnvio AS IdDireccionEnvio, P.TipoPago, U.UserId as IdUsuario, U.Nombre, U.Mail FROM Compras C LEFT JOIN Envios E ON C.Envio = E.IdEnvio LEFT JOIN Pagos P ON C.Pago = P.IdPago LEFT JOIN Usuarios U on U.UserId = C.Usuario
+select * from Envios
+select * from TipoEnvios
 
-select * from Compras
+select * from TipoPagos
 
 select * from Usuarios
+
+SELECT C.IdCompra as Id, C.PrecioTotal as PrecioTotal, C.Estado AS EstadoCompra, E.CodigoEnvio,  DE.Calle, DE.Numero, Tp.Descripcion, U.UserId as IdUsuario, U.Nombre, U.Mail
+FROM Compras C LEFT JOIN Envios E ON C.Envio = E.IdEnvio LEFT JOIN DireccionEnvio DE ON E.DireccionEnvio = DE.IdDireccionEnvio LEFT JOIN Pagos P ON C.Pago = P.IdPago
+LEFT JOIN TipoPagos Tp on Tp.IdTipoPago = P.TipoPago
+LEFT JOIN Usuarios U ON U.UserId = C.Usuario
+
 
 insert into Compras(Usuario,PrecioTotal)
 VALUES(2,10)
