@@ -50,6 +50,7 @@
     <Compile Include="CarroConArticulos.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="Compra.cs" />
+    <Compile Include="CompraVista.cs" />
     <Compile Include="DireccionEnvio.cs" />
     <Compile Include="Envio.cs" />
     <Compile Include="EstadoCarrito.cs" />

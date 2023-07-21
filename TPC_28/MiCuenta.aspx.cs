@@ -1,8 +1,7 @@
 ﻿using Dominio;
-using System;
 using Negocio;
+using System;
 using System.Collections.Generic;
-
 
 namespace TPC_28
 {
@@ -29,40 +28,28 @@ namespace TPC_28
                     DatosDeArticulos conector = new DatosDeArticulos();
                     ListadoDeArticulos = conector.obtenerArticulosConDetalles();
                     List<ArticulosConDetalles> toShow = new List<ArticulosConDetalles>();
-                    CarroConArticulos carro = Session["Cart"] as CarroConArticulos;
+                    DatosCompra datosCompra = new DatosCompra();
+                    List<CompraVista> compraVista = datosCompra.ListarComprasPorUsuario(user.UserId.ToString());
 
-                    if (carro != null)
+                    repRepetidor.DataSource = compraVista;
+                    repRepetidor.DataBind();
+
+
+                    decimal total = 0;
+                    foreach (var item in toShow)
                     {
-
-                        foreach (var item in ListadoDeArticulos)
-                        {
-                            if (carro.tieneIdArticulo(item.ArtId))
-                            {
-                                item.Cantidad = carro.GetArticleQuantity(item.ArtId);
-                                toShow.Add(item);
-                            }
-                        }
-
-
-                        repRepetidor.DataSource = toShow;
-                        repRepetidor.DataBind();
-
-
-                        decimal total = 0;
-                        foreach (var item in toShow)
-                        {
-                            total += item.Precio * item.Cantidad;
-                        }
-
-                        //lblTotal.Text = total.ToString("0.00");
-
-                        CarroConArticulos currentCart = Session["Cart"] as CarroConArticulos;
-                        if (currentCart != null)
-                        {
-                            Master.UpdateCartItemCount(currentCart.GetTotalItems());
-                        }
-
+                        total += item.Precio * item.Cantidad;
                     }
+
+                    //lblTotal.Text = total.ToString("0.00");
+
+                    CarroConArticulos currentCart = Session["Cart"] as CarroConArticulos;
+                    if (currentCart != null)
+                    {
+                        Master.UpdateCartItemCount(currentCart.GetTotalItems());
+                    }
+
+
                     if (user.DireccionEnvio != null)
                     {
                         lblCalle.Text = user.DireccionEnvio.Calle;
