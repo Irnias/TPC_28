@@ -61,7 +61,9 @@ namespace Negocio
 
             try
             {
-                accesoNuevo.setQuery("SELECT  C.IdCompra as Id, C.PrecioTotal as PrecioTotal, C.Estado AS EstadoCompra, E.CodigoEnvio, E.DireccionEnvio AS IdDireccionEnvio, P.TipoPago, U.UserId as IdUsuario, U.Nombre, U.Mail FROM Compras C LEFT JOIN Envios E ON C.Envio = E.IdEnvio LEFT JOIN Pagos P ON C.Pago = P.IdPago LEFT JOIN Usuarios U on U.UserId = C.Usuario");
+                //accesoNuevo.setQuery("SELECT  C.IdCompra as Id, C.PrecioTotal as PrecioTotal, C.Estado AS EstadoCompra, E.CodigoEnvio, E.DireccionEnvio AS IdDireccionEnvio, P.TipoPago, U.UserId as IdUsuario, U.Nombre, U.Mail FROM Compras C LEFT JOIN Envios E ON C.Envio = E.IdEnvio LEFT JOIN Pagos P ON C.Pago = P.IdPago LEFT JOIN Usuarios U on U.UserId = C.Usuario");
+
+                accesoNuevo.setQuery("SELECT C.IdCompra as Id, C.PrecioTotal as PrecioTotal, C.Estado AS EstadoCompra, E.CodigoEnvio,  DE.Calle, DE.Numero, P.TipoPago, U.UserId as IdUsuario, U.Nombre, U.Mail FROM Compras C LEFT JOIN Envios E ON C.Envio = E.IdEnvio LEFT JOIN DireccionEnvio DE ON E.DireccionEnvio = DE.IdDireccionEnvio LEFT JOIN Pagos P ON C.Pago = P.IdPago LEFT JOIN Usuarios U ON U.UserId = C.Usuario");
                 accesoNuevo.ejecutar();
 
                 while (accesoNuevo.sqlLector.Read())
@@ -70,20 +72,23 @@ namespace Negocio
 
                     compra.IdCompra = (!(accesoNuevo.sqlLector["Id"] is DBNull)) ? (int)accesoNuevo.sqlLector["Id"] : 0;
                     compra.PrecioTotal = (!(accesoNuevo.sqlLector["PrecioTotal"] is DBNull)) ? (decimal)accesoNuevo.sqlLector["PrecioTotal"] : 0;
+                    string estadoString = (!(accesoNuevo.sqlLector["EstadoCompra"] is DBNull)) ? accesoNuevo.sqlLector["EstadoCompra"].ToString() : "Pendiente";
+                    compra.Estado = (Estado)Enum.Parse(typeof(Estado), estadoString);
                     compra.Envio = new Envio
-                    (
-                        (!(accesoNuevo.sqlLector["CodigoEnvio"] is DBNull)) ? (string)accesoNuevo.sqlLector["CodigoEnvio"] : ""
+                    {
+                        CodigoEnvio = (!(accesoNuevo.sqlLector["CodigoEnvio"] is DBNull)) ? (string)accesoNuevo.sqlLector["CodigoEnvio"] : "",
+                        DireccionEnvio = new DireccionEnvio
+                        {
+                            Numero = (!(accesoNuevo.sqlLector["Numero"] is DBNull)) ? (int)accesoNuevo.sqlLector["Numero"] : 0,
+                            Calle = (!(accesoNuevo.sqlLector["Calle"] is DBNull)) ? (string)accesoNuevo.sqlLector["Calle"] : ""
+                        }
+                    };
 
-                    );
-                    compra.Envio.DireccionEnvio = new DireccionEnvio
-                    (
-                    // (!(accesoNuevo.sqlLector["NumeroDireccion"] is DBNull)) ? (int)accesoNuevo.sqlLector["NumeroDireccion"] : 0,
-                    // (!(accesoNuevo.sqlLector["CalleDireccion"] is DBNull)) ? (string)accesoNuevo.sqlLector["CalleDireccion"].ToString() : ""
-                    );
                     compra.Pago = new Pago(
                       (!(accesoNuevo.sqlLector["TipoPago"] is DBNull)) ? (int)accesoNuevo.sqlLector["TipoPago"] : 0
+                      );
 
-                    );
+
                     compra.Usuario = new Usuario(
                     (!(accesoNuevo.sqlLector["idUsuario"] is DBNull)) ? (int)accesoNuevo.sqlLector["idUsuario"] : 0,
                     (!(accesoNuevo.sqlLector["Nombre"] is DBNull)) ? (string)accesoNuevo.sqlLector["Nombre"] : "",
@@ -134,6 +139,29 @@ namespace Negocio
             return ListaCompra;
         }
 
+        public void ModificarEstado(int id, Estado nuevoEstado)
+        {
+            AccesoDatos db = new AccesoDatos();
+            try
+            {
+                db.setQuery("Update compras set Estado = @nuevoEstado where IdCompra = @id");
+                db.setearParametro("@nuevoEstado", nuevoEstado.ToString());
+                db.setearParametro("@id", id);
+
+                db.ejecutar();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                db.ClearQuery();
+                db.Cerrar();
+            }
+
+        }
         public void PasarCompraAPagago(int IdCompra)
         {
 

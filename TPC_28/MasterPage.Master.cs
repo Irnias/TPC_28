@@ -47,6 +47,7 @@ namespace TPC_28
                             <li><a class='dropdown-item' href='ListadoDeMarcas.aspx'>Marcas</a></li>
                             <li><a class='dropdown-item' href='ListadoDeCategorias.aspx'>Categorias</a></li>
                             <li><a class='dropdown-item' href='ListadoDeTiposDePago.aspx'>Tipos De Envio</a></li>
+                            <li><a class='dropdown-item' href='MisVentas.aspx'>Mis Ventas</a></li>
                             <li><a class='dropdown-item' href='#'>Usuarios</a></li>
                         </ul>
                     </li>";
