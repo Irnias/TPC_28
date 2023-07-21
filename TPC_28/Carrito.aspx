@@ -10,7 +10,9 @@
         .button-container{
             margin-top:10px;
         }
-
+        body {
+            background-color: lightblue;
+        }
     </style>
 
   <asp:Label Text="" ID="probando" runat="server" />
