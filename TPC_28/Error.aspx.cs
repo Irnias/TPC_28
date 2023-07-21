@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dominio;
+using System;
 
 namespace TPC_28
 {
@@ -13,14 +14,19 @@ namespace TPC_28
             }
             else if (Session["usuario"] == null)
             {
-                Response.Redirect("Login.aspx"); 
+                Response.Redirect("Login.aspx");
+            }
+
+            CarroConArticulos currentCart = Session["Cart"] as CarroConArticulos;
+            if (currentCart != null)
+            {
+                ((TPC_28.MasterPage)(base.Master)).UpdateCartItemCount(currentCart.GetTotalItems());
             }
         }
 
         protected void iniciarSesion_Click(object sender, EventArgs e)
         {
             Response.Redirect("Login.aspx");
-
         }
     }
 }

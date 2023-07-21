@@ -34,8 +34,15 @@ namespace TPC_28
                 if (usuario.UserId > 0 && usuario.TipoUsuario != TipoUsuario.SuperAdmin)
                 {
                     Session.Add("usuario", usuario);
-                    Response.Redirect("MiCuenta.aspx", false);
-
+                    CarroConArticulos currentCart = Session["Cart"] as CarroConArticulos;
+                    if (currentCart != null)
+                    {
+                        Response.Redirect("Carrito.aspx", false);
+                    }
+                    else
+                    {
+                        Response.Redirect("MiCuenta.aspx", false);
+                    }
                 }
                 else if (usuario.UserId > 0 && usuario.TipoUsuario == TipoUsuario.SuperAdmin)
                 {
