@@ -47,6 +47,7 @@ namespace TPC_28
                 }
 
                 usuarioNegocio.Registrar(usuario);
+                usuario = usuarioNegocio.Logear(usuario);
                 Session.Add("usuario", usuario);
                 Response.Redirect("Inicio.aspx", false);
             }
