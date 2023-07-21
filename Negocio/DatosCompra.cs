@@ -61,15 +61,15 @@ namespace Negocio
 
             try
             {
-                accesoNuevo.setQuery("SELECT  C.IdCompra, C.PrecioTotal, C.Estado AS EstadoCompra, E.CodigoEnvio, E.DireccionEnvio AS IdDireccionEnvio, P.TipoPago FROM Compras C LEFT JOIN Envios E ON C.Envio = E.IdEnvio LEFT JOIN Pagos P ON C.Pago = P.IdPago; ");
+                accesoNuevo.setQuery("SELECT  C.IdCompra as Id, C.PrecioTotal as PrecioTotal, C.Estado AS EstadoCompra, E.CodigoEnvio, E.DireccionEnvio AS IdDireccionEnvio, P.TipoPago, U.UserId as IdUsuario, U.Nombre, U.Mail FROM Compras C LEFT JOIN Envios E ON C.Envio = E.IdEnvio LEFT JOIN Pagos P ON C.Pago = P.IdPago LEFT JOIN Usuarios U on U.UserId = C.Usuario");
                 accesoNuevo.ejecutar();
 
                 while (accesoNuevo.sqlLector.Read())
                 {
                     Compra compra = new Compra();
 
-                    compra.IdCompra = (!(accesoNuevo.sqlLector["Id"] is DBNull)) ? (int)accesoNuevo.sqlLector["artId"] : 0;
-                    compra.InfoExtra = (!(accesoNuevo.sqlLector["Info"] is DBNull)) ? (string)accesoNuevo.sqlLector["Info"] : "";
+                    compra.IdCompra = (!(accesoNuevo.sqlLector["Id"] is DBNull)) ? (int)accesoNuevo.sqlLector["Id"] : 0;
+                    compra.PrecioTotal = (!(accesoNuevo.sqlLector["PrecioTotal"] is DBNull)) ? (decimal)accesoNuevo.sqlLector["PrecioTotal"] : 0;
                     compra.Envio = new Envio
                     (
                         (!(accesoNuevo.sqlLector["CodigoEnvio"] is DBNull)) ? (string)accesoNuevo.sqlLector["CodigoEnvio"] : ""
@@ -77,14 +77,19 @@ namespace Negocio
                     );
                     compra.Envio.DireccionEnvio = new DireccionEnvio
                     (
-                     (!(accesoNuevo.sqlLector["NumeroDireccion"] is DBNull)) ? (int)accesoNuevo.sqlLector["NumeroDireccion"] : 0,
-                     (!(accesoNuevo.sqlLector["CalleDireccion"] is DBNull)) ? (string)accesoNuevo.sqlLector["CalleDireccion"].ToString() : ""
+                    // (!(accesoNuevo.sqlLector["NumeroDireccion"] is DBNull)) ? (int)accesoNuevo.sqlLector["NumeroDireccion"] : 0,
+                    // (!(accesoNuevo.sqlLector["CalleDireccion"] is DBNull)) ? (string)accesoNuevo.sqlLector["CalleDireccion"].ToString() : ""
                     );
                     compra.Pago = new Pago(
                       (!(accesoNuevo.sqlLector["TipoPago"] is DBNull)) ? (int)accesoNuevo.sqlLector["TipoPago"] : 0
 
                     );
+                    compra.Usuario = new Usuario(
+                    (!(accesoNuevo.sqlLector["idUsuario"] is DBNull)) ? (int)accesoNuevo.sqlLector["idUsuario"] : 0,
+                    (!(accesoNuevo.sqlLector["Nombre"] is DBNull)) ? (string)accesoNuevo.sqlLector["Nombre"] : "",
+                    (!(accesoNuevo.sqlLector["Mail"] is DBNull)) ? (string)accesoNuevo.sqlLector["Mail"] : ""
 
+                    );
                     listaCompra.Add(compra);
                 }
 

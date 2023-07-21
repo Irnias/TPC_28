@@ -17,8 +17,6 @@
         public DireccionEnvio DireccionEnvio { get; set; }
         public TipoPagos pagos { get; set; }
 
-
-
         public Usuario(string Nom, string Ape, string Pass, string Email)
         {
             Nombre = Nom;
@@ -40,6 +38,7 @@
             UserId = 0;
             Carro = new ArtDentroDelCarrito();
         }
+
 
 
     }

@@ -4,6 +4,8 @@ GO
 USE Catalogo_Articulos
 GO
 
+select * from usuarios
+
 Create Table Marcas(
 	IdMarca int not null primary key identity (1,1),
 	Descripcion varchar (50)
@@ -150,6 +152,19 @@ CREATE TABLE Compras (
     PrecioTotal money not null,
     Estado varchar(50)
 );
+
+SELECT  C.IdCompra as Id, C.PrecioTotal as PrecioTotal, C.Estado AS EstadoCompra, E.CodigoEnvio, E.DireccionEnvio AS IdDireccionEnvio, P.TipoPago, U.UserId as IdUsuario, U.Nombre, U.Mail FROM Compras C LEFT JOIN Envios E ON C.Envio = E.IdEnvio LEFT JOIN Pagos P ON C.Pago = P.IdPago LEFT JOIN Usuarios U on U.UserId = C.Usuario
+
+select * from Compras
+
+select * from Usuarios
+
+insert into Compras(Usuario,PrecioTotal)
+VALUES(2,10)
+
+
+insert into Compras (PrecioTotal)
+values(1)
 
 CREATE TABLE ProductosCompra (
     IdProductosCompra int not null primary key identity (1,1),

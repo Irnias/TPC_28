@@ -17,15 +17,11 @@ namespace TPC_28
         {
             if (!IsPostBack)
             {
-                CargarCompras();
+                List<Compra> listaCompras = datosCompra.Listar();
+              
+                dgvListaVentas.DataSource = listaCompras;
+                dgvListaVentas.DataBind();
             }
-        }
-
-        private void CargarCompras()
-        {
-            List<Compra> listaCompras = datosCompra.Listar();
-             dgvListaVentas.DataSource = listaCompras;
-             dgvListaVentas.DataBind();
         }
 
         protected void dgvListaVentas_SelectedIndexChanged(object sender, EventArgs e)
