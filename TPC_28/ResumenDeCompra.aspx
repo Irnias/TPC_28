@@ -161,8 +161,6 @@
                                 <asp:TextBox ID="txtCiudad" runat="server" class="cajita" Placeholder="Ciudad" Visible="false"></asp:TextBox>
                                 <asp:TextBox ID="txtPais" runat="server" class="cajita" Placeholder="Pais" Visible="false"></asp:TextBox>
                                 <asp:TextBox ID="txtDescripcion" runat="server" class="cajita" Placeholder="Descripcion" Visible="false"></asp:TextBox>
-                                <asp:Button Text="Aceptar" runat="server" class="btn btn-info" ID="Button1" OnClick="Aceptar_Click" />
-
                             </div>
                             <div style="margin-top: 10px; position: relative;">
                                 <asp:Button Text="Aceptar" runat="server" class="btn btn-info" ID="Aceptar" OnClick="Aceptar_Click" />
